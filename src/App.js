@@ -19,10 +19,12 @@ class App extends Component {
     const changeLanguage = (lng) => {
       i18n.changeLanguage(lng);
     };
-
+    
     return (
       <div className="App">
         <div className="App-header">
+        <button onClick={() => changeLanguage("vn")}>en</button>
+          <button onClick={() => changeLanguage("en")}>vn</button>
           <div className="header">
             <img src={favicon} className="rounded-full" />
             <h1>MATHMYSTIC</h1>
@@ -45,8 +47,7 @@ class App extends Component {
             </div>
           </h2>
 
-          <button onClick={() => changeLanguage("vn")}>en</button>
-          <button onClick={() => changeLanguage("en")}>vn</button>
+          
         </div>
         <div className="App-intro">
           <h1>

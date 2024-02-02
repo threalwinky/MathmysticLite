@@ -67,6 +67,7 @@ body {
   margin: 0rem;
   text-align: center;
   z-index: -999;
+  
 }
 
 .navbg{
@@ -116,11 +117,11 @@ body {
 
 .nav a:hover {
   /* text-decoration: overline; */
-  transition-duration: 0.2s;
+  transition-duration: 0.1s;
   
   background-color:#f7d2cc;
   border-radius: 100px;
-  border-width: 5px;
+  border-width: 2px;
   border-color: #fb856f;
   color: #000000;
 }

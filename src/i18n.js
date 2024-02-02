@@ -21,6 +21,9 @@ i18n
           "Tài liệu học tập": "Document",
           "Cửa hàng": "Products",
           "Liên hệ": "Contact",
+          "​MATHMYSTIC XIN CHÀO":"WELCOME TO ​MATHMYSTIC",
+          "CHẮP CÁNH TƯ DUY, KẾT NỐI TRI THỨC,": "WINGING THINKING, CONNECTING KNOWLEDGE,",
+          "ÁNH SÁNG CHO MỌI TRÁI TIM": " LIGHT FOR EVERY HEART",
         }
       }
     },

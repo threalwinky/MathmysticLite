@@ -16,7 +16,7 @@ code {
 @tailwind components;
 @tailwind utilities;
 
-.first{
+.first2{
     padding-top: 40px;
     background-color: #afe7fe;
     display: flex;
@@ -27,21 +27,21 @@ code {
     width: 100%;
 }
 
-.first img{
-    width: 400px;
+.first2 img{
+    width: 600px;
     padding: 20px;
 }
 
-.first h1{
+.first2 h1{
     font-weight: 600;
     font-size: xx-large;
 }
 
-.first a{
+.first2 a{
     font-weight: 300;
-    font-size:x-large;
-    text-wrap: wrap;
-    max-width: 30px;
+    font-size:large;
+    
+    text-align: left;
 }
 
 .second{
