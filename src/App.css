@@ -135,6 +135,10 @@ body {
   color: #ffffff;
 }
 
+.navbg{
+  background-color: #f1ebdd;
+}
+
 .scr{
   padding-top: 80px;
   background-color: #f7f5ee;
