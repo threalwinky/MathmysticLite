@@ -6,7 +6,7 @@ import girl from "../img/girl.webp";
 import Products from "../auth/Products";
 export default function Home() {
   return (
-    <div className="container">
+    <div className="">
       <div className="first">
         <div>
           <h1>​MATHMYSTIC XIN CHÀO</h1>

@@ -17,11 +17,13 @@ code {
 @tailwind utilities;
 
 .first{
+    background-color: #afe7fe;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
     gap: 20px;
+    width: 100%;
 }
 
 .first img{

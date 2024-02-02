@@ -14,7 +14,7 @@ const Nav = () => {
   let [open, setOpen] = useState(false);
   return (
     <div className="absolute w-full fixed top-22 left-0">
-      <div className="md:flex items-center justify-between py-3 md:px-0 px-0 navbg">
+      <div className="md:flex items-center justify-between py-4 md:px-0 px-0 navbg">
         <div
           className="font-bold text-2xl cursor-pointer flex items-center font-[Poppins] 
       text-gray-800"
@@ -32,7 +32,7 @@ const Nav = () => {
         </div>
 
         <ul
-          className={`md:flex md:items-center  absolute md:static bg-white left-0 w-full md:w- transition-all duration-500 ease-in ${
+          className={`md:flex md:items-center  absolute md:static left-0 w-full md:w- transition-all duration-500 ease-in ${
             open ? "top-20" : "top-[-560px]"
           } nav`}
         >

@@ -63,20 +63,22 @@ body {
 }
 
 .container {
-  padding-top: 40px;
+  padding-top: 2rem;
   margin: 0rem;
   text-align: center;
   z-index: -999;
 }
 
 .navbg{
-  background-color: #ffffff;
+  /* background-color: #ffffff; */
+  background-color: #cbf0ff;
+
 }
 
 .nav {
-  background-color: #afe7fe;
+  background-color: #cbf0ff;
 
-
+  /* background-color: #ffffff; */
   color: black;
   justify-content: center;
   align-items: center;
