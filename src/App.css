@@ -69,6 +69,10 @@ body {
   z-index: -999;
 }
 
+.navbg{
+  background-color: #afe7fe;
+}
+
 .nav {
   background-color: #afe7fe;
   color: black;
@@ -104,14 +108,7 @@ body {
   font-weight: 600;
 }
 
-.nav li.active {
-  /* text-decoration: overline; */
- 
-  /* background-color: #92002e; */
-  
-  border-radius: 100px;
-  color: #f1ebdd;
-}
+
 
 .nav a:hover {
   /* text-decoration: overline; */
@@ -124,9 +121,7 @@ body {
   color: #000000;
 }
 
-.navbg{
-  background-color: #afe7fe;
-}
+
 
 
 /* .App {
