@@ -1,6 +1,6 @@
-@tailwind base;
+/* @tailwind base;
 @tailwind components;
-@tailwind utilities;
+@tailwind utilities; */
 
 /* .App {
   text-align: center;
@@ -40,6 +40,100 @@
     transform: rotate(360deg);
   }
 } */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: #f7f5ee;
+}
+
+.header {
+  margin: 1rem;
+  display: flex;
+  align-items: center;
+  grid-template-columns: 100px 100px 100px;
+  grid-gap: 0px;
+  column-gap: 10px;
+  text-align: center;
+  justify-content: center;
+}
+
+.header img {
+  width: 60px;
+}
+
+.header h1 {
+  text-shadow: -1px 0 rgb(168, 127, 127), 0 1px rgb(157, 156, 156), 1px 0 rgb(255, 255, 255), 0 -1px rgb(255, 255, 255);
+  font-weight: 500;
+  font-size: x-large;
+}
+
+.container {
+  margin: 0rem;
+  text-align: center;
+}
+
+.nav {
+  background-color: #f1ebdd;
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  padding: 0 1rem;
+  text-align: center;
+}
+
+.site-title {
+  font-size: 2rem;
+
+}
+
+.nav ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+}
+
+.nav a {
+  color: inherit;
+  text-decoration: none;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: .25rem;
+  font-size: large;
+  padding: 8px 12px;
+  border-radius: 100px;
+  font-weight: 600;
+}
+
+.nav li.active {
+  /* text-decoration: overline; */
+  transition-duration: 0.5s;
+  background-color: rgb(54, 51, 51);
+  
+  border-radius: 100px;
+  color: #f1ebdd;
+}
+
+.nav li:hover {
+  /* text-decoration: overline; */
+  transition-duration: 0.5s;
+  background-color: rgb(86, 85, 85);
+
+  border-radius: 100px;
+  color: #ffffff;
+}
 
 .h{
   color: red;
