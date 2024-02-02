@@ -83,7 +83,7 @@ body {
 .nav {
   background-color: #f1ebdd;
   color: black;
-  display: flex;
+
   justify-content: center;
   align-items: center;
   gap: 2rem;
@@ -105,14 +105,14 @@ body {
 }
 
 .nav a {
-  color: inherit;
+  
   text-decoration: none;
   height: 100%;
   display: flex;
   align-items: center;
   padding: .25rem;
   font-size: large;
-  padding: 8px 12px;
+  
   border-radius: 100px;
   font-weight: 600;
 }
@@ -133,10 +133,6 @@ body {
 
   border-radius: 100px;
   color: #ffffff;
-}
-
-.h{
-  color: red;
 }
 
 .scr{
