@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import './App.css'
 import Nav from'./components/Nav'
 import favicon from './components/img/favicon.jpg';
