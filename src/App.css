@@ -1,4 +1,8 @@
-.App {
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* .App {
   text-align: center;
 }
 
@@ -35,4 +39,21 @@
   to {
     transform: rotate(360deg);
   }
+} */
+
+.h{
+  color: red;
+}
+
+.scr{
+  padding-top: 80px;
+  background-color: #f7f5ee;
+}
+
+.scr2{
+  background-color: #ffffff;
+}
+
+.scr3{
+  background-color: #f7f5ee;
 }
