@@ -63,7 +63,7 @@ body {
 }
 
 .container {
-  padding-top: 2rem;
+  padding-top: 40px;
   margin: 0rem;
   text-align: center;
   z-index: -999;

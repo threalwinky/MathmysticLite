@@ -22,7 +22,7 @@ export default function Home() {
       <div className="second">
         <h1>Sản Phẩm Mới Ở Đây</h1>
 
-        <a>Limited time price drop!</a>
+        <a >Limited time price drop!</a>
 
         <Products></Products>
 
