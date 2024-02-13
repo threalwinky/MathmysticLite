@@ -137,7 +137,7 @@
     margin-top: 1rem;
     background-color: var(--color-green);
     min-width: 180px;
-
+    z-index: 9999;
     border-radius: 5px;
     box-shadow: 0 0 5 rgba(0, 0, 0, 0.2);
     position: fixed;
