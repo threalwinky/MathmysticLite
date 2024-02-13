@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 
 
 import { Header, Introduction, NavBar, Footer, About, Document, Store, Contact } from './components'
-import { PopUp, Loading, NotFound } from './containers'
+import { PopUp, Loading, NotFound, Chatbot } from './containers'
 
 import './App.css'
 
@@ -31,6 +31,7 @@ const App = () => {
           {/* <Loading /> */}
           <Contact/>
           <Footer/>
+          <Chatbot/>
         </div>
       }
     </div>
