@@ -21,3 +21,26 @@
   --color-green: rgba(62, 197, 254, 1);
   --color-light-green: #b6e6fd;
 }
+
+:root {
+  /* Colors: */
+  --primary-color: #1f68fa;
+  --light-text-color: #f5f6f7;
+  --light-placeholder-color: #ced4de;
+  --dark-text-color: #2d3747;
+
+  /* Shadows: */
+  --shadow-dilute: 5px 5px 25px 0 rgba(46, 61, 73, 0.2);
+  --shadow-conc: 2px 4px 8px 0 rgba(46, 61, 73, 0.2);
+
+  /* Misc: */
+  --transition: all 0.2s ease-in-out;
+}
+
+body {
+  font-family: sans-serif;
+  background: #f6f8fa;
+  color: var(--dark-text-color);
+  margin: 0;
+}
+

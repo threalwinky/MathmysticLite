@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import './NavBar.css'
 import { RiMenu3Line, RiCloseLine } from 'react-icons/ri'
 import { CiUser } from "react-icons/ci";
@@ -8,10 +8,10 @@ import { TbTriangleInvertedFilled } from "react-icons/tb";
 import VietnamLanguage from '../../assets/img/VietnamLanguage.png'
 import EnglishLanguage from '../../assets/img/EnglishLanguage.webp'
 import { FaUser } from "react-icons/fa";
-
-
+import { MenuContext } from "react-flexible-sliding-menu";
 
 const NavBar = () => {
+  // const { tM } = useContext(MenuContext);
 
   const [scrolled, setScrolled] = useState(false);
 
@@ -77,8 +77,7 @@ const NavBar = () => {
       </>
     )
   }
-
-  const [toggleMenu, setToggleMenu] = useState(false)
+  const { toggleMenu } = useContext(MenuContext);
   const [userToggleMenu, setUserToggleMenu] = useState(false)
   const [userPhoneToggleMenu, setUserPhoneToggleMenu] = useState(false)
   const [language, setLanguage] = useState(false)
@@ -97,30 +96,10 @@ const NavBar = () => {
         </div>
         <div className='mmt__navbar-sign'>
           <img src={language ? VietnamLanguage : EnglishLanguage} onClick={() => setLanguage(!language)} />
-          <FaUser onClick={() => setUserToggleMenu(!userToggleMenu)} style={{ fontSize: 25 }} />
+          <FaUser onClick={toggleMenu} style={{ fontSize: 35 }} className='mmt__navbar-sign_user' />
         </div>
-        <div className='mmt__navbar-user-menu'>
-          {userToggleMenu && (
-            <div className='mmt__navbar-user-menu_container scale-up-center'>
-              <div className='mmt__navbar-user-menu_container-links'>
-                <UserMenu />
-              </div>
-            </div>
-          )}
-        </div>
-        <div className='mmt__navbar-menu'>
-          {toggleMenu
-            ? <RiCloseLine color='black' size={26} onClick={() => setToggleMenu(false)} />
-            : <RiMenu3Line color='black' size={26} onClick={() => setToggleMenu(true)} />}
-        </div>
+
       </div>
-      {toggleMenu && (
-        <div className='mmt__navbar-menu_container scale-up-center'>
-          <div className='mmt__navbar-menu_container-links'>
-            <MixedMenu />
-          </div>
-        </div>
-      )}
     </div>
   )
 }

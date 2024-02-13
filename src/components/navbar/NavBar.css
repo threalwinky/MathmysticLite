@@ -7,8 +7,8 @@
     position: fixed;
     width: 100%;
     top: 0;
-    z-index: 9999;
-    transition:  0.5s ease-in-out;
+    z-index: 1;
+    transition: 0.5s ease-in-out;
 }
 
 .scrolled {
@@ -62,21 +62,37 @@
 
 .mmt__navbar-sign img {
     cursor: pointer;
-    width: 30px;
+    width: 35px;
     border: 1px;
     border-color: azure;
     border-style: solid;
     border-radius: 50%;
     margin: 10px;
+    transition: 0.3s ease-in-out;
 }
 
 .mmt__navbar-sign img:hover {
-    transition-duration: 0.1s;
+    /* transition-duration: 0.1s;
     width: 30px;
     border: 3px;
     border-color: azure;
+    color: aliceblue;
     border-style: solid;
+    border-radius: 50%; */
+    filter: brightness(0) saturate(50%) invert(0%) sepia(7%) saturate(98%) hue-rotate(346deg) brightness(95%) contrast(86%);
+}
+
+.mmt__navbar-sign_user {
+    background-color: white;
+    cursor: pointer;
+    padding: 5px;
     border-radius: 50%;
+    transition: 0.3s ease-in-out;
+}
+
+.mmt__navbar-sign_user:hover {
+    background-color: rgb(0, 0, 0);
+    color: aliceblue;
 }
 
 .mmt__navbar-container_links p,
@@ -97,7 +113,7 @@
 .mmt__navbar-container_links a,
 .mmt__navbar-menu_container a,
 .mmt__navbar-user-menu_container a,
-.mmt__navbar-sign a{
+.mmt__navbar-sign a {
     text-decoration: none;
 
     /* cursor: pointer; */
@@ -137,7 +153,7 @@
     margin-top: 1rem;
     background-color: var(--color-green);
     min-width: 180px;
-    z-index: 9999;
+    z-index: 5000;
     border-radius: 5px;
     box-shadow: 0 0 5 rgba(0, 0, 0, 0.2);
     position: fixed;
@@ -156,9 +172,15 @@
 }
 
 .mmt__navbar-user-menu {
-    margin-left: 1rem;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 0rem;
+    background-color: var(--white);
+    height: 100vh;
+    border-right: var(--border);
+    z-index: 0;
 
-    position: relative;
 }
 
 .mmt__navbar-user-menu_container {
@@ -168,11 +190,9 @@
     flex-direction: column;
     text-align: end;
     position: absolute;
-    top: 34px;
     right: 0;
-    margin-top: 1rem;
     background-color: var(--color-green);
-    min-width: 140px;
+
     right: 0;
     border-radius: 5px;
     box-shadow: 0 0 5 rgba(0, 0, 0, 0.2);
@@ -201,12 +221,80 @@
     display: none;
 }
 
+.mmt__menu {
+    padding: .5rem;
+    right: 0;
+    position: fixed;
+    /* background: var(--color-green); */
+    background-color: rgba(13, 194, 255, 1);
+    color: black;
+    height: 100%;
+    z-index: 2;
+    display: flex; 
+    /* filter: trans; */
+    opacity: .9;
+    h1{
+        margin-top: 50px;
+        text-align: end;
+    }
+   
+}
+
+.mmt__menu-content{
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    padding-left: 80px;
+    padding-right: 30px;
+    a{
+        text-decoration: none;
+    }
+    p{
+        color: black;
+        font-size: 20px;
+        font-weight: 600;
+        text-align: end;
+    }
+    p:hover{
+        color: antiquewhite;
+    }
+    .active{
+        color: antiquewhite;
+    }
+}
+
+.mmt__menu button {
+    background: none;
+    border: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    cursor: pointer;
+    fill: var(--light-placeholder-color);
+    transition: var(--transition);
+}
+
+.mmt__menu button:hover {
+    fill: var(--light-text-color);
+}
+
+.mmt__menu-close-button{
+    border: solid;
+    border-radius: 50%
+}
+
 /*Phone and pad ver*/
 @media screen and (max-width: 700px) {
     .mmt__navbar {
         padding: 1rem 2rem;
     }
-    .mmt__navbar-menu_container{
+
+    .mmt__navbar-menu_container {
         display: flex;
     }
 }
@@ -215,16 +303,14 @@
     .mmt__navbar {
         padding: 1rem 2rem;
     }
-    .mmt__navbar-menu_container{
-        display: flex;
-    }
+
+ 
 }
 
 /*PC*/
 @media screen and (max-width: 1050px) {
 
     .mmt__navbar-container_links,
-    .mmt__navbar-sign,
     .mmt__navbar-user-menu {
         display: none;
     }
