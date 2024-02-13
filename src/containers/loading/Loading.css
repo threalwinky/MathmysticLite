@@ -1,4 +1,5 @@
-.mmt__loading{
+.mmt__loading {
+
     height: 10px;
     display: flex;
     text-align: center;
@@ -8,4 +9,12 @@
     padding: auto;
     margin-top: auto;
     padding: 100px 0px;
+    background-color: #3ec5fe;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
 }

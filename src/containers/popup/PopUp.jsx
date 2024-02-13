@@ -3,10 +3,14 @@ import './PopUp.css'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Popup from 'reactjs-popup';
-const PopUp = () => {
+const PopUp = (msg) => {
 
 
-    toast('awwww')
+    toast.success(msg, {
+        position: 'top-center',
+        autoClose: 5000,
+        closeOnClick: true
+    })
     
     
     return (

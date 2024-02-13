@@ -19,18 +19,16 @@ const App = () => {
     <div>
       {!loading ? <Loading /> :
         <div>
-          <Loading />
           <div className='gradient__bg'>
             <NavBar />
-            
           </div>
           <Header />
           <Introduction />
           <About />
           <Document />
           <Store />
-          <ToastContainer />
-          <Loading />
+          <ToastContainer autoClose={5000} />
+          {/* <Loading /> */}
         </div>
       }
     </div>
