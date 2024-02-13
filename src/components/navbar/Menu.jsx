@@ -3,7 +3,11 @@ import { MenuContext } from "react-flexible-sliding-menu";
 import './NavBar.css'
 import { IoCloseSharp } from "react-icons/io5";
 import { useMediaQuery } from 'react-responsive'
+import { Trans } from "react-i18next";
 function Menu() {
+
+ 
+
   const { closeMenu } = useContext(MenuContext);
   const isDesktopOrLaptop = useMediaQuery({
     query: '(min-width: 1050px)'
@@ -12,7 +16,7 @@ function Menu() {
   const Menu1 = () => {
     return (
       <>
-        <a href='#home'><p>Home</p></a>
+        <a href='#home'><p><Trans>Home</Trans></p></a>
         <a href='#introduction'><p>Introduction</p></a>
         <a href='#about'><p>About</p></a>
         <a href='#document'><p>Document</p></a>

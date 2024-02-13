@@ -10,14 +10,19 @@ import EnglishLanguage from '../../assets/img/EnglishLanguage.webp'
 import { FaUser } from "react-icons/fa";
 import { MenuContext } from "react-flexible-sliding-menu";
 import { useMediaQuery } from 'react-responsive'
-
+import i18n from '../../i18n'
+import { Trans } from 'react-i18next';
 const NavBar = () => {
   // const { tM } = useContext(MenuContext);
   const isDesktopOrLaptop = useMediaQuery({
     query: '(min-width: 1050px)'
   })
+  const changeLanguage = (lng) => {
+    i18n.changeLanguage(lng);
+  }
   const [scrolled, setScrolled] = useState(false);
-
+  if (localStorage.getItem('lang') === null) localStorage.setItem('lang','en')
+  // console.log(localStorage.getItem('lang'))
   useEffect(() => {
     const onScroll = () => {
       if (window.scrollY > 50) {
@@ -36,7 +41,7 @@ const NavBar = () => {
   const Menu = () => {
     return (
       <>
-        <a href='#home'><p>Home</p></a>
+        <a href='#home'><p><Trans>Home</Trans></p></a>
         <a href='#introduction'><p>Introduction</p></a>
         <a href='#about'><p>About</p></a>
         <a href='#document'><p>Document</p></a>
@@ -83,9 +88,21 @@ const NavBar = () => {
   const { toggleMenu } = useContext(MenuContext);
   const [userToggleMenu, setUserToggleMenu] = useState(false)
   const [userPhoneToggleMenu, setUserPhoneToggleMenu] = useState(false)
-  const [language, setLanguage] = useState(false)
+  const [language, setLanguage] = useState(localStorage.getItem('lang') == 'en' ? 0 : 1)
 
-  
+  const cl = () =>{
+    const l = localStorage.getItem('lang')
+    if (l == 'en'){
+      localStorage.setItem('lang', 'vn')
+      changeLanguage('vn')
+      setLanguage(!language)
+    }
+    else{
+      localStorage.setItem('lang', 'en')
+      changeLanguage('en')
+      setLanguage(!language)
+    }
+  }
 
   return (
     <div>
@@ -100,9 +117,11 @@ const NavBar = () => {
           </div>
         </div>
         <div className='mmt__navbar-sign'>
-          <img src={language ? VietnamLanguage : EnglishLanguage} onClick={() => setLanguage(!language)} />
-          <FaUser onClick={() => {localStorage.setItem('open', '1');toggleMenu();} } style={{ fontSize: 35 }} className='mmt__navbar-sign_user' />
-          {!isDesktopOrLaptop ? <RiMenu3Line onClick={() => {localStorage.setItem('open', '2');toggleMenu();}} style={{ fontSize: 35 }}  className='mmt__navbar-sign_user'></RiMenu3Line> : ""}
+            {/* <button  onClick={() => {changeLanguage("vn")}}>vn</button> */}
+            {/* <button  onClick={() => {changeLanguage("en")}}>en</button> */}
+          <img onClick={() => {cl()}}  src={language ? VietnamLanguage : EnglishLanguage}/>
+          <FaUser onClick={() => { localStorage.setItem('open', '1'); toggleMenu(); }} style={{ fontSize: 35 }} className='mmt__navbar-sign_user' />
+          {!isDesktopOrLaptop ? <RiMenu3Line onClick={() => { localStorage.setItem('open', '2'); toggleMenu(); }} style={{ fontSize: 35 }} className='mmt__navbar-sign_user'></RiMenu3Line> : ""}
         </div>
 
       </div>

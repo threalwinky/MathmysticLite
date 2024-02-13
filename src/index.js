@@ -5,8 +5,12 @@ import './index.css'
 import 'bootstrap/dist/css/bootstrap.css';
 import MenuProvider from "react-flexible-sliding-menu";
 import Menu from "./components/navbar/Menu";
+import i18n from './i18n';
+import { I18nextProvider } from 'react-i18next';
 ReactDOM.createRoot(document.getElementById('root')).render(
   <MenuProvider MenuComponent={Menu} direction='right' width='200px'>
-     <App />
+    <I18nextProvider i18n={i18n}>
+      <App />
+    </I18nextProvider>
   </MenuProvider>
 );

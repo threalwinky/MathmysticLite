@@ -9,16 +9,13 @@ import './App.css'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { MenuContext } from 'react-flexible-sliding-menu';
-
+import { translate, Trans, withTranslation } from 'react-i18next';
 const App = () => {
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     setLoading(true)
   }, [])
   const { toggleMenu } = useContext(MenuContext);
-
-  var x = document.getElementById('body')
-  
 
   return (
     <div>
@@ -27,23 +24,23 @@ const App = () => {
         <div className='App'>
           <div className='gradient__bg'>
             <NavBar />
-       
+
           </div>
           <Header />
-         
+
           <Introduction />
           <About />
           <Document />
           <Store />
           <ToastContainer autoClose={5000} />
           {/* <Loading /> */}
-          <Contact/>
-          <Footer/>
-          <Chatbot/>
+          <Contact />
+          <Footer />
+          <Chatbot />
         </div>
       }
     </div>
   )
 }
 
-export default App
+export default withTranslation("translations")(App);
