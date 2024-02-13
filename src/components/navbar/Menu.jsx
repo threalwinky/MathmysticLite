@@ -4,6 +4,7 @@ import './NavBar.css'
 import { IoCloseSharp } from "react-icons/io5";
 import { useMediaQuery } from 'react-responsive'
 import { Trans } from "react-i18next";
+import { Link } from "react-router-dom";
 function Menu() {
 
  
@@ -28,12 +29,12 @@ function Menu() {
   const UserMenu = () => {
     return (
       <>
-        <a href='#document'><p>Profile</p></a>
-        <a href='#home'><p>Cart</p></a>
-        <a href='#introduction'><p>Bill</p></a>
-        <a href='#introduction'><p>Chat</p></a>
-        <a href='#store'><p>Setting</p></a>
-        <a href='#contact'><p>Log Out</p></a>
+        <a href='/profile'><p>Profile</p></a>
+        <a href='/cart'><p>Cart</p></a>
+        <a href='/bill'><p>Bill</p></a>
+        <a href='/chat'><p>Chat</p></a>
+        <a href='/setting'><p>Setting</p></a>
+        <a href='/logout'><p>Log Out</p></a>
       </>
     )
   }

@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react'
 import { Header, Introduction, NavBar, Footer, About, Document, Store, Contact } from './components'
 import { PopUp, Loading, NotFound, Chatbot } from './containers'
+import { Cart, Product } from './routes'
 import './App.css'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -44,6 +45,8 @@ const App = () => {
             <Route path="contact" element={<Contact />} />
             */}
           </Route>
+          <Route path="product/:id" element={<Product/>} />
+          <Route path="cart" element={<Cart/>} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
