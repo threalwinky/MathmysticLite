@@ -1,0 +1,11 @@
+.mmt__loading{
+    height: 10px;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    padding: auto;
+    margin-top: auto;
+    padding: 100px 0px;
+}
