@@ -8,6 +8,7 @@ function Menu() {
   const isDesktopOrLaptop = useMediaQuery({
     query: '(min-width: 1050px)'
   })
+  // console.log(localStorage.getItem('open'))
   const Menu1 = () => {
     return (
       <>
@@ -36,13 +37,12 @@ function Menu() {
   return (
     <div className="mmt__menu">
       {/* <h1>Menu</h1> */}
-      <div className="mmt__menu-content">
+      {/* <div className="mmt__menu-content"> */}
 
-        { !isDesktopOrLaptop ? <Menu1/> : ""}
+        { !isDesktopOrLaptop ? ((localStorage.getItem('open') == '1') ? <UserMenu /> : <Menu1></Menu1>) : <UserMenu />}
 
-        <UserMenu />
-      </div>
-
+        
+      {/* </div> */}
 
       <button onClick={closeMenu}>
         <IoCloseSharp size={35} className="mmt__menu-close-button" />

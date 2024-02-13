@@ -9,10 +9,13 @@ import VietnamLanguage from '../../assets/img/VietnamLanguage.png'
 import EnglishLanguage from '../../assets/img/EnglishLanguage.webp'
 import { FaUser } from "react-icons/fa";
 import { MenuContext } from "react-flexible-sliding-menu";
+import { useMediaQuery } from 'react-responsive'
 
 const NavBar = () => {
   // const { tM } = useContext(MenuContext);
-
+  const isDesktopOrLaptop = useMediaQuery({
+    query: '(min-width: 1050px)'
+  })
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -82,6 +85,8 @@ const NavBar = () => {
   const [userPhoneToggleMenu, setUserPhoneToggleMenu] = useState(false)
   const [language, setLanguage] = useState(false)
 
+  
+
   return (
     <div>
       <div className={`mmt__navbar ${scrolled ? "scrolled" : ""}`}>
@@ -96,7 +101,8 @@ const NavBar = () => {
         </div>
         <div className='mmt__navbar-sign'>
           <img src={language ? VietnamLanguage : EnglishLanguage} onClick={() => setLanguage(!language)} />
-          <FaUser onClick={toggleMenu} style={{ fontSize: 35 }} className='mmt__navbar-sign_user' />
+          <FaUser onClick={() => {localStorage.setItem('open', '1');toggleMenu();} } style={{ fontSize: 35 }} className='mmt__navbar-sign_user' />
+          {!isDesktopOrLaptop ? <RiMenu3Line onClick={() => {localStorage.setItem('open', '2');toggleMenu();}} style={{ fontSize: 35 }}  className='mmt__navbar-sign_user'></RiMenu3Line> : ""}
         </div>
 
       </div>

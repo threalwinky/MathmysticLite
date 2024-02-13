@@ -16,10 +16,12 @@ const App = () => {
     setLoading(true)
   }, [])
   const { toggleMenu } = useContext(MenuContext);
+
+  var x = document.getElementById('body')
+  
+
   return (
     <div>
-
-
 
       {!loading ? <Loading /> :
         <div className='App'>
@@ -28,9 +30,7 @@ const App = () => {
        
           </div>
           <Header />
-          <button onClick={toggleMenu} >
-                Toggle Menu
-            </button>
+         
           <Introduction />
           <About />
           <Document />

@@ -11,7 +11,6 @@ const Introduction = () => {
   const isDesktopOrLaptop = useMediaQuery({
     query: '(min-width: 1050px)'
   })
-  console.log(isDesktopOrLaptop)
 
   return (
     <div className='mmt__introduction' id='introduction'>
