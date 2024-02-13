@@ -29,7 +29,7 @@ const Store = () => {
     },
     tablet: {
       breakpoint: { max: 1024, min: 464 },
-      items: 2
+      items: 1
     },
     mobile: {
       breakpoint: { max: 464, min: 0 },
@@ -49,15 +49,15 @@ const Store = () => {
           <div className="item">
             <img src={Store1} alt="Image" />
             <h5><Trans>Bo dung cu hoc tap hinh hoc cho hoc sinh khiem thi</Trans></h5>
-            <h4><Trans>Triangle</Trans></h4>
+            {/* <h4><Trans>Triangle</Trans></h4> */}
             <h3><Trans>Het hang</Trans></h3>
           </div>
 
           <div className="item">
             <img src={Store2} alt="Image" />
-            <h5><Trans>Quadrangle</Trans></h5>
-            <h4><Trans>Triangle</Trans></h4>
-            <h3><Trans>249000đ</Trans></h3>
+            <h5><Trans>Bo dung cu hinh hoc</Trans></h5>
+            {/* <h4><Trans>Triangle</Trans></h4> */}
+            <h3><Trans>249,000₫</Trans></h3>
           </div>
 
         </Carousel>

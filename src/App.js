@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 
 
-import { Header, Introduction, NavBar, Footer, About, Document, Store } from './components'
+import { Header, Introduction, NavBar, Footer, About, Document, Store, Contact } from './components'
 import { PopUp, Loading, NotFound } from './containers'
 
 import './App.css'
@@ -29,6 +29,8 @@ const App = () => {
           <Store />
           <ToastContainer autoClose={5000} />
           {/* <Loading /> */}
+          <Contact/>
+          <Footer/>
         </div>
       }
     </div>

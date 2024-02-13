@@ -101,7 +101,7 @@ const Document = () => {
           <Tab.Content id="slideInUp" >
             <Tab.Pane eventKey="first">
               <div className="slide-container mmt__document-slide">
-                <Slide {...{ duration: 100, autoplay: false }}>
+                <Slide {...{ duration: 100, autoplay: false, indicators: true}}>
                   {projects.map((fadeImage, index) => (
                     <div key={index}>
                       <img style={{ width: '100%', borderRadius: 30 }} src={fadeImage.imgUrl} />
@@ -113,7 +113,7 @@ const Document = () => {
             </Tab.Pane>
             <Tab.Pane eventKey="second">
               <div className="slide-container mmt__document-slide">
-                <Slide {...{ duration: 100, autoplay: false }}>
+                <Slide {...{ duration: 100, autoplay: false, indicators: true }}>
                   {projects2.map((fadeImage, index) => (
                     <div key={index}>
                       <img style={{ width: '100%', borderRadius: 30 }} src={fadeImage.imgUrl} />
@@ -128,7 +128,7 @@ const Document = () => {
                 <iframe title="Hướng dẫn sử dụng" width="560" height="500" src="https://tube.exozy.me/videos/embed/470a32e3-27f2-4101-bb5e-1cdfc1816df1" frameborder="0" allowfullscreen="" sandbox="allow-same-origin allow-scripts allow-popups"></iframe>
               </Row> */}
               <div className="slide-container mmt__document-slide2">
-                <Slide {...{ duration: 100, autoplay: false, infinite: false }}>
+                <Slide {...{ duration: 100, autoplay: false, infinite: false,indicators:true  }}>
                   {/* {projects.map((fadeImage, index) => (
                     <div key={index}> */}
                   <ReactPlayer
