@@ -40,13 +40,9 @@ function Menu() {
 
   return (
     <div className="mmt__menu">
-      {/* <h1>Menu</h1> */}
-      {/* <div className="mmt__menu-content"> */}
 
         { !isDesktopOrLaptop ? ((localStorage.getItem('open') == '1') ? <UserMenu /> : <Menu1></Menu1>) : <UserMenu />}
 
-        
-      {/* </div> */}
 
       <button onClick={closeMenu}>
         <IoCloseSharp size={35} className="mmt__menu-close-button" />

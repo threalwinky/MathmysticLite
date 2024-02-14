@@ -15,7 +15,6 @@ import EnglishLanguage from '../../assets/img/EnglishLanguage.webp'
 import i18n from '../../i18n'
 import './NavBar.css'
 
-
 const NavBar = () => {
   const isDesktopOrLaptop = useMediaQuery({
     query: '(min-width: 1050px)'
