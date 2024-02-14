@@ -13,7 +13,7 @@ function Menu() {
   const isDesktopOrLaptop = useMediaQuery({
     query: '(min-width: 1050px)'
   })
-  const Menu1 = () => {
+  const HomeMenu = () => {
     return (
       <>
         <a href='/#home'><p><Trans>Home</Trans></p></a>
@@ -38,10 +38,28 @@ function Menu() {
     )
   }
 
+  const LogInMenu = () =>{
+    return (
+      <>
+        <a href='/login'><p>Log In/Sign Up</p></a>
+      </>
+    )
+  }
+
+  const CheckLogInMenu = () => {
+    const user = localStorage.getItem('mmt__user')
+    console.log(user)
+    return (
+      <>
+        {user != null ? <UserMenu/>  : <LogInMenu/>}
+      </>
+    )
+  }
+
   return (
     <div className="mmt__menu">
 
-        { !isDesktopOrLaptop ? ((localStorage.getItem('open') == '1') ? <UserMenu /> : <Menu1></Menu1>) : <UserMenu />}
+        { !isDesktopOrLaptop ? ((localStorage.getItem('open') == '1') ? <CheckLogInMenu /> : <HomeMenu/>) : <CheckLogInMenu />}
 
 
       <button onClick={closeMenu}>
