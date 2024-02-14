@@ -47,11 +47,11 @@ const MainProduct = ({ productInfo }) => {
         <h6 className='price'>{productInfo.price}</h6>
         <div className='sub'>
           <div className='content'>
-            <button>-</button>
+            <button disabled={productInfo.available=="0"}>-</button>
             <span>1</span>
-            <button>+</button>
+            <button disabled={productInfo.available=="0"}>+</button>
           </div>
-          <button>Add to Cart</button>
+          <button disabled={productInfo.available=="0"}>{productInfo.available == "0" ? "Het hang" : "Add to cart"}</button>
         </div>
       </div>
     </div>
