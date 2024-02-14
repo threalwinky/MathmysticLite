@@ -13,28 +13,38 @@ import './MainProduct.css'
 
 const MainProduct = ({ productInfo }) => {
   const [zoom, setZoom] = useState(false)
+
+  const [mainImg, setMainImg] = useState(productInfo.imgUrl[0])
+
+  const [mainImgIndex, setMainImgIndex] = useState(0)
+
   return (
     <div className='mmt__product' id='home'>
 
       <div className='mmt__product-img'>
-        <img src={productInfo.imgUrl[0]} alt='' className='main' />
+        {/* {mainImgIndex} */}
+        <img src={mainImg} alt='' className='main' />
         <div className='sub'>
           {productInfo.imgUrl.map((img, index) => (
             <div key={index}>
-              <img src={img} />
+              <img src={img} className={index == mainImgIndex ? "choose" : ""}  onClick={() => {setMainImg(img); setMainImgIndex(index)}}  />
             </div>
           ))}
         </div>
-
-
       </div>
       <div className='mmt__product-content'>
         <div className='main'>
-          <span>Special</span>
-          <h1>Nike Invincible 3</h1>
+          <span>{productInfo.description}</span>
+          <h1>{productInfo.name}</h1>
         </div>
-        <p className='intro'>Con un'ammortizzazione incredibile per sostenerti in tutti i tuoi chilometri, Invincible</p>
-        <h6 className='price'>$ 199.00</h6>
+        <p className='intro'>
+          {productInfo.about.map((img, index) => (
+            <div key={index}>
+              <li>{img}</li>
+            </div>
+          ))}
+        </p>
+        <h6 className='price'>{productInfo.price}</h6>
         <div className='sub'>
           <div className='content'>
             <button>-</button>
