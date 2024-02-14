@@ -88,7 +88,7 @@
 }
 
 .mmt__document-slide{
-    width: 80%;
+    width: 70%;
     margin: auto;
     border-radius: 100px;
 }
@@ -239,6 +239,13 @@
 
 /*Phone and pad ver*/
 @media screen and (max-width: 1050px) {
+
+    .mmt__document-slide{
+        width: 90%;
+        margin: auto;
+        border-radius: 100px;
+    }
+
     .mmt__document-slide2{
         width: 100%;
         margin: auto;
@@ -247,6 +254,13 @@
 }
 
 @media screen and (max-width: 550px) {
+
+    .mmt__document-slide{
+        width: 90%;
+        margin: auto;
+        border-radius: 100px;
+    }
+
     .mmt__document-slide2{
         width: 100%;
         margin: auto;

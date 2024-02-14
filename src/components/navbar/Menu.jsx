@@ -17,12 +17,12 @@ function Menu() {
   const Menu1 = () => {
     return (
       <>
-        <a href='#home'><p><Trans>Home</Trans></p></a>
-        <a href='#introduction'><p>Introduction</p></a>
-        <a href='#about'><p>About</p></a>
-        <a href='#document'><p>Document</p></a>
-        <a href='#store'><p>Store</p></a>
-        <a href='#contact'><p>Contact</p></a>
+        <a href='/#home'><p><Trans>Home</Trans></p></a>
+        <a href='/#introduction'><p>Introduction</p></a>
+        <a href='/#about'><p>About</p></a>
+        <a href='/#document'><p>Document</p></a>
+        <a href='/#store'><p>Store</p></a>
+        <a href='/#contact'><p>Contact</p></a>
       </>
     )
   }

@@ -14,72 +14,57 @@ import Document2 from '../../assets/vid/Document2.mp4'
 import Document3 from '../../assets/vid/Document3.mp4'
 import Document4 from '../../assets/vid/Document4.mp4'
 
+import DocEn1 from '../../assets/img/Doc/En/DocEn1.png'
+import DocEn2 from '../../assets/img/Doc/En/DocEn2.png'
+import DocEn3 from '../../assets/img/Doc/En/DocEn3.png'
+import DocEn4 from '../../assets/img/Doc/En/DocEn4.png'
+import DocEn5 from '../../assets/img/Doc/En/DocEn5.png'
+import DocEn6 from '../../assets/img/Doc/En/DocEn6.png'
+import DocEn7 from '../../assets/img/Doc/En/DocEn7.png'
+import DocEn8 from '../../assets/img/Doc/En/DocEn8.png'
+import DocEn9 from '../../assets/img/Doc/En/DocEn9.png'
+import DocEn10 from '../../assets/img/Doc/En/DocEn10.png'
+
+import DocVn1 from '../../assets/img/Doc/Vn/DocVn1.png'
+import DocVn2 from '../../assets/img/Doc/Vn/DocVn2.png'
+import DocVn3 from '../../assets/img/Doc/Vn/DocVn3.png'
+import DocVn4 from '../../assets/img/Doc/Vn/DocVn4.png'
+import DocVn5 from '../../assets/img/Doc/Vn/DocVn5.png'
+import DocVn6 from '../../assets/img/Doc/Vn/DocVn6.png'
+import DocVn7 from '../../assets/img/Doc/Vn/DocVn7.png'
+import DocVn8 from '../../assets/img/Doc/Vn/DocVn8.png'
+import DocVn9 from '../../assets/img/Doc/Vn/DocVn9.png'
+import DocVn10 from '../../assets/img/Doc/Vn/DocVn10.png'
+
+
 const Document = () => {
 
   const projects = [
-    {
-      title: "Business Startup",
-      description: "Design & Development",
-      imgUrl: "https://mathmystic.vercel.app/_next/image?url=https%3A%2F%2Fi.ibb.co%2FhmXRypq%2F1.jpg&w=640&q=75",
-    },
-    {
-      title: "Business Startup",
-      description: "Design & Development",
-      imgUrl: "https://mathmystic.vercel.app/_next/image?url=https%3A%2F%2Fi.ibb.co%2FSrfyp5v%2F2.jpg&w=640&q=75",
-    },
-    {
-      title: "Business Startup",
-      description: "Design & Development",
-      imgUrl: "https://mathmystic.vercel.app/_next/image?url=https%3A%2F%2Fi.ibb.co%2FQDF8jN4%2F3.jpg&w=640&q=75",
-    },
-    {
-      title: "Business Startup",
-      description: "Design & Development",
-      imgUrl: "https://mathmystic.vercel.app/_next/image?url=https%3A%2F%2Fi.ibb.co%2F2ZJC7d5%2F4.jpg&w=640&q=75",
-    },
-    {
-      title: "Business Startup",
-      description: "Design & Development",
-      imgUrl: "https://mathmystic.vercel.app/_next/image?url=https%3A%2F%2Fi.ibb.co%2FGCSwrvB%2F5.jpg&w=640&q=75",
-    },
-    {
-      title: "Business Startup",
-      description: "Design & Development",
-      imgUrl: "https://mathmystic.vercel.app/_next/image?url=https%3A%2F%2Fi.ibb.co%2FFBsrw2k%2F6.jpg&w=640&q=75",
-    },
+    { imgUrl : DocVn1 },
+    { imgUrl : DocVn2 },
+    { imgUrl : DocVn3 },
+    { imgUrl : DocVn4 },
+    { imgUrl : DocVn5 },
+    { imgUrl : DocVn6 },
+    { imgUrl : DocVn7 },
+    { imgUrl : DocVn8 },
+    { imgUrl : DocVn9 },
+    { imgUrl : DocVn10 },
   ];
 
   const projects2 = [
-    {
-      title: "Business Startup",
-      description: "Design & Development",
-      imgUrl: "https://mathmystic.vercel.app/_next/image?url=https%3A%2F%2Fi.ibb.co%2F87XHChv%2F1.jpg&w=640&q=75",
-    },
-    {
-      title: "Business Startup",
-      description: "Design & Development",
-      imgUrl: "https://mathmystic.vercel.app/_next/image?url=https%3A%2F%2Fi.ibb.co%2FhWqgh3b%2F2.jpg&w=640&q=75",
-    },
-    {
-      title: "Business Startup",
-      description: "Design & Development",
-      imgUrl: "https://mathmystic.vercel.app/_next/image?url=https%3A%2F%2Fi.ibb.co%2FLzLB5Qs%2F3.jpg&w=640&q=75",
-    },
-    {
-      title: "Business Startup",
-      description: "Design & Development",
-      imgUrl: "https://mathmystic.vercel.app/_next/image?url=https%3A%2F%2Fi.ibb.co%2FKx8Xq6f%2F4.jpg&w=640&q=75",
-    },
-    {
-      title: "Business Startup",
-      description: "Design & Development",
-      imgUrl: "https://mathmystic.vercel.app/_next/image?url=https%3A%2F%2Fi.ibb.co%2FmSZ8qPq%2F5.jpg&w=640&q=75",
-    },
-    {
-      title: "Business Startup",
-      description: "Design & Development",
-      imgUrl: "https://mathmystic.vercel.app/_next/image?url=https%3A%2F%2Fi.ibb.co%2F68VQVN7%2F6.jpg&w=640&q=75",
-    },
+    
+
+    { imgUrl : DocEn1 },
+    { imgUrl : DocEn2 },
+    { imgUrl : DocEn3 },
+    { imgUrl : DocEn4 },
+    { imgUrl : DocEn5 },
+    { imgUrl : DocEn6 },
+    { imgUrl : DocEn7 },
+    { imgUrl : DocEn8 },
+    { imgUrl : DocEn9 },
+    { imgUrl : DocEn10 },
   ];
 
   return (

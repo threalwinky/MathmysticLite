@@ -12,6 +12,7 @@ import { MenuContext } from "react-flexible-sliding-menu";
 import { useMediaQuery } from 'react-responsive'
 import i18n from '../../i18n'
 import { Trans } from 'react-i18next';
+import { Link } from 'react-router-dom';
 const NavBar = () => {
   // const { tM } = useContext(MenuContext);
   const isDesktopOrLaptop = useMediaQuery({
@@ -41,12 +42,13 @@ const NavBar = () => {
   const Menu = () => {
     return (
       <>
-        <a href='#home'><p><Trans>Home</Trans></p></a>
-        <a href='#introduction'><p>Introduction</p></a>
-        <a href='#about'><p>About</p></a>
-        <a href='#document'><p>Document</p></a>
-        <a href='#store'><p>Store</p></a>
-        <a href='#contact'><p>Contact</p></a>
+        <a href='/#home'><p><Trans>Home</Trans></p></a>
+        {/* <Link to={'/#home'}>123</Link> */}
+        <a href='/#introduction'><p>Introduction</p></a>
+        <a href='/#about'><p>About</p></a>
+        <a href='/#document'><p>Document</p></a>
+        <a href='/#store'><p>Store</p></a>
+        <a href='/#contact'><p>Contact</p></a>
       </>
     )
   }

@@ -1,8 +1,6 @@
 import React from 'react'
 import PopUp from '../../containers/popup/PopUp'
 import './Store.css'
-
-
 import Carousel from 'react-multi-carousel'
 import 'react-multi-carousel/lib/styles.css';
 
@@ -12,6 +10,7 @@ import Store1 from '../../assets/img/Store/Store1.webp';
 import Store2 from '../../assets/img/Store/Store2.webp';
 
 import { Trans } from 'react-i18next';
+import { Link } from 'react-router-dom';
 
 
 
@@ -46,19 +45,25 @@ const Store = () => {
           responsive={responsive}
           className='owl-carousel owl-theme mmt__store-skill-slider'
         >
-          <div className="item">
-            <img src={Store1} alt="Image" />
-            <h5><Trans>Bo dung cu hoc tap hinh hoc cho hoc sinh khiem thi</Trans></h5>
-            {/* <h4><Trans>Triangle</Trans></h4> */}
-            <h3><Trans>Het hang</Trans></h3>
-          </div>
+          <Link to={'/product/bo-dung-cu-hoc-tap-hinh-hoc-cho-hoc-sinh-khiem-thi'}>
+            <div className="item">
+              <img src={Store1} alt="Image" />
+              <h5><Trans>Bo dung cu hoc tap hinh hoc cho hoc sinh khiem thi</Trans></h5>
+              {/* <h4><Trans>Triangle</Trans></h4> */}
+              <h3><Trans>Het hang</Trans></h3>
+            </div>
+          </Link>
 
-          <div className="item">
-            <img src={Store2} alt="Image" />
-            <h5><Trans>Bo dung cu hinh hoc</Trans></h5>
-            {/* <h4><Trans>Triangle</Trans></h4> */}
-            <h3><Trans>249,000₫</Trans></h3>
-          </div>
+          <Link to={'/product/bo-dung-cu-hinh-hoc'}>
+            <div className="item">
+              <img src={Store2} alt="Image" />
+              <h5><Trans>Bo dung cu hinh hoc</Trans></h5>
+              {/* <h4><Trans>Triangle</Trans></h4> */}
+              <h3><Trans>249,000₫</Trans></h3>
+            </div>
+          </Link>
+
+
 
         </Carousel>
       </div>

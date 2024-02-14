@@ -75,6 +75,7 @@
     text-decoration: none;
     -webkit-transition: 0.2s all;
     transition: 0.2s all;
+    margin: 10px
   }
   
   .notfound a:hover {
