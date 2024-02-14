@@ -12,6 +12,8 @@ import Store2_2 from '../../assets/img/Store/Store2/Store2_2.webp'
 
 const Product = () => {
 
+    localStorage.setItem('open2', '0')
+
     const params = useParams();
     const productList = [
         {

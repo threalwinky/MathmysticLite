@@ -231,7 +231,7 @@
     right: 0;
     position: fixed;
     /* background: var(--color-green); */
-    background-color: rgba(13, 194, 255, 1);
+    background: linear-gradient(90.21deg, #3ec5fe -5.91%, #b5e7fe 111.58%);
     color: black;
     height: 100%;
     z-index: 2;
@@ -299,12 +299,27 @@
     padding: 0;
     display: flex;
     position: absolute;
-    top: 1rem;
+    top: 2rem;
     right: 1rem;
     cursor: pointer;
     color: black;
     fill: var(--light-placeholder-color);
     transition: var(--transition);
+}
+
+.mmt__menu span {
+    background: none;
+    border: 0;
+    padding: 0;
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    cursor: pointer;
+    color: black;
+    fill: var(--light-placeholder-color);
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
 }
 
 .mmt__menu button:hover {

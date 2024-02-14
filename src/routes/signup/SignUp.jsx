@@ -1,57 +1,126 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './SignUp.css'
+import { Link } from 'react-router-dom'
 import MathmysticPet from '../../assets/img/MathmysticPet.png';
 import { NavBarWoutMenu } from '../../components';
 import { useMediaQuery } from 'react-responsive'
-import { Link } from 'react-router-dom';
+import { FcGoogle } from "react-icons/fc";
+import Form from 'react-bootstrap/Form'
+import { Button } from 'react-bootstrap';
+
+
+import { Loading, PopUp } from '../../containers';
+import db from '../../firebase'
+import { addDoc, onSnapshot, collection, doc, getDocs } from 'firebase/firestore'
+import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { toast } from 'react-toastify';
 
 const SignUp = () => {
+  localStorage.setItem('open2', '0')
+  const [showPassword, setShowPassword] = useState(0)
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [rpassword, setRpassword] = useState('')
 
-    const isDesktopOrLaptop = useMediaQuery({
-        query: '(min-width: 1050px)'
-      })
+
+  const addUser = async (e) => {
+    e.preventDefault();
+    try {
+
+      if (password !== rpassword) {
+        window.alert(`Password don't match`)
+      }
+      else {
+        await getDocs(collection(db, "account"))
+          .then((querySnapshot) => {
+            const newData = querySnapshot.docs
+              .map((doc) => ({ ...doc.data(), id: doc.id }));
+
+            const foundUser = (newData.find(x => x.email == email))
+            console.log(foundUser)
+            if (foundUser !== undefined) {
+              window.alert('Email have been taken')
+            }
+            else {
+              const docRef = addDoc(collection(db, "account"), {
+                name,
+                email,
+                password,
+                products: 0,
+                avatar: "https://i.pinimg.com/564x/88/68/d7/8868d7b09e6eff73db538eee5e077816.jpg"
+              });
+              console.log('Account created')
+              window.alert('Account created')
+            }
+            // deleteDoc(doc(db, 'account', newData.find(x => x.username === "vv3").id))
+          })
+      }
+    } catch (e) {
+      console.error("Error adding document: ", e);
+    }
+  }
 
   return (
     <div>
-        <NavBarWoutMenu/>
-        <section class="signup">
-            <div class="container">
-                <div class="signup-content">
-                    <div class="signup-form">
-                        <h2 class="form-title">Sign up</h2>
-                        <form method="POST" class="register-form" id="register-form">
-                            <div class="form-group">
-                                <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                <input type="text" name="name" id="name" placeholder="Your Name"/>
-                            </div>
-                            <div class="form-group">
-                                <label for="email"><i class="zmdi zmdi-email"></i></label>
-                                <input type="email" name="email" id="email" placeholder="Your Email"/>
-                            </div>
-                            <div class="form-group">
-                                <label for="pass"><i class="zmdi zmdi-lock"></i></label>
-                                <input type="password" name="pass" id="pass" placeholder="Password"/>
-                            </div>
-                            <div class="form-group">
-                                <label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
-                                <input type="password" name="re_pass" id="re_pass" placeholder="Repeat your password"/>
-                            </div>
-                            <div class="form-group">
-                                <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
-                                <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree all statements in  <a href="#" class="term-service">Terms of service</a></label>
-                            </div>
-                            <div class="form-group form-button">
-                                <input type="submit" name="signup" id="signup" class="form-submit" value="Register"/>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="signup-image">
-                        <figure>{isDesktopOrLaptop ? <img src={MathmysticPet} alt="sing up image"/> : ""}</figure>
-                        <Link to={'/login'} className='signup-image-link'>I am already</Link>
-                    </div>
-                </div>
+      <div className='App'>
+        <div className='gradient__bg'>
+          <NavBarWoutMenu />
+        </div>
+        <Form className='mmt__sign_up'>
+          <div className='mmt__sign_up-container'>
+            <h1>Sign Up</h1>
+
+            <Form.Control
+              type="text"
+              placeholder='Name'
+              className='mmt__sign_up-input'
+              onChange={e => setName(e.target.value)} 
+            />
+
+            <Form.Control
+              type="text"
+              placeholder=' Email'
+              className='mmt__sign_up-input'
+              required={true}
+              onChange={e => setEmail(e.target.value)} 
+            />
+
+            <Form.Control
+              type={showPassword ? "text" : "password"}
+              placeholder=' Password'
+              className='mmt__sign_up-input' 
+              onChange={e => setPassword(e.target.value)} 
+              />
+              
+
+            <Form.Control
+              type={showPassword ? "text" : "password"}
+              placeholder='Repeat Password'
+              className='mmt__sign_up-input' 
+              onChange={e => setRpassword(e.target.value)}
+              />
+
+            <div className='mmt__log_in-show_password'>
+              <Form.Check
+                type="checkbox"
+                onClick={() => { setShowPassword(!showPassword) }}
+                label='Show Password'
+              />
             </div>
-        </section>
+            <Button type='submit' className='mmt__sign_up-submit_button' onClick={addUser}>Sign Up</Button>
+            <div className='mmt__sign_up-google_sign_up'>
+              <p>Or sign up and log in with </p>
+              <FcGoogle size={25} className='mmt__sign_up-google_sign_up-icon' />
+            </div>
+            <div>
+              <span>Already have an account?</span>
+              <Link to={'/login'} style={{ textDecoration: 'underline' }}> Log In</Link>
+            </div>
+          </div>
+
+        </Form>
+      </div>
     </div>
   )
 }

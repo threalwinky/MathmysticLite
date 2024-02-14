@@ -8,6 +8,15 @@ import { CiLogin } from "react-icons/ci";
 
 import './NavBar.css'
 
+var LogOut = () => {
+  localStorage.removeItem('user')
+  localStorage.removeItem('userAvatar')
+  localStorage.removeItem('userName')
+  window.location.href = '/'
+  localStorage.setItem('loggedin', '3')
+
+}
+
 function Menu() {
 
   const { closeMenu } = useContext(MenuContext);
@@ -28,18 +37,21 @@ function Menu() {
   }
   const UserMenu = () => {
     return (
+
+
+
       <>
         <a href='/profile'><p>Profile</p></a>
         <a href='/cart'><p>Cart</p></a>
         <a href='/bill'><p>Bill</p></a>
         <a href='/chat'><p>Chat</p></a>
         <a href='/setting'><p>Setting</p></a>
-        <a href='/logout'><p>Log Out</p></a>
+        <a href='/' onClick={LogOut}><p>Log Out</p></a>
       </>
     )
   }
 
-  const LogInMenu = () =>{
+  const LogInMenu = () => {
     return (
       <>
         <a href='/login'><p>Log In</p></a>
@@ -49,11 +61,11 @@ function Menu() {
   }
 
   const CheckLogInMenu = () => {
-    const user = localStorage.getItem('mmt__user')
+    const user = localStorage.getItem('user')
     console.log(user)
     return (
       <>
-        {user != null ? <UserMenu/>  : <LogInMenu/>}
+        {user != null ? <UserMenu /> : <LogInMenu />}
       </>
     )
   }
@@ -61,12 +73,32 @@ function Menu() {
   return (
     <div className="mmt__menu">
 
-        { !isDesktopOrLaptop ? ((localStorage.getItem('open') == '1') ? <CheckLogInMenu /> : <HomeMenu/>) : <CheckLogInMenu />}
+      {((!isDesktopOrLaptop) || !(localStorage.getItem('open2') == '1')) ? ((localStorage.getItem('open') == '1') ?
+        <CheckLogInMenu /> : <HomeMenu />) : <CheckLogInMenu />}
 
+      <div>
+        
+        {((!isDesktopOrLaptop) || !(localStorage.getItem('open2') == '1')) ? ((localStorage.getItem('open') == '1') ?
+        <div>
+        <span>
+      <img src={localStorage.getItem('userAvatar')} alt="" style={{ width: 50, margin: 10, borderRadius: 50 }} />
+      {localStorage.getItem('userName')}
+      </span>
+      </div> : 
+        <div>
+     
+        </div>
+        ) : <div>
+        <span>
+      <img src={localStorage.getItem('userAvatar')} alt="" style={{ width: 50, margin: 10, borderRadius: 50 }} />
+      {localStorage.getItem('userName')}</span>
+      </div>}
+        <button onClick={closeMenu}>
+          <IoCloseSharp size={35} className="mmt__menu-close-button" />
+        </button>
+        
+      </div>
 
-      <button onClick={closeMenu}>
-        <IoCloseSharp size={35} className="mmt__menu-close-button" />
-      </button>
     </div>
   );
 }

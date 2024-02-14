@@ -119,7 +119,11 @@ const NavBarWoutMenu = () => {
         <div className='mmt__navbar-sign'>
           <img onClick={() => {cl()}}  src={language ? VietnamLanguage : EnglishLanguage}/>
           <FaUser onClick={() => { localStorage.setItem('open', '1'); toggleMenu(); }} style={{ fontSize: 35 }} className='mmt__navbar-sign_user' />
-          {!isDesktopOrLaptop ? <RiMenu3Line onClick={() => { localStorage.setItem('open', '2'); toggleMenu(); }} style={{ fontSize: 35 }} className='mmt__navbar-sign_user'></RiMenu3Line> : ""}
+          {((!isDesktopOrLaptop) || !(localStorage.getItem('open2') == '1')) ? 
+          <RiMenu3Line onClick={() => { localStorage.setItem('open', '2'); toggleMenu(); }} 
+          style={{ fontSize: 35 }} className='mmt__navbar-sign_user'>
+            
+          </RiMenu3Line> : ""}
         </div>
 
       </div>
