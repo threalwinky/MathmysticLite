@@ -4,6 +4,7 @@ import { IoCloseSharp } from "react-icons/io5";
 import { useMediaQuery } from 'react-responsive'
 import { Trans } from "react-i18next";
 import { Link } from "react-router-dom";
+import { CiLogin } from "react-icons/ci";
 
 import './NavBar.css'
 
@@ -41,7 +42,8 @@ function Menu() {
   const LogInMenu = () =>{
     return (
       <>
-        <a href='/login'><p>Log In/Sign Up</p></a>
+        <a href='/login'><p>Log In</p></a>
+        <a href='/signup'><p>Sign Up</p></a>
       </>
     )
   }

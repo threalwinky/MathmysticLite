@@ -130,6 +130,42 @@ h2 {
     margin: auto;
 }
 
+.display-flex {
+    justify-content: space-between;
+    -moz-justify-content: space-between;
+    -webkit-justify-content: space-between;
+    -o-justify-content: space-between;
+    -ms-justify-content: space-between;
+    align-items: center;
+    -moz-align-items: center;
+    -webkit-align-items: center;
+    -o-align-items: center;
+    -ms-align-items: center;
+}
+
+.display-flex-center {
+    justify-content: center;
+    -moz-justify-content: center;
+    -webkit-justify-content: center;
+    -o-justify-content: center;
+    -ms-justify-content: center;
+    align-items: center;
+    -moz-align-items: center;
+    -webkit-align-items: center;
+    -o-align-items: center;
+    -ms-align-items: center;
+}
+
+.position-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+}
 
 .signup {
     margin-bottom: 150px;
@@ -233,26 +269,26 @@ input {
     width: 100%;
     display: block;
     border: none;
-    border-bottom: 1px solid #000000;
+    border-bottom: 1px solid #999;
     padding: 6px 30px;
     font-family: Poppins;
     box-sizing: border-box;
 }
 
 input::-webkit-input-placeholder {
-    color: #000000;
+    color: #999;
 }
 
 input::-moz-placeholder {
-    color: #000000;
+    color: #999;
 }
 
 input:-ms-input-placeholder {
-    color: #000000;
+    color: #999;
 }
 
 input:-moz-placeholder {
-    color: #000000;
+    color: #999;
 }
 
 input:focus {
@@ -479,8 +515,8 @@ label.valid:after {
 
 @media screen and (max-width: 1200px) {
     .container {
-        width: 90%;
-        max-width: 90%;
+        width: calc(100% - 30px);
+        max-width: 100%;
     }
 }
 

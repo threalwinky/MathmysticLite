@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { useParams } from "react-router-dom";
-
 import { Header, Introduction, NavBar, Footer, About, Document, Store, Contact, FooterWoutMail, NavBarWoutMenu } from '../../components';
 import { PopUp, Loading, NotFound, Chatbot } from '../../containers'
 import MainProduct from './MainProduct'
@@ -17,15 +16,15 @@ const Product = () => {
     const productList = [
         {
             "id": "bo-dung-cu-hoc-tap-hinh-hoc-cho-hoc-sinh-khiem-thi",
-            "name" : "Bo dung cu hoc tap hinh hoc cho hoc sinh khiem thi",
-            "imgUrl" : [Store1_1, Store1_2, Store1_3],
-            "price" : "0₫",
-            "available" : "0",
-            "description" : "",
-            "about" : [
-                "1 Bảng lỗ gỗ 20*20cm", 
-                "2 cọng dây thun tròn", 
-                "6 cọng dây thun dài 2 lỗ", 
+            "name": "Bo dung cu hoc tap hinh hoc cho hoc sinh khiem thi",
+            "imgUrl": [Store1_1, Store1_2, Store1_3],
+            "price": "0₫",
+            "available": "0",
+            "description": "",
+            "about": [
+                "1 Bảng lỗ gỗ 20*20cm",
+                "2 cọng dây thun tròn",
+                "6 cọng dây thun dài 2 lỗ",
                 "4 cây ăng ten",
                 "3 Khoen tròn ",
                 "1 Flashcard hình học"
@@ -33,22 +32,22 @@ const Product = () => {
         },
         {
             "id": "bo-dung-cu-hinh-hoc",
-            "name" : "Bo dung cu hinh hoc",
-            "imgUrl" :  [Store2_1, Store2_2, Store1_3],
-            "price" : "249,000₫",
-            "available" : "1",
-            "description" : "Best-seller",
-            "about" : [
-                "1 Bảng lỗ gỗ 20*20cm", 
-                "2 cọng dây thun tròn", 
-                "6 cọng dây thun dài 2 lỗ", 
+            "name": "Bo dung cu hinh hoc",
+            "imgUrl": [Store2_1, Store2_2, Store1_3],
+            "price": "249,000₫",
+            "available": "1",
+            "description": "Best-seller",
+            "about": [
+                "1 Bảng lỗ gỗ 20*20cm",
+                "2 cọng dây thun tròn",
+                "6 cọng dây thun dài 2 lỗ",
                 "4 cây ăng ten",
                 "3 Khoen tròn ",
                 "sổ tay toán học ( 2 phiên bản )",
                 "sách hướng dẫn"
             ]
         },
-        
+
     ]
 
     const productCheck = productList.find((productId) => {
@@ -58,7 +57,10 @@ const Product = () => {
     const foundProduct = productList.find((productId) => {
         return productId.id == params.id
     })
+
     
+    window.scrollTo(0, 0);
+
     return (
         <div>
             {productCheck ?
@@ -69,7 +71,7 @@ const Product = () => {
                     </div>
                     <MainProduct productInfo={foundProduct} />
                     <Chatbot />
-                    <FooterWoutMail/>
+                    <FooterWoutMail />
                 </div>
                 : <NotFound />}
         </div>

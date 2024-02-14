@@ -7,7 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import { Header, Introduction, NavBar, Footer, About, Document, Store, Contact } from './components'
 import { PopUp, Loading, NotFound, Chatbot } from './containers'
-import { Cart, Home, Product, LogIn } from './routes'
+import { Cart, Home, Product, LogIn, SignUp } from './routes'
 import './App.css'
 
 const App = () => {
@@ -26,6 +26,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={ <div>{!loading ? <Loading /> : <Home/>}</div> }/>
           <Route path="login" element={<LogIn />} />
+          <Route path="signup" element={<SignUp />} />
           <Route path="product/:id" element={<Product />} />
           <Route path="cart" element={<Cart />} />
           <Route path="*" element={<NotFound />} />
