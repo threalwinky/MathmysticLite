@@ -83,26 +83,28 @@
     flex-direction: row;
     align-items: center;
 
-    button {
-        padding-top: 0.5rem;
-        padding-bottom: 0.5rem;
-        padding-left: 1.25rem;
-        padding-right: 1.25rem;
-        border-radius: 0.5rem;
-        font-size: 1.875rem;
-        line-height: 2.25rem;
-        background-color: #E5E7EB;
-        color: violet;
-    }
+    
+}
 
-    span {
-        padding-top: 1rem;
-        padding-bottom: 1rem;
-        padding-left: 1.5rem;
-        padding-right: 1.5rem;
-        border-radius: 0.5rem;
-        font-size: 25px;
-    }
+.mmt__product-content .sub .content button {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+    border-radius: 0.5rem;
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+    background-color: #E5E7EB;
+    color: violet;
+}
+
+.mmt__product-content .sub .content span {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    border-radius: 0.5rem;
+    font-size: 25px;
 }
 
 /*Phone and tablet ver*/
