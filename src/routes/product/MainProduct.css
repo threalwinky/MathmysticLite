@@ -6,6 +6,21 @@
     gap: 6rem;
 }
 
+.mmt__product-direct-link{
+    display: flex;
+    top: 0;
+    Link{
+        color: #000000;
+        cursor: pointer;
+        padding: 5px;
+    }
+    span{
+        color: #000000;
+        cursor: pointer;
+        padding: 5px;
+    }
+}
+
 .mmt__product-img {
     display: flex;
     flex-direction: column;
@@ -161,5 +176,21 @@
 
     .mmt__product-content {
         width: 35%;
+    }
+    .mmt__product-direct-link{
+        display: flex;
+        position: absolute;
+        top: 0;
+        margin-top: 100px;
+        span{
+            color: #000000;
+            cursor: pointer;
+            padding: 5px;
+            word-wrap: unset;
+            flex-wrap: nowrap;
+            text-wrap: pretty;
+        }
+        
+        
     }
 }

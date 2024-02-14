@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { useParams } from "react-router-dom";
 
-import { Header, Introduction, NavBar, Footer, About, Document, Store, Contact } from '../../components';
+import { Header, Introduction, NavBar, Footer, About, Document, Store, Contact, FooterWoutMail, NavBarWoutMenu } from '../../components';
 import { PopUp, Loading, NotFound, Chatbot } from '../../containers'
 import MainProduct from './MainProduct'
 import './Product.css'
@@ -65,11 +65,11 @@ const Product = () => {
                 <div className='App'>
 
                     <div className='gradient__bg'>
-                        <NavBar />
+                        <NavBarWoutMenu />
                     </div>
                     <MainProduct productInfo={foundProduct} />
                     <Chatbot />
-
+                    <FooterWoutMail/>
                 </div>
                 : <NotFound />}
         </div>
