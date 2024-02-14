@@ -1,13 +1,15 @@
 import React from 'react'
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
+
 import './Introduction.css'
 import Introduction1 from '../../assets/img/Introduction1.png'
 import Introduction2 from '../../assets/img/Introduction2.webp'
 import Introduction3 from '../../assets/img/Introduction3.webp'
 import { useMediaQuery } from 'react-responsive'
-import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
 
 const Introduction = () => {
+
   const isDesktopOrLaptop = useMediaQuery({
     query: '(min-width: 1050px)'
   })
@@ -69,7 +71,6 @@ const Introduction = () => {
         </div>
 
       </div>
-     
     </div>
   )
 }

@@ -1,20 +1,22 @@
 import React, { useEffect, useState, useContext } from 'react'
-import './NavBar.css'
 import { RiMenu3Line, RiCloseLine } from 'react-icons/ri'
 import { CiUser } from "react-icons/ci";
-import MathmysticLogo from '../../assets/img/MathmysticLogo.png'
 import { GoTriangleDown, GoTriangleUp } from "react-icons/go";
 import { TbTriangleInvertedFilled } from "react-icons/tb";
-import VietnamLanguage from '../../assets/img/VietnamLanguage.png'
-import EnglishLanguage from '../../assets/img/EnglishLanguage.webp'
+import { Trans } from 'react-i18next';
+import { Link } from 'react-router-dom';
 import { FaUser } from "react-icons/fa";
 import { MenuContext } from "react-flexible-sliding-menu";
 import { useMediaQuery } from 'react-responsive'
+
+import MathmysticLogo from '../../assets/img/MathmysticLogo.png'
+import VietnamLanguage from '../../assets/img/VietnamLanguage.png'
+import EnglishLanguage from '../../assets/img/EnglishLanguage.webp'
 import i18n from '../../i18n'
-import { Trans } from 'react-i18next';
-import { Link } from 'react-router-dom';
+import './NavBar.css'
+
+
 const NavBar = () => {
-  // const { tM } = useContext(MenuContext);
   const isDesktopOrLaptop = useMediaQuery({
     query: '(min-width: 1050px)'
   })
@@ -23,7 +25,6 @@ const NavBar = () => {
   }
   const [scrolled, setScrolled] = useState(false);
   if (localStorage.getItem('lang') === null) localStorage.setItem('lang','en')
-  // console.log(localStorage.getItem('lang'))
   useEffect(() => {
     const onScroll = () => {
       if (window.scrollY > 50) {
@@ -43,7 +44,6 @@ const NavBar = () => {
     return (
       <>
         <a href='/#home'><p><Trans>Home</Trans></p></a>
-        {/* <Link to={'/#home'}>123</Link> */}
         <a href='/#introduction'><p>Introduction</p></a>
         <a href='/#about'><p>About</p></a>
         <a href='/#document'><p>Document</p></a>
@@ -119,8 +119,6 @@ const NavBar = () => {
           </div>
         </div>
         <div className='mmt__navbar-sign'>
-            {/* <button  onClick={() => {changeLanguage("vn")}}>vn</button> */}
-            {/* <button  onClick={() => {changeLanguage("en")}}>en</button> */}
           <img onClick={() => {cl()}}  src={language ? VietnamLanguage : EnglishLanguage}/>
           <FaUser onClick={() => { localStorage.setItem('open', '1'); toggleMenu(); }} style={{ fontSize: 35 }} className='mmt__navbar-sign_user' />
           {!isDesktopOrLaptop ? <RiMenu3Line onClick={() => { localStorage.setItem('open', '2'); toggleMenu(); }} style={{ fontSize: 35 }} className='mmt__navbar-sign_user'></RiMenu3Line> : ""}

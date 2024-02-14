@@ -1,24 +1,18 @@
 import React from 'react'
-import PopUp from '../../containers/popup/PopUp'
-import './Store.css'
 import Carousel from 'react-multi-carousel'
 import 'react-multi-carousel/lib/styles.css';
-
-
-import Store1_1 from '../../assets/img/Store/Store1/Store1_1.webp';
-
-import Store2_1 from '../../assets/img/Store/Store2/Store2_1.webp';
-
 import { Trans } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
-
+import Store1_1 from '../../assets/img/Store/Store1/Store1_1.webp';
+import Store2_1 from '../../assets/img/Store/Store2/Store2_1.webp';
+import './Store.css'
+import PopUp from '../../containers/popup/PopUp'
 
 const Store = () => {
 
   const responsive = {
     superLargeDesktop: {
-      // the naming can be any, depends on you.
       breakpoint: { max: 4000, min: 3000 },
       items: 5
     },
@@ -38,7 +32,6 @@ const Store = () => {
 
   return (
     <div className='mmt__store' id='store'>
-      {/* onClick={() => PopUp('je;;')} */}
       <h1 >Store</h1>
       <div>
         <Carousel
@@ -49,7 +42,6 @@ const Store = () => {
             <div className="item">
               <img src={Store1_1} alt="Image" />
               <h5><Trans>Bo dung cu hoc tap hinh hoc cho hoc sinh khiem thi</Trans></h5>
-              {/* <h4><Trans>Triangle</Trans></h4> */}
               <h3><Trans>Het hang</Trans></h3>
             </div>
           </Link>
@@ -58,12 +50,9 @@ const Store = () => {
             <div className="item">
               <img src={Store2_1} alt="Image" />
               <h5><Trans>Bo dung cu hinh hoc</Trans></h5>
-              {/* <h4><Trans>Triangle</Trans></h4> */}
               <h3><Trans>249,000₫</Trans></h3>
             </div>
           </Link>
-
-
 
         </Carousel>
       </div>

@@ -1,11 +1,11 @@
 import React from 'react'
-import './Contact.css'
 import { useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import ContactImage from "../../assets/img/ContactImage.webp";
 import 'animate.css';
 import TrackVisibility from 'react-on-screen';
 
+import ContactImage from "../../assets/img/ContactImage.webp";
+import './Contact.css'
 const Contact = () => {
 
   const formInitialDetails = {

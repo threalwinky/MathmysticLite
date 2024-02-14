@@ -1,19 +1,18 @@
 import React, { useContext } from "react";
 import { MenuContext } from "react-flexible-sliding-menu";
-import './NavBar.css'
 import { IoCloseSharp } from "react-icons/io5";
 import { useMediaQuery } from 'react-responsive'
 import { Trans } from "react-i18next";
 import { Link } from "react-router-dom";
-function Menu() {
 
- 
+import './NavBar.css'
+
+function Menu() {
 
   const { closeMenu } = useContext(MenuContext);
   const isDesktopOrLaptop = useMediaQuery({
     query: '(min-width: 1050px)'
   })
-  // console.log(localStorage.getItem('open'))
   const Menu1 = () => {
     return (
       <>

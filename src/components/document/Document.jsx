@@ -1,13 +1,14 @@
 import React from 'react'
 import { Container, Row, Col, Tab, Nav } from "react-bootstrap";
-import './Document.css'
+import ReactPlayer from 'react-player/file'
 import 'animate.css';
 import TrackVisibility from 'react-on-screen';
 import { Trans } from 'react-i18next'
-import { DocumentCard } from "./DocumentCard";
 import 'react-slideshow-image/dist/styles.css'
 import { Fade, Slide } from 'react-slideshow-image';
-import ReactPlayer from 'react-player/file'
+
+import { DocumentCard } from "./DocumentCard";
+import './Document.css'
 
 import Document1 from '../../assets/vid/Document1.mp4'
 import Document2 from '../../assets/vid/Document2.mp4'
@@ -53,8 +54,6 @@ const Document = () => {
   ];
 
   const projects2 = [
-    
-
     { imgUrl : DocEn1 },
     { imgUrl : DocEn2 },
     { imgUrl : DocEn3 },
@@ -109,13 +108,8 @@ const Document = () => {
               </div>
             </Tab.Pane>
             <Tab.Pane eventKey="third">
-              {/* <Row>
-                <iframe title="Hướng dẫn sử dụng" width="560" height="500" src="https://tube.exozy.me/videos/embed/470a32e3-27f2-4101-bb5e-1cdfc1816df1" frameborder="0" allowfullscreen="" sandbox="allow-same-origin allow-scripts allow-popups"></iframe>
-              </Row> */}
               <div className="slide-container mmt__document-slide2">
                 <Slide {...{ duration: 100, autoplay: false, infinite: false,indicators:true  }}>
-                  {/* {projects.map((fadeImage, index) => (
-                    <div key={index}> */}
                   <ReactPlayer
                     {...{ controls: true, width: '80%', height: '80%' }}
                     style={{ margin: 'auto'}}
@@ -131,17 +125,10 @@ const Document = () => {
                     style={{ margin: 'auto' }}
                     url={Document3} />
 
-
                   <ReactPlayer
                    {...{ controls: true, width: '80%', height: '80%' }}
                     style={{ margin: 'auto' }}
                     url={Document4} />
-
-
-                  {/* <img style={{ width: '100%', borderRadius: 30 }} src={fadeImage.imgUrl} /> */}
-                  {/* <h2>{fadeImage.caption}</h2> */}
-                  {/* </div>
-                  ))} */}
                 </Slide>
               </div>
             </Tab.Pane>

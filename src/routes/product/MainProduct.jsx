@@ -12,8 +12,6 @@ import MathmysticPet from '../../assets/img/MathmysticPet.png'
 import './MainProduct.css'
 
 const MainProduct = ({ productInfo }) => {
-
-  console.log(productInfo)
   const [zoom, setZoom] = useState(false)
   return (
     <div className='mmt__product' id='home'>

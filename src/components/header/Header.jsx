@@ -1,12 +1,13 @@
 import React from 'react'
-import './Header.css'
 import { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import MathmysticPet from '../../assets/img/MathmysticPet.png';
 import { ArrowRightCircle } from 'react-bootstrap-icons';
 import 'animate.css';
 import TrackVisibility from 'react-on-screen';
 import { translate, Trans, withTranslation } from 'react-i18next';
+
+import './Header.css'
+import MathmysticPet from '../../assets/img/MathmysticPet.png';
 const Header = () => {
 
   const [loopNum, setLoopNum] = useState(0);

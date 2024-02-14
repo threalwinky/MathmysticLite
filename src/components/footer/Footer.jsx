@@ -1,18 +1,16 @@
 import React from 'react'
-
-
 import { Container, Row, Col } from "react-bootstrap";
-
 import { CiLocationOn } from "react-icons/ci";
 import { MdOutlineEmail } from "react-icons/md";
 import { CiPhone } from "react-icons/ci";
-// import { MailchimpForm } from "./MailchimpForm";
+
 import MathmysticLogo from "../../assets/img/MathmysticLogo.png";
 import LinkedinIcon from "../../assets/img/LinkedinIcon.svg";
 import FacebookIcon from "../../assets/img/FacebookIcon.svg";
 import InstagramIcon from "../../assets/img/InstagramIcon.svg";
 import Mail from '../mail/Mail'
 import './Footer.css'
+
 const Footer = () => {
   return (
     <div>
@@ -39,7 +37,6 @@ const Footer = () => {
               
               <a href="https://www.facebook.com/people/Mathmystic/61553045231824/"><img src={FacebookIcon} alt="Icon" /></a>
               <a href="https://www.linkedin.com/in/vu-vo-winky-682203260/"><img src={LinkedinIcon} alt="Icon" /></a>
-              {/* <a href="#"><img src={InstagramIcon} alt="Icon" /></a> */}
             </div>
             <p>
 

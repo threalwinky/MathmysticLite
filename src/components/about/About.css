@@ -34,11 +34,6 @@
 
 
 .mmt__about-bx {
-  /* background: linear-gradient(90.21deg, #fea580 -5.91%, rgba(78,0,26,255) 81.58%);;
-    border-radius: 64px;
-    text-align: center;
-    padding: 600px 50px;
-    margin-top: -60px; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -46,11 +41,6 @@
 }
 
 .mmt__about-howto {
-  /* background: linear-gradient(90.21deg, #fea580 -5.91%, rgba(78,0,26,255) 81.58%);;
-    border-radius: 64px;
-    text-align: center;
-    padding: 600px 50px;
-    margin-top: -60px; */
   padding: 3rem 3rem;
 
   h2 {
@@ -93,45 +83,3 @@
   font-weight: 400;
   color: rgb(255, 255, 255);
 }
-
-/* .skill {
-    background: linear-gradient(90.21deg, #c93c74 -5.91%, #eba38b 111.58%);;
-    padding: 0 0 50px 0;
-    position: relative;
-  }
-  .skill-bx {
-    background: linear-gradient(90.21deg, #fea580 -5.91%, rgba(78,0,26,255) 81.58%);;
-    border-radius: 64px;
-    text-align: center;
-    padding: 60px 50px;
-    margin-top: -60px;
-  }
-  .skill h2 {
-      font-size: 45px;
-      font-weight: 700;
-  }
-  .skill p {
-  
-      color: #B8B8B8;
-      font-size: 18px;
-      letter-spacing: 0.8px;
-      line-height: 1.5em;
-      margin: 14px 0 75px 0;
-  }
-  .skill-slider {
-    width: 100%;
-    margin: 0 auto;
-    position: relative;
-  }
-  .skill-slider .item img {
-    width: 80%;
-    margin: 0 auto 15px auto;
-  }
-  .background-image-left {
-    background-color: #00b3ff;
-    top: 28%;
-    position: absolute;
-    bottom: 0;
-    width: 40%;
-    z-index: -4;
-  } */

@@ -72,18 +72,11 @@
 }
 
 .mmt__navbar-sign img:hover {
-    /* transition-duration: 0.1s;
-    width: 30px;
-    border: 3px;
-    border-color: azure;
-    color: aliceblue;
-    border-style: solid;
-    border-radius: 50%; */
+    
     border: 3px;
     border-color: rgb(0, 0, 0);
     border-style: solid;
     border-radius: 50%;
-    /* filter: brightness(0) saturate(50%) invert(0%) sepia(7%) saturate(98%) hue-rotate(346deg) brightness(95%) contrast(86%); */
 }
 
 .mmt__navbar-sign_user {
@@ -120,21 +113,12 @@
 .mmt__navbar-user-menu_container a,
 .mmt__navbar-sign a {
     text-decoration: none;
-
-    /* cursor: pointer; */
 }
 
 .mmt__navbar-container_links p:hover {
-    /* color: var(--color-yellow); */
-    /* border-width: 20px; */
-    /* border-color: var(--color-yellow); */
-    /* background-color: var(--color-yellow); */
-    /* background-size: 20px; */
-    /* border-radius: 100px; */
     border-radius: 100px;
     border-width: 1px;
     border-color: black;
-    /* border-style: solid; */
     background-color: var(--color-light-green);
 }
 
@@ -212,13 +196,7 @@
 }
 
 .mmt__navbar-user-menu_container p:hover {
-    /* color: var(--color-yellow); */
-    /* border-width: 20px; */
-    /* border-color: var(--color-yellow); */
-    /* border-radius: 100px; */
-    /* border-width: 1px; */
     background-color: var(--color-light-green);
-    /* border-style: solid; */
 }
 
 
@@ -230,21 +208,16 @@
     padding: .5rem;
     right: 0;
     position: fixed;
-    /* background: var(--color-green); */
     background-color: rgba(13, 194, 255, 1);
     color: black;
     height: 100%;
     z-index: 2;
     display: flex; 
-    /* filter: trans; */
-    /* opacity: .4; */
     display: flex;
-    /* align-items: center; */
     justify-content: center;
-    /* text-align: end; */
     flex-direction: column;
     width: 100%;
-    
+
     h1{
         margin-top: 50px;
         text-align: end;
@@ -269,10 +242,6 @@
 }
 
 .mmt__menu-content{
-    /* opacity: .9; */
-    /* text-align: center; */
-    /* justify-content: center; */
-    /* align-items: center; */
     margin: auto;
     margin-left: 79px;
     margin-right: 30px;
@@ -310,11 +279,6 @@
 
 .mmt__menu button:hover {
     fill: var(--light-text-color);
-}
-
-.mmt__menu-close-button{
-    /* border: solid; */
-    /* border-radius: 50% */
 }
 
 /*Phone and pad ver*/

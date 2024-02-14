@@ -1,9 +1,10 @@
 import React from 'react'
-import './About.css'
 import Carousel from 'react-multi-carousel'
 import 'react-multi-carousel/lib/styles.css';
-import MathmysticPet from '../../assets/img/MathmysticPet.png';
+import { Trans } from 'react-i18next';
 
+import './About.css'
+import MathmysticPet from '../../assets/img/MathmysticPet.png';
 import HinhBinhHanh from '../../assets/img/About/HinhBinhHanh.jpg';
 import HinhCau from '../../assets/img/About/HinhCau.jpg';
 import HinhChopTamGiac from '../../assets/img/About/HinhChopTamGiac.jpg';
@@ -21,13 +22,10 @@ import HinhTru from '../../assets/img/About/HinhTru.jpg';
 import HinhTuGiac from '../../assets/img/About/HinhTuGiac.jpg';
 import HinhVuong from '../../assets/img/About/HinhVuong.jpg';
 
-import { Trans } from 'react-i18next';
-
 const About = () => {
 
     const responsive = {
         superLargeDesktop: {
-            // the naming can be any, depends on you.
             breakpoint: { max: 4000, min: 3000 },
             items: 5
         },
@@ -83,7 +81,7 @@ const About = () => {
                     <img src={HinhTuGiac} alt="Image" />
                     <h5><Trans>Quadrangle</Trans></h5>
                 </div>
-                
+
                 <div className="item">
                     <img src={HinhChuNhat} alt="Image" />
                     <h5><Trans>Rectangle</Trans></h5>
