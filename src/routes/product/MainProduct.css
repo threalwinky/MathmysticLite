@@ -75,7 +75,19 @@
     align-items: center;
     gap: 3rem;
 
-    
+}
+
+.mmt__product-content .sub button {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    border-radius: 0.75rem;
+    height: 100%;
+    font-weight: 600;
+    color: #ffffff;
+    background-color: violet;
+
 }
 
 .mmt__product-content .sub .content {
@@ -83,7 +95,6 @@
     flex-direction: row;
     align-items: center;
 
-    
 }
 
 .mmt__product-content .sub .content button {
