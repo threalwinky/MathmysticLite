@@ -49,7 +49,7 @@ const Product = () => {
     return (
         <div>
             {productCheck ?
-                <div>
+                <div className='App'>
 
                     <div className='gradient__bg'>
                         <NavBar />
