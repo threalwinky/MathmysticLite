@@ -1,11 +1,13 @@
 import React from 'react'
+
 import './NotFound.css'
 import emoji from './emoji.png'
+
 const NotFound = () => {
   return (
-    <div id='notfound'>
-      <div className='notfound'>
-        <div className='notfound-404'>
+    <div className='mmt__notfound'>
+      <div className='mmt__notfound-content'>
+        <div className='mmt__notfound-content_404'>
           <h1>4<span></span>4</h1>
         </div>
         <h2>Oops! Page Not Be Found</h2>

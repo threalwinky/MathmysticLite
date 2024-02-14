@@ -1,39 +1,30 @@
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
-
 :root {
   --font-family: 'Manrope', sans-serif;
-
   --gradient-text: linear-gradient(89.97deg, #AE67FA 1.84%, #F49867 102.67%);
   --gradient-bar: linear-gradient(103.22deg, #AE67FA -13.86%, #F49867 99.55%);
-  
   --color-bg: #040C18;
-  --color-footer : #031B34;
+  --color-footer: #031B34;
   --color-blog: #042c54;
   --color-text: #81AFDD;
   --color-subtext: #FF8A71;
-  --color-yellow : #fbfe11;
-  --color-magenta :#890036; 
+  --color-yellow: #fbfe11;
+  --color-magenta: #890036;
   --color-pink: #f183ac;
-  --color-light-blue : #aebcd7;
+  --color-light-blue: #aebcd7;
   --color-dark-magenta: #4c021d;
   --color-orange: #f88767;
-  --color-light-orange : #fda980;
+  --color-light-orange: #fda980;
   --color-green: rgba(62, 197, 254, 1);
   --color-light-green: #b6e6fd;
 }
 
 :root {
-  /* Colors: */
   --primary-color: #1f68fa;
   --light-text-color: #f5f6f7;
   --light-placeholder-color: #ced4de;
   --dark-text-color: #2d3747;
-
-  /* Shadows: */
   --shadow-dilute: 5px 5px 25px 0 rgba(46, 61, 73, 0.2);
   --shadow-conc: 2px 4px 8px 0 rgba(46, 61, 73, 0.2);
-
-  /* Misc: */
   --transition: all 0.2s ease-in-out;
 }
 
@@ -43,4 +34,3 @@ body {
   color: var(--dark-text-color);
   margin: 0;
 }
-

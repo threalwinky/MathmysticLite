@@ -1,6 +1,8 @@
 import React from 'react'
-import './Loading.css'
 import { Audio, TailSpin } from 'react-loader-spinner'
+
+import './Loading.css'
+
 const Loading = () => {
   return (
     <div className='mmt__loading'>

@@ -1,20 +1,19 @@
 import React, { Component } from 'react'
-import './Product.css'
 import { useParams } from "react-router-dom";
+
 import { Header, Introduction, NavBar, Footer, About, Document, Store, Contact } from '../../components';
 import { PopUp, Loading, NotFound, Chatbot } from '../../containers'
 import MainProduct from './MainProduct'
+import './Product.css'
 import Store1_1 from '../../assets/img/Store/Store1/Store1_1.webp'
 import Store1_2 from '../../assets/img/Store/Store1/Store1_2.webp'
 import Store1_3 from '../../assets/img/Store/Store1/Store1_3.png'
 import Store2_1 from '../../assets/img/Store/Store2/Store2_1.webp'
 import Store2_2 from '../../assets/img/Store/Store2/Store2_2.webp'
+
 const Product = () => {
 
     const params = useParams();
-
-    // console.log(params)
-
     const productList = [
         {
             "id": "bo-dung-cu-hoc-tap-hinh-hoc-cho-hoc-sinh-khiem-thi",
@@ -46,12 +45,9 @@ const Product = () => {
     const foundProduct = productList.find((productId) => {
         return productId.id == params.id
     })
-
-    // console.log(productCheck)
-
+    
     return (
         <div>
-            {/* <h2>{params}</h2> */}
             {productCheck ?
                 <div>
 
