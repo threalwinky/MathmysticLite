@@ -109,7 +109,7 @@ const Chat = ({ chatId }) => {
                                     <div className="mmt__chat-info_content">
                                         <FaComment className="mmt__chat-info_content-icon" /><p>10</p></div>
                                     <div className="mmt__chat-info_content">
-                                        <TiTickOutline className="mmt__chat-info_content-icon2"  size={20} /><p>10</p></div>
+                                        <TiTickOutline className="mmt__chat-info_content-icon2" size={20} /><p>10</p></div>
                                 </div>
                                 <div className="mmt__chat-box">
                                     <div className="mmt__chat-vote">
@@ -131,8 +131,10 @@ const Chat = ({ chatId }) => {
                                 </div>
 
                                 <div />
-
-                                <div>
+                                <div className="mmt__chat-ans_count">
+                                    <h2><span>Co {messages.length} cau tra loi</span></h2>
+                                </div>
+                                <div className="">
                                     {
                                         messages?.map((message, id) => (
                                             <p key={id}>
