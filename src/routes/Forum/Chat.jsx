@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import db from '../../firebase'
-import { onSnapshot, collection, deleteDoc, doc, getDocs } from 'firebase/firestore'
+import { onSnapshot, collection, deleteDoc, doc, getDocs, addDoc, Timestamp, query } from 'firebase/firestore'
 import { useState } from 'react';
 import { Loading, NotFound } from '../../containers'
 import { Link, useParams } from "react-router-dom";
@@ -10,14 +10,20 @@ const Chat = ({ chatId }) => {
     const [messages, setMessages] = useState([])
     const [chats, setChats] = useState([])
     const [findChat, setFindChat] = useState(0)
-
+    const [messageContent, setMessageContent] = useState('')
+    const [foundUser, setFoundUser] = useState([])
     const fetchPost = async () => {
 
         await getDocs(collection(db, "message"))
             .then((querySnapshot) => {
                 const newData = querySnapshot.docs
                     .map((doc) => ({ ...doc.data(), id: doc.id }));
-                setMessages(newData);
+                const newData2 = []
+                newData.forEach(element => {
+                    if (element.chatInclude == chatId) newData2.push(element)
+                });
+                // console.log(newData2)
+                setMessages(newData2.sort(function (b, a) { return b.createdAt - a.createdAt }));
                 setLoading(1)
             })
 
@@ -33,8 +39,46 @@ const Chat = ({ chatId }) => {
             })
     }
     useEffect(() => {
+
+        const unsub = onSnapshot(query(collection(db, "message")), (doc) => {
+            getDocs(collection(db, "message"))
+                .then((querySnapshot) => {
+                    const newData = querySnapshot.docs
+                        .map((doc) => ({ ...doc.data(), id: doc.id }));
+                    const newData2 = []
+                    newData.forEach(element => {
+                        if (element.chatInclude == chatId) newData2.push(element)
+                    });
+                    setMessages(newData2.sort(function (b, a) { return b.createdAt - a.createdAt }))
+                    // console.log(newData.sort(function (b, a) { return b.createdAt - a.createdAt }))
+                    setLoading(1)
+                })
+        });
+
+        getDocs(collection(db, "account"))
+            .then((querySnapshot) => {
+                const newData = querySnapshot.docs
+                    .map((doc) => ({ ...doc.data(), id: doc.id }));
+                const foundUser2 = (newData.find(x => x.email == localStorage.getItem('user')))
+                setFoundUser(foundUser2)
+                // setLoading(1)
+            })
+
         fetchPost();
     }, [])
+
+    const addMessage = () => {
+        addDoc(collection(db, 'message'), {
+            content: messageContent,
+            createdAt: Timestamp.now().seconds,
+            createdBy: foundUser.name,
+            chatInclude: chatId
+        })
+    }
+
+    const deleteMessage = (idDeleteMessage) => {
+        deleteDoc(doc(db, 'message', idDeleteMessage))
+    }
 
     return (
         <div>
@@ -46,15 +90,19 @@ const Chat = ({ chatId }) => {
                             {
                                 messages?.map((message, id) => (
                                     <p key={id}>
-                                        {message.chatInclude == chatId ?
-                                            <div>
-                                                {message.content}
-                                            </div> :
-                                            ""
-                                        }
+
+                                        <div>
+                                            {message.createdBy} :
+                                            {message.content}
+                                            <button onClick={() => { deleteMessage(message.id) }}>Delete</button>
+                                        </div>
+
                                     </p>
                                 ))
                             }
+
+                            <input type="text" onChange={evt => { setMessageContent(evt.target.value); }} />
+                            <button onClick={addMessage}>Send</button>
                         </div>
                     }
 
