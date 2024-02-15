@@ -7,7 +7,7 @@ import { Loading } from '../../containers'
 import { Link, useParams } from "react-router-dom";
 import Chat from './Chat'
 const Forum = () => {
-    if (localStorage.getItem('user') == undefined) window.location.href='/'
+    if (localStorage.getItem('user') == undefined) window.location.href = '/'
 
     const [chats, setChats] = useState([])
     const [loading, setLoading] = useState(0)
@@ -67,9 +67,9 @@ const Forum = () => {
                     .map((doc) => ({ ...doc.data(), id: doc.id }));
                 // setChats(newData);
                 const newData2 = []
-                    newData.forEach(element => {
-                        if (element.name.includes(idUpdateChat)) newData2.push(element)
-                    });
+                newData.forEach(element => {
+                    if (element.name.includes(idUpdateChat)) newData2.push(element)
+                });
                 setChats(newData2.sort(function (a, b) { return b.createdAt - a.createdAt }))
                 setLoading(1)
                 // const foundChat = (newData.find(x => x.id == params))
@@ -81,21 +81,25 @@ const Forum = () => {
         <div className='App App-header'>
             {paramCheck < 1 ?
                 <div>
-                    {!loading ? <Loading /> : <div>
-                        <input onChange={evt => { updateChat(evt.target.value) }} type="text" placeholder="Search" />
-                        <input onChange={evt => { setChatDescription(evt.target.value); }} placeholder="Chat Description" />
-                        <input onChange={evt => { setChatName(evt.target.value); }} placeholder="Chat title" />
-                        <button onClick={addChat}>Add</button>
-                        {
-                            chats?.map((chat, id) => (
-                                <p key={id}>
-                                    <Link to={chat.id}><button>{chat.name}</button></Link>
-                                    {chat.description}
-                                    <button onClick={() => { deleteChat(chat.id) }}>Delete</button>
-                                </p>
-                            ))
-                        }
-                    </div>
+                    {!loading ? <Loading /> :
+                        <div className="mmt__forum">
+                            <div className="mmt__forum-list">
+                                <input onChange={evt => { updateChat(evt.target.value) }} type="text" placeholder="Search" />
+                                <input onChange={evt => { setChatDescription(evt.target.value); }} placeholder="Chat Description" />
+                                <input onChange={evt => { setChatName(evt.target.value); }} placeholder="Chat title" />
+                                <button onClick={addChat}>Add</button>
+                                {
+                                    chats?.map((chat, id) => (
+                                        <p key={id}>
+                                            <Link to={chat.id}><button>{chat.name}</button></Link>
+                                            {chat.description}
+                                            <button onClick={() => { deleteChat(chat.id) }}>Delete</button>
+                                        </p>
+                                    ))
+                                }
+                            </div>
+
+                        </div>
                     }
                 </div> :
                 <div>

@@ -1,0 +1,11 @@
+.mmt__forum{
+    display: flex;
+    flex-direction: column;
+}
+
+.mmt__forum-list{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    margin: auto;
+}
