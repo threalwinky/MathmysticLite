@@ -102,12 +102,19 @@
     justify-content: center;
 }
 
+.mmt__chat-ask_content2{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
 .mmt__chat-ask_content h1 {
     font-size: 25px;
 }
 
 .mmt__chat-ask_content h5 {
     font-weight: lighter;
+    text-wrap: wrap;
 }
 
 .mmt__chat-ans-container{
@@ -129,8 +136,13 @@
     display: flex;
     background-color: rgb(255, 255, 255);
     width: auto;
-    flex-direction: row;
+    flex-direction: column;
     padding: 20px;
+    
+}
+
+.mmt__chat-ans_info h5{
+    font-size: 12px;
 }
 
 .mmt__chat-ask_menu{
