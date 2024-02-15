@@ -8,7 +8,8 @@
     padding: auto;
     margin-top: auto;
     padding: 100px 0px;
-    background-color: #3ec5fe;
+    /* background-color: #3ec5fe; */
+    
     min-height: 100vh;
     display: flex;
     flex-direction: column;

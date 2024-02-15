@@ -44,7 +44,7 @@ function Menu() {
         <a href='/profile'><p>Profile</p></a>
         <a href='/cart'><p>Cart</p></a>
         <a href='/bill'><p>Bill</p></a>
-        <a href='/chat'><p>Chat</p></a>
+        <a href='/forum'><p>Forum</p></a>
         <a href='/setting'><p>Setting</p></a>
         <a href='/' onClick={LogOut}><p>Log Out</p></a>
       </>
