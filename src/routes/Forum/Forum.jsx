@@ -10,7 +10,7 @@ import { Form } from "react-bootstrap";
 import { IoSearch } from "react-icons/io5";
 import { CiMenuKebab } from "react-icons/ci";
 import { BsThreeDotsVertical } from "react-icons/bs";
-
+import { FooterWoutMail, NavBarWoutMenu } from '../../components'
 const Forum = () => {
     if (localStorage.getItem('user') == undefined) window.location.href = '/'
 
@@ -100,7 +100,9 @@ const Forum = () => {
             {paramCheck < 1 ?
                 <div>
                     {!loading ? <Loading /> :
+
                         <div className="mmt__forum">
+                            <NavBarWoutMenu />
                             <div className="mmt__forum-list">
                                 <div className="mmt__forum-list-seach_box">
                                     <span>
@@ -173,9 +175,10 @@ const Forum = () => {
                                 </div>
 
                             </div>
-
+                            <FooterWoutMail />
                         </div>
                     }
+
                 </div> :
                 <div>
 
