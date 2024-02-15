@@ -4,12 +4,17 @@ import { onSnapshot, collection, deleteDoc, doc, getDocs, addDoc, Timestamp, que
 import { useState } from 'react';
 import { Loading, NotFound } from '../../containers'
 import { Link, useParams } from "react-router-dom";
-
+import './Chat.css'
+import { FooterWoutMail } from "../../components";
+import { TbTriangleFilled, TbTriangleInvertedFilled } from "react-icons/tb";
+import { IoEyeSharp } from "react-icons/io5";
+import { FaComment } from "react-icons/fa";
+import { TiTickOutline } from "react-icons/ti";
 const Chat = ({ chatId }) => {
     const [loading, setLoading] = useState(0)
     const [messages, setMessages] = useState([])
     const [chats, setChats] = useState([])
-    const [findChat, setFindChat] = useState(0)
+    const [foundChat, setFoundChat] = useState([])
     const [messageContent, setMessageContent] = useState('')
     const [foundUser, setFoundUser] = useState([])
     const fetchPost = async () => {
@@ -27,16 +32,7 @@ const Chat = ({ chatId }) => {
                 setLoading(1)
             })
 
-        await getDocs(collection(db, "chat"))
-            .then((querySnapshot) => {
-                const newData = querySnapshot.docs
-                    .map((doc) => ({ ...doc.data(), id: doc.id }));
-                setChats(newData);
-                setLoading(1)
-                const foundChat = (newData.find(x => x.id == chatId))
-                setFindChat(foundChat)
-                // console.log(foundChat)
-            })
+
     }
     useEffect(() => {
 
@@ -64,7 +60,20 @@ const Chat = ({ chatId }) => {
                 // setLoading(1)
             })
 
+
+        getDocs(collection(db, "chat"))
+            .then((querySnapshot) => {
+                const newData = querySnapshot.docs
+                    .map((doc) => ({ ...doc.data(), id: doc.id }));
+                setChats(newData);
+                setLoading(1)
+                const foundChat2 = (newData.find(x => x.id == chatId))
+                setFoundChat(foundChat2)
+                // console.log(foundChat)
+            })
+
         fetchPost();
+
     }, [])
 
     const addMessage = () => {
@@ -72,6 +81,7 @@ const Chat = ({ chatId }) => {
             content: messageContent,
             createdAt: Timestamp.now().seconds,
             createdBy: foundUser.name,
+            createdByAvatar: foundUser.avatar,
             chatInclude: chatId
         })
     }
@@ -82,34 +92,76 @@ const Chat = ({ chatId }) => {
 
     return (
         <div>
-            {findChat == undefined ? <NotFound /> :
+            {foundChat == undefined ? <NotFound /> :
 
                 <div>
                     {!loading ? <Loading /> :
-                        <div>
-                            {
-                                messages?.map((message, id) => (
-                                    <p key={id}>
+                        <div className="mmt__chat-body">
+                            <div className="mmt__chat-container">
+                                {/* {messages.length}
+                                {foundChat.description}
+                                {foundChat.name}
+                                {foundChat.createdUser.avatar}
+                                {foundChat.createdUser.name} */}
+                                <div className="mmt__chat-info">
+                                    <div className="mmt__chat-info_content">
+                                        <IoEyeSharp className="mmt__chat-info_content-icon" /><p>10</p></div>
+                                    <div className="mmt__chat-info_content">
+                                        <FaComment className="mmt__chat-info_content-icon" /><p>10</p></div>
+                                    <div className="mmt__chat-info_content">
+                                        <TiTickOutline className="mmt__chat-info_content-icon2"  size={20} /><p>10</p></div>
+                                </div>
+                                <div className="mmt__chat-box">
+                                    <div className="mmt__chat-vote">
+                                        <TbTriangleFilled size={10} />
+                                        0
+                                        <TbTriangleInvertedFilled size={10} />
 
-                                        <div>
-                                            {message.createdBy} :
-                                            {message.content}
-                                            <button onClick={() => { deleteMessage(message.id) }}>Delete</button>
+                                    </div>
+                                    <div className="mmt__chat-ask">
+                                        <div className="mmt__chat-ask_info">
+                                            <img src={foundChat.createdUser.avatar} />
+                                            <p>{foundChat.createdUser.name}</p>
                                         </div>
+                                        <div className="mmt__chat-ask_content">
+                                            <h1>{foundChat.name}</h1>
+                                            <h5>{foundChat.description}</h5>
+                                        </div>
+                                    </div>
+                                </div>
 
-                                    </p>
-                                ))
-                            }
+                                <div />
 
-                            <input type="text" onChange={evt => { setMessageContent(evt.target.value); }} />
-                            <button onClick={addMessage}>Send</button>
+                                <div>
+                                    {
+                                        messages?.map((message, id) => (
+                                            <p key={id}>
+
+                                                <div>
+                                                    {/* <img src={message.createdByAvatar} alt="" /> */}
+                                                    {message.createdBy}
+                                                    {message.content}
+                                                    <button onClick={() => { deleteMessage(message.id) }}>Delete</button>
+                                                </div>
+
+                                            </p>
+                                        ))
+                                    }
+                                </div>
+                                <div>
+                                    <input type="text" onChange={evt => { setMessageContent(evt.target.value); }} />
+                                    <button onClick={addMessage}>Send</button>
+                                </div>
+
+
+                            </div>
+
                         </div>
                     }
-
                 </div>
 
             }
-
+            <FooterWoutMail />
         </div>
     )
 }

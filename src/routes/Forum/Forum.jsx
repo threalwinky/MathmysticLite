@@ -3,7 +3,7 @@ import db from '../../firebase'
 import { onSnapshot, collection, deleteDoc, doc, getDocs, Timestamp, addDoc, query } from 'firebase/firestore'
 import './Forum.css'
 import { useState } from 'react';
-import { Loading } from '../../containers'
+import { Chatbot, Loading } from '../../containers'
 import { Link, useParams } from "react-router-dom";
 import Chat from './Chat'
 import { Form } from "react-bootstrap";
@@ -11,6 +11,13 @@ import { IoSearch } from "react-icons/io5";
 import { CiMenuKebab } from "react-icons/ci";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { FooterWoutMail, NavBarWoutMenu } from '../../components'
+import { FaComment } from "react-icons/fa";
+import { TiTickOutline } from "react-icons/ti";
+import { TbTriangleFilled } from "react-icons/tb";
+import { TbTriangleInvertedFilled } from "react-icons/tb";
+
+import { IoEyeSharp } from "react-icons/io5";
+
 const Forum = () => {
     if (localStorage.getItem('user') == undefined) window.location.href = '/'
 
@@ -95,6 +102,20 @@ const Forum = () => {
             })
     }
 
+    function changeDate(dateStr){
+        const day = 0
+        const hour = 0
+        const minute = 0
+        var t = dateStr/(24*60*60)
+        if (t > 1) return `Da dang ${parseInt(t)} ngay truoc`
+        t = dateStr/(60*60)
+        if (t > 1) return `Da dang ${parseInt(t)} gio truoc`
+        t = dateStr/(60)
+        if (t > 1) return `Da dang ${parseInt(t)} phut truoc`
+        t = dateStr
+        if (t > 1) return `Da dang ${parseInt(t)} giay truoc`
+    }
+
     return (
         <div className='App App-header'>
             {paramCheck < 1 ?
@@ -103,6 +124,7 @@ const Forum = () => {
 
                         <div className="mmt__forum">
                             <NavBarWoutMenu />
+
                             <div className="mmt__forum-list">
                                 <div className="mmt__forum-list-seach_box">
                                     <span>
@@ -133,49 +155,69 @@ const Forum = () => {
 
                                     </div>
                                 }
-                                <div className="mmt__forum-list-list_box-container">
-                                    {
+                                <div className="test">
+                                    <div className="mmt__forum-list-list_box-container">
+                                        {
 
-                                        chats?.map((chat, id) => (
-                                            <div>
+                                            chats?.map((chat, id) => (
+                                                <div>
 
-                                                <div className="mmt__forum-list-list_box-box" key={id}>
-                                                    <div className="mmt__forum-list-list_box-box-left">
-                                                        asd
-                                                    </div>
-                                                    <div className="mmt__forum-list-list_box-box-right">
-                                                        <div className="mmt__forum-list-list_box-box-right-askedby">
-                                                            <img src={chat.createdUser.avatar} />
-                                                            <p>{chat.createdUser.name}</p>
+                                                    <div className="mmt__forum-list-list_box-box" key={id}>
+                                                        <div className="mmt__forum-list-list_box-box-left">
+                                                            <div className="mmt__forum-list-list_box-box-left_content">
+                                                                <div className="mmt__forum-list-list_box-box-left-triangle">
+                                                                    <TbTriangleFilled size={10} style={{ marginRight: 5 }} /><TbTriangleInvertedFilled size={10} />
+                                                                </div>
+                                                                <p>10</p>
+                                                            </div>
+                                                            <div className="mmt__forum-list-list_box-box-left_content">
+                                                                <IoEyeSharp /><p>10</p></div>
+                                                            <div className="mmt__forum-list-list_box-box-left_content">
+                                                                <FaComment /><p>10</p></div>
+                                                            <div className="mmt__forum-list-list_box-box-left_content">
+                                                                <TiTickOutline size={20} /><p>10</p></div>
 
                                                         </div>
-                                                        <Link to={chat.id}>
-                                                            <div className="mmt__forum-list-list_box-box-right-content">
-                                                                <h1>{chat.name}</h1>
-
-                                                                <h5>{chat.description}</h5>
-
+                                                        <div className="mmt__forum-list-list_box-box-right">
+                                                            <div className="mmt__forum-list-list_box-box-right-askedby">
+                                                                <img src={chat.createdUser.avatar} />
+                                                                <p>{chat.createdUser.name}</p>
 
                                                             </div>
-                                                        </Link>
+                                                            <Link to={chat.id}>
+                                                                <div className="mmt__forum-list-list_box-box-right-content">
+                                                                    <h1>{chat.name}</h1>
+
+                                                                    <h5>{chat.description}</h5>
+
+                                                                    <h5>{changeDate(Timestamp.now().seconds - chat.createdAt)}</h5>
+                                                                </div>
+                                                            </Link>
 
 
-                                                        {/* <BsThreeDotsVertical className="mmt__forum-list-list_box-box-right-menu_button" /> */}
+                                                            {/* <BsThreeDotsVertical className="mmt__forum-list-list_box-box-right-menu_button" /> */}
+
+                                                        </div>
 
                                                     </div>
 
+                                                    {/* <button onClick={() => { deleteChat(chat.id) }}>Delete</button> */}
                                                 </div>
 
-                                                {/* <button onClick={() => { deleteChat(chat.id) }}>Delete</button> */}
-                                            </div>
 
+                                            ))
+                                        }
 
-                                        ))
-                                    }
+                                    </div>
+                                    {/* <div className="mmt__forum-float_message">
+                                        <iframe src="http://localhost:3000/forum/LUHloed4iKM2FcGlD7Ln" frameborder="0"></iframe>
+                                    </div> */}
                                 </div>
+
 
                             </div>
                             <FooterWoutMail />
+                            <Chatbot/>
                         </div>
                     }
 
