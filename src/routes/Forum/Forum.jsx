@@ -6,6 +6,11 @@ import { useState } from 'react';
 import { Loading } from '../../containers'
 import { Link, useParams } from "react-router-dom";
 import Chat from './Chat'
+import { Form } from "react-bootstrap";
+import { IoSearch } from "react-icons/io5";
+import { CiMenuKebab } from "react-icons/ci";
+import { BsThreeDotsVertical } from "react-icons/bs";
+
 const Forum = () => {
     if (localStorage.getItem('user') == undefined) window.location.href = '/'
 
@@ -13,6 +18,8 @@ const Forum = () => {
     const [loading, setLoading] = useState(0)
     const [chatName, setChatName] = useState('')
     const [chatDescription, setChatDescription] = useState('')
+    const [showNewPost, setShowNewPost] = useState(0)
+    const [foundUser, setFoundUser] = useState([])
     const params = useParams();
 
     const fetchPost = async () => {
@@ -41,6 +48,17 @@ const Forum = () => {
                 })
         });
 
+        getDocs(collection(db, "account"))
+            .then((querySnapshot) => {
+                const newData = querySnapshot.docs
+                    .map((doc) => ({ ...doc.data(), id: doc.id }));
+                const foundUser2 = (newData.find(x => x.email == localStorage.getItem('user')))
+                setFoundUser(foundUser2)
+                // setLoading(1)
+            })
+
+        fetchPost();
+
         fetchPost();
     }, [])
 
@@ -52,7 +70,7 @@ const Forum = () => {
             description: chatDescription,
             content: 'hello',
             createdAt: Timestamp.now().seconds,
-            createdUser: 'Vu'
+            createdUser: foundUser
         })
     }
 
@@ -84,19 +102,76 @@ const Forum = () => {
                     {!loading ? <Loading /> :
                         <div className="mmt__forum">
                             <div className="mmt__forum-list">
-                                <input onChange={evt => { updateChat(evt.target.value) }} type="text" placeholder="Search" />
-                                <input onChange={evt => { setChatDescription(evt.target.value); }} placeholder="Chat Description" />
-                                <input onChange={evt => { setChatName(evt.target.value); }} placeholder="Chat title" />
-                                <button onClick={addChat}>Add</button>
-                                {
-                                    chats?.map((chat, id) => (
-                                        <p key={id}>
-                                            <Link to={chat.id}><button>{chat.name}</button></Link>
-                                            {chat.description}
-                                            <button onClick={() => { deleteChat(chat.id) }}>Delete</button>
-                                        </p>
-                                    ))
+                                <div className="mmt__forum-list-seach_box">
+                                    <span>
+                                        <IoSearch size={25} className="mmt__forum-list-seach_box-icon" title="search" />
+                                        <input
+                                            className="mmt__forum-list-seach_box-input"
+                                            onChange={evt => { updateChat(evt.target.value) }}
+                                            type="text"
+                                            placeholder="Search a post"
+                                        />
+                                    </span>
+                                    <button onClick={() => { setShowNewPost(!showNewPost) }} className="mmt__forum-list-seach_box-new_post_button">New Post</button>
+                                </div>
+                                {!showNewPost ? "" :
+                                    <div className="mmt__forum-list-new_post_box">
+                                        <input
+                                            onChange={evt => { setChatDescription(evt.target.value); }}
+                                            placeholder="Post Description"
+                                            className="mmt__forum-list-new_post_box-top"
+                                        />
+                                        <div className="mmt__forum-list-new_post_box-bottom">
+                                            <input
+                                                onChange={evt => { setChatName(evt.target.value); }}
+                                                placeholder="Post title"
+                                            />
+                                            <button onClick={addChat}>Add</button>
+                                        </div>
+
+                                    </div>
                                 }
+                                <div className="mmt__forum-list-list_box-container">
+                                    {
+
+                                        chats?.map((chat, id) => (
+                                            <div>
+
+                                                <div className="mmt__forum-list-list_box-box" key={id}>
+                                                    <div className="mmt__forum-list-list_box-box-left">
+                                                        asd
+                                                    </div>
+                                                    <div className="mmt__forum-list-list_box-box-right">
+                                                        <div className="mmt__forum-list-list_box-box-right-askedby">
+                                                            <img src={chat.createdUser.avatar} />
+                                                            <p>{chat.createdUser.name}</p>
+
+                                                        </div>
+                                                        <Link to={chat.id}>
+                                                            <div className="mmt__forum-list-list_box-box-right-content">
+                                                                <h1>{chat.name}</h1>
+
+                                                                <h5>{chat.description}</h5>
+
+
+                                                            </div>
+                                                        </Link>
+
+
+                                                        {/* <BsThreeDotsVertical className="mmt__forum-list-list_box-box-right-menu_button" /> */}
+
+                                                    </div>
+
+                                                </div>
+
+                                                {/* <button onClick={() => { deleteChat(chat.id) }}>Delete</button> */}
+                                            </div>
+
+
+                                        ))
+                                    }
+                                </div>
+
                             </div>
 
                         </div>
