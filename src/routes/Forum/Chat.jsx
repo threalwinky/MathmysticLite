@@ -10,6 +10,8 @@ import { TbTriangleFilled, TbTriangleInvertedFilled } from "react-icons/tb";
 import { IoEyeSharp } from "react-icons/io5";
 import { FaComment } from "react-icons/fa";
 import { TiTickOutline } from "react-icons/ti";
+import { BsThreeDotsVertical } from "react-icons/bs";
+
 const Chat = ({ chatId }) => {
     const [loading, setLoading] = useState(0)
     const [messages, setMessages] = useState([])
@@ -80,8 +82,7 @@ const Chat = ({ chatId }) => {
         addDoc(collection(db, 'message'), {
             content: messageContent,
             createdAt: Timestamp.now().seconds,
-            createdBy: foundUser.name,
-            createdByAvatar: foundUser.avatar,
+            createdBy: foundUser,
             chatInclude: chatId
         })
     }
@@ -134,18 +135,46 @@ const Chat = ({ chatId }) => {
                                 <div className="mmt__chat-ans_count">
                                     <h2><span>Co {messages.length} cau tra loi</span></h2>
                                 </div>
-                                <div className="">
+                                <div className="mmt__chat-ans-container">
                                     {
                                         messages?.map((message, id) => (
                                             <p key={id}>
 
-                                                <div>
-                                                    {/* <img src={message.createdByAvatar} alt="" /> */}
-                                                    {message.createdBy}
-                                                    {message.content}
-                                                    <button onClick={() => { deleteMessage(message.id) }}>Delete</button>
-                                                </div>
+                                                <div className="mmt__chat-ans-box">
+                                                    <div className="mmt__chat-vote">
+                                                        <TbTriangleFilled size={10} />
+                                                        0
+                                                        <TbTriangleInvertedFilled size={10} />
+                                                    </div>
+                                                    <div className="mmt__chat-ans">
+                                                        <div className="mmt__chat-ans_info">
+                                                            <div className='mmt__chat-ask_info'>
+                                                                <img src={message.createdBy.avatar} />
+                                                                <p>{message.createdBy.name}</p>
+                                                            </div>
 
+
+                                                        </div>
+                                                        {message.content}
+                                                        {/* 111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111 */}
+                                                    </div>
+
+                                                    <div className="mmt__chat-ask_menu">
+                                                        {/* <button
+                                                            onClick={() => { deleteMessage(message.id) }}
+                                                            className="mmt__chat-ask_menu-button"
+                                                        >Delete</button> */}
+                                                        <BsThreeDotsVertical size={20} />
+
+                                                    </div>
+
+
+
+
+                                                </div>
+                                                <div className="mmt__chat-ans_count2">
+                                                    <h2></h2>
+                                                </div>
                                             </p>
                                         ))
                                     }
