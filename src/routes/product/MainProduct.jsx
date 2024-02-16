@@ -45,6 +45,7 @@ const MainProduct = ({ productInfo }) => {
       PopUp('Vui long dang nhap de dat hang')
     }
     else {
+      PopUp('San pham da duoc them vao gio hang')
       addDoc(collection(db, "cart"), {
         productCount,
         product : productInfo,
