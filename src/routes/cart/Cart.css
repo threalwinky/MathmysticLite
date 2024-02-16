@@ -32,19 +32,30 @@
     background-color: rgb(255, 255, 255);
     display: flex;
     justify-content: end;
-    p{
+    button{
+        width:100px;
+        border-radius: 30px;
+        background-color: rgb(189, 189, 255);
+        font-size: 25px
+    }
+    button:hover{
+        background-color: rgb(156, 156, 255);
+    }
+
+    .info{
+        width: 100%;
         font-size: 20px;
         text-align: center;
         justify-self: center;
         text-align: center;
         background-color: rgb(255, 255, 255);
         height: 100%;
+        border: none;
+        cursor: auto;
     }
-    button{
-        width:100px;
-        border-radius: 30px;
-        background-color: rgb(189, 189, 255);
-        font-size: 25px
+
+    .info:hover{
+        background-color: white;
     }
 }
 
@@ -55,6 +66,9 @@
     display: flex;
     flex-direction: row;
     border-radius: 20px;
+    input{
+        accent-color: rgb(189, 189, 255);
+    }
 }
 
 .mmt__productInCart-info{
@@ -68,8 +82,7 @@
         margin: 10px;
         border-radius: 20px;
     }
-    p{
-    }
+    
 }
 
 .mmt__productInCart-control{
@@ -85,8 +98,10 @@
     align-items: center;
     button{
         /* background-color: aqua; */
-        height: 20px;
-        width: 30px;
+        height: fit-content;
+        width: fit-content;
+        padding: 5px 10px;
+        /* padding-bottom: 10px; */
         border-radius: 20px;
         /* margin: 2px; */
         margin: 10px;
@@ -114,6 +129,7 @@
         margin: 50px;
         display: flex;
         flex-direction: column;
+        
     }
     .mmt__productInCart-control{
         display: flex;

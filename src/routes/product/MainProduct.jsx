@@ -49,7 +49,8 @@ const MainProduct = ({ productInfo }) => {
         productCount,
         product : productInfo,
         createdBy : foundUser,
-        createdAt : Timestamp.now().seconds
+        createdAt : Timestamp.now().seconds,
+        pick: 1
       });
     }
   }
