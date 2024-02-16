@@ -12,7 +12,7 @@ import { HashLink } from 'react-router-hash-link'
 
 import MathmysticPet from '../../assets/img/MathmysticPet.png'
 import './MainProduct.css'
-import { Timestamp, collection, doc, getDocs, updateDoc } from 'firebase/firestore';
+import { Timestamp, addDoc, collection, doc, getDocs, updateDoc } from 'firebase/firestore';
 import db from '../../firebase'
 import { Loading, PopUp } from '../../containers';
 import { toast } from 'react-toastify';
@@ -45,15 +45,11 @@ const MainProduct = ({ productInfo }) => {
       PopUp('Vui long dang nhap de dat hang')
     }
     else {
-      var userProduct = foundUser.products
-      userProduct.push({
+      addDoc(collection(db, "cart"), {
         productCount,
-        productName : productInfo,
-        productTime : Timestamp.now().seconds
-      })
-      console.log(userProduct)
-      updateDoc(doc(db, "account", foundUser.id), {
-        products : userProduct
+        product : productInfo,
+        createdBy : foundUser,
+        createdAt : Timestamp.now().seconds
       });
     }
   }
@@ -96,7 +92,7 @@ const MainProduct = ({ productInfo }) => {
                 </div>
               ))}
             </p>
-            <h6 className='price'>{productInfo.price}</h6>
+            <h6 className='price'>{productInfo.price}₫</h6>
             <div className='sub'>
               <div className='content'>
                 <button disabled={productInfo.available == "0" || productCount == 1} onClick={() => setProductCount(productCount - 1)}>-</button>

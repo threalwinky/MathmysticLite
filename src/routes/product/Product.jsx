@@ -90,6 +90,8 @@ const Product = () => {
                 }))
                 setLoading(1)
             })
+
+     
     }
 
     useEffect(() => {
