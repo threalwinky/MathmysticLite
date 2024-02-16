@@ -8,7 +8,7 @@
     padding: auto;
     margin-top: auto;
     padding: 100px 0px;
-    /* background-color: #3ec5fe; */
+    background-color: #a9e5ff;
     
     min-height: 100vh;
     display: flex;
@@ -16,5 +16,5 @@
     align-items: center;
     justify-content: center;
     font-size: calc(10px + 2vmin);
-    color: white;
+    color: rgb(255, 255, 255);
 }

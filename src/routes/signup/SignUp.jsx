@@ -47,7 +47,7 @@ const SignUp = () => {
                 name,
                 email,
                 password,
-                products: 0,
+                products: [],
                 avatar: "https://i.pinimg.com/564x/88/68/d7/8868d7b09e6eff73db538eee5e077816.jpg"
               });
               console.log('Account created')

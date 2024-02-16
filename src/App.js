@@ -7,7 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import { Header, Introduction, NavBar, Footer, About, Document, Store, Contact } from './components'
 import { PopUp, Loading, NotFound, Chatbot } from './containers'
-import { Cart, Home, Product, LogIn, SignUp, Forum } from './routes'
+import { Cart, Home, Product, LogIn, SignUp, Forum, Bill, UpdateProduct } from './routes'
 import './App.css'
 
 const App = () => {
@@ -31,6 +31,8 @@ const App = () => {
           <Route path="forum/:id" element={<Forum />} />
           <Route path="product/:id" element={<Product />} />
           <Route path="cart" element={<Cart />} />
+          <Route path="bill" element={<Bill />} />
+          <Route path="updateproduct" element={<UpdateProduct />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         <ToastContainer autoClose={5000} />

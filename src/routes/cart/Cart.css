@@ -1,0 +1,46 @@
+.mmt__cart-body{
+    background-color: rgb(190, 255, 255);
+    height: 100vh;
+    padding: 50px;
+    
+}
+
+.mmt__cart-container{
+    margin: auto;
+    background-color: aquamarine;
+    margin-top: 40px;
+    height: 100%;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.mmt__cart-list{
+    margin-top: 20px;
+    justify-self: center;
+    align-self: center;
+    background-color: aliceblue;
+    height: 100%;
+    padding: auto;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.mmt__cart-control{
+    height: 10vh;
+    background-color: rgb(187, 219, 219);
+    display: flex;
+    justify-content: end;
+    p{
+        font-size: 20px;
+        text-align: center;
+        justify-self: center;
+        text-align: center;
+        background-color: bisque;
+        height: 100%;
+    }
+    button{
+        width:100px;
+    }
+}

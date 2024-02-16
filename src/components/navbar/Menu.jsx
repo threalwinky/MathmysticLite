@@ -82,16 +82,16 @@ function Menu() {
         <div>
         <span>
       <img src={localStorage.getItem('userAvatar')} alt="" style={{ width: 50, margin: 10, borderRadius: 50 }} />
-      {localStorage.getItem('userName')}
+      <h4>{localStorage.getItem('userName')}</h4>
       </span>
       </div> : 
         <div>
      
         </div>
-        ) : <div>
-        <span>
-      <img src={localStorage.getItem('userAvatar')} alt="" style={{ width: 50, margin: 10, borderRadius: 50 }} />
-      {localStorage.getItem('userName')}</span>
+        ) : <div >
+        <span style={{display: "flex"}}>
+      <img src={localStorage.getItem('userAvatar')} alt="" style={{ width: 50, margin: 0, borderRadius: 50 }} />
+      <h4>{localStorage.getItem('userName')}</h4></span>
       </div>}
         <button onClick={closeMenu}>
           <IoCloseSharp size={35} className="mmt__menu-close-button" />
