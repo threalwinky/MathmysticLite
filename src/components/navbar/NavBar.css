@@ -12,7 +12,7 @@
 }
 
 .scrolled {
-    padding: 0.2rem 3rem;
+    padding: 0.5rem 3rem;
     background-color: #2fc1ff;
 }
 
@@ -38,7 +38,7 @@
     font-size: x-large;
     user-select: none;
     padding: 0rem 0.2rem;
-    margin-top: 10px;
+    margin-top: 0px;
 }
 
 .mmt__navbar-links_logo img {
@@ -48,7 +48,8 @@
 .mmt__navbar-container_links {
     display: flex;
     flex-direction: row;
-
+    /* margin-top: 10px; */
+    align-items: center;
 }
 
 .mmt__navbar-sign {
@@ -293,25 +294,12 @@
     }
 }
 
-.mmt__menu button {
-    background: none;
-    border: 0;
-    padding: 0;
-    display: flex;
-    position: absolute;
-    top: 2rem;
-    right: 1rem;
-    cursor: pointer;
-    color: black;
-    fill: var(--light-placeholder-color);
-    transition: var(--transition);
-}
+
 
 .mmt__menu span {
     background: none;
     border: 0;
     padding: 0;
-    position: absolute;
     top: 1rem;
     left: 1rem;
     cursor: pointer;
@@ -319,16 +307,39 @@
     fill: var(--light-placeholder-color);
     transition: var(--transition);
     display: flex;
-    flex-direction: column;
+    /* background-color: #ffffff; */
+    align-self: flex-start;
+    position: absolute;
+    width: 90%;
+    align-items: center;
+    justify-content: center;
+    h4{
+        padding: 0px 10px;
+    }
+    h3{
+        padding: 30px;
+        color: red;
+    }
+}
+
+.mmt__menu button {
+    background: none;
+    border: 0;
+    padding: 0;
+    display: flex;
+    top: 2rem;
+    right: 1rem;
+    cursor: pointer;
+    color: black;
+    fill: var(--light-placeholder-color);
+    transition: var(--transition);
+    justify-content: center;
+    align-items: center;
+    margin-left: 60px
 }
 
 .mmt__menu button:hover {
     fill: var(--light-text-color);
-}
-
-.mmt__menu-close-button{
-    /* border: solid; */
-    /* border-radius: 50% */
 }
 
 /*Phone and pad ver*/

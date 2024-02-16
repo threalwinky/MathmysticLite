@@ -37,9 +37,6 @@ function Menu() {
   }
   const UserMenu = () => {
     return (
-
-
-
       <>
         <a href='/profile'><p>Profile</p></a>
         <a href='/playground'><p>Playground</p></a>
@@ -56,6 +53,10 @@ function Menu() {
       <>
         <a href='/login'><p>Log In</p></a>
         <a href='/signup'><p>Sign Up</p></a>
+        <a href='/playground'><p>Playground</p></a>
+        <a href='/cart'><p>Cart</p></a>
+        <a href='/forum'><p>Forum</p></a>
+        <a href='/setting'><p>Setting</p></a>
       </>
     )
   }
@@ -72,32 +73,35 @@ function Menu() {
 
   return (
     <div className="mmt__menu">
-
-      {((!isDesktopOrLaptop) || !(localStorage.getItem('open2') == '1')) ? ((localStorage.getItem('open') == '1') ?
-        <CheckLogInMenu /> : <HomeMenu />) : <CheckLogInMenu />}
-
-      <div>
-        
-        {((!isDesktopOrLaptop) || !(localStorage.getItem('open2') == '1')) ? ((localStorage.getItem('open') == '1') ?
+      {(!(localStorage.getItem('open2') == '1')) ? ((localStorage.getItem('open') == '1') ?
         <div>
-        <span>
-      <img src={localStorage.getItem('userAvatar')} alt="" style={{ width: 50, margin: 10, borderRadius: 50 }} />
-      <h4>{localStorage.getItem('userName')}</h4>
-      </span>
-      </div> : 
+          <span>
+            <img src={localStorage.getItem('userAvatar')} alt="" style={{ width: 50, margin: 10, borderRadius: 50 }} />
+            <h4>{localStorage.getItem('userName')}</h4>
+          </span>
+        </div> :
         <div>
-     
+
         </div>
-        ) : <div >
-        <span style={{display: "flex"}}>
-      <img src={localStorage.getItem('userAvatar')} alt="" style={{ width: 50, margin: 0, borderRadius: 50 }} />
-      <h4>{localStorage.getItem('userName')}</h4></span>
-      </div>}
-        <button onClick={closeMenu}>
-          <IoCloseSharp size={35} className="mmt__menu-close-button" />
-        </button>
-        
-      </div>
+      ) :
+        <span className="mmt__menu-info">
+          {!(localStorage.getItem('user') == undefined) ? 
+            <>
+              <img src={localStorage.getItem('userAvatar')} style={{ width: 50, height:50, margin: 0, borderRadius: 50 }} />
+          <h4>{localStorage.getItem('userName')}</h4>
+            </>
+          
+          : <h3/>}
+          
+          <button onClick={closeMenu}>
+            <IoCloseSharp size={35} className="mmt__menu-close-button" />
+          </button>
+        </span>
+
+      }
+      {((!isDesktopOrLaptop) || !(localStorage.getItem('open2') == '1')) ?
+        ((localStorage.getItem('open') == '1') ?
+          <CheckLogInMenu /> : <HomeMenu />) : <CheckLogInMenu />}
 
     </div>
   );
