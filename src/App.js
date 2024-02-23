@@ -6,6 +6,7 @@ import { NavBar } from './components';
 import { Home } from './routes'
 import './App.css'
 import Test from './routes/test/Test';
+import { Modal } from './containers';
 function App() {
 
   return (
@@ -14,6 +15,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home/>} />
           <Route path="/test" element={<Test/>} />
+          <Route path="/modal" element={<Modal/>} />
         </Routes>
         
       </BrowserRouter>

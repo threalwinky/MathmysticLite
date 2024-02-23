@@ -1,14 +1,12 @@
-import React from 'react'
-import './Modal.css'
+import React, { useState } from 'react'
+import Popup from './Popup'
 const Modal = () => {
-
-    // console.log(123)
-
+  const [isOpenPopup, setIsOpenPopup] = useState(0)
   return (
-    <div className='modal'>
-      <button>
-        
-      </button>
+    <div>
+      <h1>React Popup Animate</h1>
+      <button onClick={setIsOpenPopup.bind(this, true)}>Open Popup</button>
+      {isOpenPopup && <Popup setIsOpenPopup={setIsOpenPopup} />}
     </div>
   )
 }

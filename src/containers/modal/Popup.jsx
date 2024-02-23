@@ -1,6 +1,6 @@
 import { AiOutlineCloseSquare } from "react-icons/ai";
 
-import './Test.css'
+import './Popup.css'
 const Popup = ({ setIsOpenPopup }) => {
   return (
     <div
