@@ -388,13 +388,13 @@ const NavBar = () => {
               </h4>
             </div>
           </div>
-          <div style={{ width: (modalLeft ? '1000rem' : '0') }} className={'modal-left-expand'} onClick={() => {
+          {/* <div style={{ width: (modalLeft ? '1000rem' : '0') }} className={'modal-left-expand'} onClick={() => {
             if (modalLeft == 1)
               setModalLeft(!modalLeft)
           }
           } >
 
-          </div>
+          </div> */}
         </div>
 
         <div className={'modal-right' + ((modalRight) ? ' slide-left' : ' slide-right')}>
