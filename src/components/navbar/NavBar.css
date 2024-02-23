@@ -20,16 +20,19 @@
 
 .modal-left {
     height: 100vh;
-    background-color: unset;
+    /* background-color: black; */
     min-width: 100vw;
+    /* width: 1000rem; */
     position: fixed;
     z-index: 2001;
     left: -6000px;
     display: flex;
+    background-color: rgba(0, 0, 0, 0.6)
 }
 
 .modal-left-content {
     min-width: 15rem;
+    
     /* background-color: #6ad2ff; */
     /* background: rgb(62, 177, 254); */
     /* background: linear-gradient(90deg, rgba(62, 177, 254, 0.8897758932674632) 10%, rgba(195, 239, 255, 0.8841736523711047) 100%); */
@@ -100,6 +103,7 @@
     right: -6000px;
     display: flex;
     flex-direction: row-reverse;
+    background-color: rgba(0, 0, 0, 0.6)
 }
 
 .modal-right-content {

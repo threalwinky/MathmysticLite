@@ -343,8 +343,11 @@ const NavBar = () => {
     <div>
 
       <>
-        <div className={'modal-left' + ((modalLeft) ? ' slide-right' : ' slide-left')}>
-          <div id='modal-left-content' className={'modal-left-content'}>
+        <div className={'modal-left' + ((modalLeft) ? ' slide-right' : ' slide-left')} onClick={() => { setModalLeft(!modalLeft) }}>
+          <div
+            onClick={(e) => e.stopPropagation()}
+            id='modal-left-content'
+            className={'modal-left-content'} >
             <div className='modal-left-content-header'>
               <img width={45} src={MathmysticLogo} alt="" />
               <a>
@@ -397,8 +400,12 @@ const NavBar = () => {
           </div> */}
         </div>
 
-        <div className={'modal-right' + ((modalRight) ? ' slide-left' : ' slide-right')}>
-          <div className={'modal-right-content'}>
+        <div className={'modal-right' + ((modalRight) ? ' slide-left' : ' slide-right')}
+          onClick={() => { setModalRight(!modalRight) }}
+        >
+          <div className={'modal-right-content'}
+            onClick={(e) => e.stopPropagation()}
+          >
             <div className='modal-right-content-header'>
               <div className='modal-right-content-header-info'>
                 <img width={45} height={45} src={MathmysticLogo} alt="" />
@@ -442,13 +449,13 @@ const NavBar = () => {
               </h4>
             </div>
           </div>
-          <div style={{ width: (modalRight ? '1000rem' : '0') }} className={'modal-right-expand'} onClick={() => {
+          {/* <div style={{ width: (modalRight ? '1000rem' : '0') }} className={'modal-right-expand'} onClick={() => {
             if (modalRight == 1)
               setModalRight(!modalRight)
           }
           } >
 
-          </div>
+          </div> */}
         </div>
 
       </>
