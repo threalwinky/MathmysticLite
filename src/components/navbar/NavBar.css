@@ -22,6 +22,7 @@
     height: 100vh;
     /* background-color: black; */
     min-width: 100vw;
+    /* width: max-content; */
     /* width: 1000rem; */
     position: fixed;
     z-index: 2001;
@@ -31,8 +32,8 @@
 }
 
 .modal-left-content {
-    min-width: 15rem;
-    
+    /* min-width: 20rem; */
+    width: 20rem;
     /* background-color: #6ad2ff; */
     /* background: rgb(62, 177, 254); */
     /* background: linear-gradient(90deg, rgba(62, 177, 254, 0.8897758932674632) 10%, rgba(195, 239, 255, 0.8841736523711047) 100%); */
@@ -46,6 +47,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    
 }
 
 .modal-left-content-header {
@@ -67,6 +69,7 @@
         padding: 5px 10px;
         display: flex;
         align-items: center;
+        flex-direction: row;
         gap: 20px;
     }
 
