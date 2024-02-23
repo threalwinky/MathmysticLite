@@ -4,75 +4,85 @@ import Card from 'react-bootstrap/Card';
 
 import './Introduction.css'
 import Introduction1 from '../../assets/img/Introduction1.png'
-import Introduction2 from '../../assets/img/Introduction2.webp'
+import Introduction2 from '../../assets/img/Introduction2.png'
 import Introduction3 from '../../assets/img/Introduction3.webp'
 import { useMediaQuery } from 'react-responsive'
-
+import { Trans } from 'react-i18next'
 const Introduction = () => {
 
-  const isDesktopOrLaptop = useMediaQuery({
-    query: '(min-width: 1050px)'
-  })
+    const isDesktopOrLaptop = useMediaQuery({
+        query: '(min-width: 1050px)'
+    })
 
-  return (
-    <div className='mmt__introduction' id='introduction'>
-      <h1>Introduction</h1>
-      <div className='mmt__introduction-container'>
-        <img src={Introduction1} className='mmt__introduction-container_thumbnail' />
-        <div className='mmt__introduction-container_content'>
-          <h2>​TÍNH NĂNG CỦA WEBSITE</h2>
-          <p>
-            <li>
-              Hướng dẫn từ A đến Z: Trang web của chúng tôi cung cấp hướng dẫn từng
-              bước để tạo ra các mô hình hình học không gian từ cơ bản đến phức tạp.
-            </li>
-            <li>
-              Bài giảng tương tác: Bạn sẽ thực hành di chuyển, xoay, và
-              tạo các hình học không gian theo hướng dẫn. Điều này giúp
-              bạn hiểu sâu hơn và tự tin hơn khi làm việc với các mô hình.
-            </li>
-            <li>
-              Bộ tài liệu và ví dụ: Ngoài hướng dẫn, trang web còn cung
-              cấp bộ tài liệu phong phú và ví dụ minh họa. Bạn có thể
-              tham khảo chúng để tăng cường kiến thức của mình và sáng
-              tạo ra những mô hình độc đáo.
-            </li>
-          </p>
-        </div>
+    return (
+        <div className='introduction' id='introduction'>
+            <h1><Trans>Introduction</Trans></h1>
+            <div className='introduction-container'>
 
-      </div>
-      <div className='mmt__introduction-container'>
-        {!isDesktopOrLaptop ? <img src={Introduction2} className='mmt__introduction-container_thumbnail'/> : ""}
-        <div className='mmt__introduction-container_content'>
-          <h2>BỘ MÔ HÌNH HÌNH HỌC KHÔNG GIAN </h2>
-          <p>Chúng tôi đã phát triển một bộ dụng cụ mô hình hình học hoàn chỉnh
-            với thiết kế đơn giản, dễ sử dụng,thân thiện với môi trường bao gồm
-            đế gỗ đục lỗ, các cây ăng ten, dây thun và các phụ kiện cần thiết khác.
-            Qua cấu trúc ấy, người dùng có thể tương tác và tạo ra nhiều mô hình
-            không gian khác nhau, giúp mô hình học không gian gần gũi hơn
-          </p>
-        </div>
-        {isDesktopOrLaptop ? <img src={Introduction2} className='mmt__introduction-container_thumbnail'/> : ""}
-        
-      </div>
-      <div className='mmt__introduction-container'>
-        <img src={Introduction3} className='mmt__introduction-container_thumbnail' />
-        <div className='mmt__introduction-container_content'>
-          <h2>CHẮP CÁNH TƯ DUY, KẾT NỐI TRI THỨC,</h2> <br/><h2>ÁNH SÁNG CHO MỌI TRÁI TIM</h2>
-          <p>
-            Điểm đặc biệt của dự án này nằm ở việc đây là một sản phẩm hoàn
-            toàn mới trên thị trường, giúp tạo ra một phương tiện giảng dạy
-            hình học dễ tiếp cận. Một phần lợi nhuận từ dự án này sẽ được
-            trích vào Quỹ Tạo Mô Hình, nhằm hỗ trợ các bạn khiếm thị trong
-            việc tiếp cận giáo dục về hình học và thúc đẩy sự sáng tạo của
-            mỗi cá nhân. Chúng tôi cam kết đóng góp cho cộng đồng, xã hội
-            và công tác giáo dục.
-          </p>
-        </div>
+                {/* <img src={Introduction1} className='introduction-container_thumbnail' /> */}
+                {isDesktopOrLaptop ? <img src={Introduction1} className='introduction-container_thumbnail' /> : ""}
+                <div className='introduction-container_content'>
+                    <h2><Trans>FEATURES OF THE WEBSITE</Trans></h2>
+                    <p>
+                        <li>
+                            <Trans>
+                                Instructions from A to Z: Our website provides step-by-step instructions for creating spatial geometric models from basic to complex.
+                            </Trans>
 
-      </div>
-    </div>
-  )
+                        </li>
+                        <li>
+                            <Trans>
+
+
+                                Interactive lectures: You will practice moving, rotating, and creating spatial geometry according to instructions. This gives you a deeper understanding and more confidence when working with models.
+                            </Trans>
+                        </li>
+                        <li>
+                            <Trans>
+
+
+                                Documentation and examples: In addition to instructions, the site also provides a rich documentation and examples. You can refer to them to enhance your knowledge and create unique models. Documentation and examples: In addition to instructions, the website also provides a rich set of documents and illustrative examples. You can refer to them to enhance your knowledge and create unique models.
+
+
+                            </Trans>
+                        </li>
+                    </p>
+                </div>
+                {!isDesktopOrLaptop ? <img src={Introduction1} className='introduction-container_thumbnail' /> : ""}
+            </div>
+            <div className='introduction-container'>
+                {/* {isDesktopOrLaptop ? <img src={Introduction2} className='introduction-container_thumbnail' /> : ""} */}
+                <div className='introduction-container_content'>
+                    <h2><Trans>SOLID GEOMETRIC MODEL</Trans></h2>
+                    <p><Trans>We have developed a complete geometric modeling kit with a simple, easy-to-use, environmentally friendly design that includes a perforated wooden base, antennas, rubber bands and necessary accessories. other. Through that structure, users can interact and create many different spatial models, helping the spatial learning model become more familiar.</Trans>
+                    </p>
+                </div>
+                {1 ? <img src={Introduction2} className='introduction-container_thumbnail' /> : ""}
+
+
+            </div>
+            <div className='introduction-container'>
+                
+                {isDesktopOrLaptop ? <img src={Introduction3} className='introduction-container_thumbnail' /> : ""}
+                <div className='introduction-container_content'>
+                    <h2><Trans>CULTIVATE THINKING, CONNECT KNOWLEDGE,</Trans></h2> <br /><h2><Trans>LIGHT FOR EVERY HEART</Trans></h2>
+                    <p>
+                        <Trans>
+                            The special feature of this project is that it is a finished product
+                            completely new to the market, helping to create a teaching medium
+                            accessible geometry. Part of the profits from this project will be
+                            Dedicated to the Model Creation Fund, to support visually impaired people
+                            access to geometry education and promote creativity
+                            each person. We are committed to contributing to the community and society
+                            and educational work.
+                        </Trans>
+
+                    </p>
+                </div>
+                {!isDesktopOrLaptop ? <img src={Introduction3} className='introduction-container_thumbnail' /> : ""}
+            </div>
+        </div>
+    )
 }
 
 export default Introduction

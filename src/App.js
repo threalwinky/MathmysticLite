@@ -1,42 +1,23 @@
-import React, { useEffect, useState, useContext } from 'react'
-import { ToastContainer, toast } from 'react-toastify';
-import { MenuContext } from 'react-flexible-sliding-menu';
-import { translate, Trans, withTranslation } from 'react-i18next';
+import { useState } from 'react'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import 'react-toastify/dist/ReactToastify.css';
+import { translate, Trans, withTranslation } from 'react-i18next';
 
-import { Header, Introduction, NavBar, Footer, About, Document, Store, Contact } from './components'
-import { PopUp, Loading, NotFound, Chatbot } from './containers'
-import { Cart, Home, Product, LogIn, SignUp, Forum, Bill, UpdateProduct } from './routes'
+import { NavBar } from './components';
+import { Home } from './routes'
 import './App.css'
-
-const App = () => {
-
-  const [loading, setLoading] = useState(false);
-  useEffect(() => {
-    setLoading(true)
-  }, [])
-
-  
+import Test from './routes/test/Test';
+function App() {
 
   return (
     <div>
-      
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={ <div>{!loading ? <Loading /> : <Home/>}</div> }/>
-          <Route path="login" element={<LogIn />} />
-          <Route path="signup" element={<SignUp />} />
-          <Route path="forum" element={<Forum />} />
-          <Route path="forum/:id" element={<Forum />} />
-          <Route path="product/:id" element={<Product />} />
-          <Route path="cart" element={<Cart />} />
-          <Route path="bill" element={<Bill />} />
-          <Route path="updateproduct" element={<UpdateProduct />} />
-          <Route path="*" element={<NotFound />} />
+          <Route path="/" element={<Home/>} />
+          <Route path="/test" element={<Test/>} />
         </Routes>
-        <ToastContainer autoClose={5000} />
+        
       </BrowserRouter>
+
     </div>
   )
 }
