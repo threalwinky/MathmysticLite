@@ -15,6 +15,8 @@ import { addDoc, onSnapshot, collection, doc, getDocs } from 'firebase/firestore
 import { toast } from 'react-toastify';
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import PopupSuccessSignUp1 from '../../containers/modal/PopupSuccessSignUp1';
+import PopupFailSignUp2 from '../../containers/modal/PopupFailSignUp2';
+import PopupFailSignUp1 from '../../containers/modal/PopupFailSignUp1';
 const provider = new GoogleAuthProvider();
 const auth = getAuth();
 const SignUp = () => {
@@ -25,6 +27,8 @@ const SignUp = () => {
   const [password, setPassword] = useState('')
   const [rpassword, setRpassword] = useState('')
   const [isOpenPopupSuccessSignUp1, setIsOpenPopupSuccessSignUp1] = useState(0)
+  const [isOpenPopupFailSignUp1, setIsOpenPopupFailSignUp1] = useState(0)
+  const [isOpenPopupFailSignUp2, setIsOpenPopupFailSignUp2] = useState(0)
   var GoogleAuthentication = () => {
     signInWithPopup(auth, provider)
         .then((result) => {
@@ -80,7 +84,8 @@ const SignUp = () => {
     try {
 
       if (password !== rpassword) {
-        window.alert(`Password don't match`)
+        setIsOpenPopupFailSignUp1(1)
+        // window.alert(`Password don't match`)
       }
       else {
         await getDocs(collection(db, "account"))
@@ -91,7 +96,8 @@ const SignUp = () => {
             const foundUser = (newData.find(x => x.email == email))
             console.log(foundUser)
             if (foundUser !== undefined) {
-              window.alert('Email have been taken')
+              setIsOpenPopupFailSignUp2(1)
+              // window.alert('Email have been taken')
             }
             else {
               const docRef = addDoc(collection(db, "account"), {
@@ -173,6 +179,10 @@ const SignUp = () => {
 
         </Form>
         {isOpenPopupSuccessSignUp1 && <PopupSuccessSignUp1 setIsOpenPopupSuccessSignUp1={setIsOpenPopupSuccessSignUp1} />}
+
+        {isOpenPopupFailSignUp1 && <PopupFailSignUp1 setIsOpenPopupFailSignUp1={setIsOpenPopupFailSignUp1} />}
+
+        {isOpenPopupFailSignUp2 && <PopupFailSignUp2 setIsOpenPopupFailSignUp2={setIsOpenPopupFailSignUp2} />}
       </div>
     </div>
   )

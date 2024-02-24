@@ -1,10 +1,10 @@
 import { AiOutlineCloseSquare } from "react-icons/ai";
 
 import './Popup.css'
-const PopupSuccessSignUp1 = ({ setIsOpenPopupSuccessSignUp1 }) => {
+const PopupSuccessSignOut1 = ({ setIsOpenPopupSuccessSignOut1 }) => {
   return (
     <div
-      onClick={() => setIsOpenPopupSuccessSignUp1(false)}
+      onClick={() => setIsOpenPopupSuccessSignOut1(false)}
       style={{
         position: "fixed",
         background: "rgba(0,0,0,0.6)",
@@ -83,18 +83,18 @@ const PopupSuccessSignUp1 = ({ setIsOpenPopupSuccessSignUp1 }) => {
 
           <div className="popup-headline">
             <p>
-              Sign out successfully
+              Registration Completed
             </p>
 
           </div>
           <div className="popup-text">
-            <p>You have been successfully logged out </p>
+            <p>You have successfully signed up </p>
             {/* <br /> */}
-            <p>Thank you and see you again </p>
+            <p>Please sign in again </p>
           </div>
           <div className="popup-button">
-            <button onClick={() => {window.location.href = '/'}}>
-              Go to the homepage
+            <button onClick={() => {window.location.href = '/signin'}}>
+              Go to the sign in page
             </button>
           </div>
         </div>
@@ -114,4 +114,4 @@ const PopupSuccessSignUp1 = ({ setIsOpenPopupSuccessSignUp1 }) => {
     </div>
   );
 };
-export default PopupSuccessSignUp1;
+export default PopupSuccessSignOut1;

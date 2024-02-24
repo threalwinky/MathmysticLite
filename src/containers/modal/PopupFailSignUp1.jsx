@@ -1,10 +1,10 @@
 import { AiOutlineCloseSquare } from "react-icons/ai";
 
 import './Popup.css'
-const PopupSuccessSignUp1 = ({ setIsOpenPopupSuccessSignUp1 }) => {
+const PopupFailSignUp1 = ({ setIsOpenPopupFailSignUp1 }) => {
   return (
     <div
-      onClick={() => setIsOpenPopupSuccessSignUp1(false)}
+      onClick={setIsOpenPopupFailSignUp1.bind(this, false)}
       style={{
         position: "fixed",
         background: "rgba(0,0,0,0.6)",
@@ -25,7 +25,7 @@ const PopupSuccessSignUp1 = ({ setIsOpenPopupSuccessSignUp1 }) => {
           position: "relative",
           background: "white",
           borderRadius: "8px",
-          width: "max-content",
+          width: "250px",
           padding: "20px 10px",
           animation: "dropTop 0.1s linear"
         }}
@@ -48,7 +48,7 @@ const PopupSuccessSignUp1 = ({ setIsOpenPopupSuccessSignUp1 }) => {
           </div>
         </div> */}
         {/* Body */}
-        <svg
+        {/* <svg
           class="checkmark"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 52 52">
@@ -60,8 +60,8 @@ const PopupSuccessSignUp1 = ({ setIsOpenPopupSuccessSignUp1 }) => {
             fill="none"
             d="M14.1 27.2l7.1 7.2 16.7-16.8"
           />
-        </svg>
-        {/* <svg
+        </svg> */}
+        <svg
           class="checkmark2"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 52 52">
@@ -78,23 +78,22 @@ const PopupSuccessSignUp1 = ({ setIsOpenPopupSuccessSignUp1 }) => {
             fill="none"
             d="M15 37 37 15"
           />
-        </svg> */}
-        <div className="popup-success-container">
+        </svg>
+        <div className="popup-fail-container">
 
           <div className="popup-headline">
             <p>
-              Sign out successfully
+              Registration Failed
             </p>
 
           </div>
           <div className="popup-text">
-            <p>You have been successfully logged out </p>
-            {/* <br /> */}
-            <p>Thank you and see you again </p>
+            <p>You have entered unmatched passwords</p>
+
           </div>
           <div className="popup-button">
-            <button onClick={() => {window.location.href = '/'}}>
-              Go to the homepage
+            <button onClick={setIsOpenPopupFailSignUp1.bind(this, false)}>
+              Ok
             </button>
           </div>
         </div>
@@ -114,4 +113,4 @@ const PopupSuccessSignUp1 = ({ setIsOpenPopupSuccessSignUp1 }) => {
     </div>
   );
 };
-export default PopupSuccessSignUp1;
+export default PopupFailSignUp1;
