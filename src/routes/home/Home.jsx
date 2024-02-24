@@ -1,19 +1,33 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 import { NavBar, Header, Introduction, Store, About, Document, Footer, Contact } from "../../components";
-import { Modal } from "../../containers";
+import { Modal, Loading } from "../../containers";
 const Home = () => {
+  const [loading, setLoading] = useState(0)
+
+  useEffect(() => {
+    setLoading(1)
+  }, [])
+
   return (
     <div>
-      <NavBar></NavBar>
-      <Header></Header>
-      <Introduction></Introduction>
-      <Store></Store>
-      <About></About>
-      <Document></Document>
-      <Contact></Contact>
-      <Footer></Footer>
-      
+      {!loading ? <Loading /> :
+
+        <div>
+
+          <NavBar></NavBar>
+          <Header></Header>
+          <Introduction></Introduction>
+          <Store></Store>
+          <About></About>
+          <Document></Document>
+          <Contact></Contact>
+          <Footer></Footer>
+        </div>
+
+      }
+
+
     </div>
   )
 }

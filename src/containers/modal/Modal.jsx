@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Popup from './Popup'
+import Popup from './PopupSuccess'
 const Modal = () => {
   const [isOpenPopup, setIsOpenPopup] = useState(0)
   return (

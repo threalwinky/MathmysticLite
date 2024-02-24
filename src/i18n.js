@@ -22,7 +22,9 @@ i18n
           "Store": "Cửa hàng",
           "Contact": "Liên hệ",
           "Profile" : "Hồ sơ",
-
+          "Sign In" : "Đăng nhập",
+          " Password" : " Mật khẩu",
+          "Show Password" : "Hiện mật khẩu",
 
           "Welcome to Mathmystic": "Chào mừng đến với Mathmystic",
           "Let’s Connect": "Cùng đi nào!",
