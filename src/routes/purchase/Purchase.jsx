@@ -15,16 +15,14 @@ import {
 import Button from 'react-bootstrap/Button';
 import { Trans } from 'react-i18next'
 
-import './Cart.css'
+import './Purchase.css'
 import NavBarWoutMenu from '../../components/navbar/NavBarWoutMenu'
 import db from '../../firebase'
 import { Loading } from '../../containers'
 import PopupSuccessCart1 from '../../containers/modal/PopupSuccessCart1'
 import PopupSuccessCart2 from '../../containers/modal/PopupSuccessCart2'
 import PopupFailCart1 from '../../containers/modal/PopupFailCart1';
-import Store1_1 from '../../assets/img/Store/Store1/Store1_1.jpeg'
-
-const Cart = () => {
+const Purchase = () => {
   const [open2, setOpen2] = React.useState(false)
 
   const [foundUser, setFoundUser] = useState([])
@@ -49,7 +47,7 @@ const Cart = () => {
         setLoading(1)
       })
 
-    await getDocs(collection(db, "cart"))
+    await getDocs(collection(db, "buy"))
       .then((querySnapshot) => {
         const newData = querySnapshot.docs
           .map((doc) => ({ ...doc.data(), id: doc.id }));
@@ -58,9 +56,10 @@ const Cart = () => {
         newData.forEach(element => {
           if (element.createdBy.email == localStorage.getItem('user')) {
             newData2.push(element)
-            total += element.product.price * element.productCount
+            // total += element.product.price * element.productCount
           }
         });
+        console.log(newData)
         setTotalPrice(total)
         // console.log(newData2)
         setFoundProduct(newData2.sort(function (a, b) { return b.createdAt - a.createdAt }));
@@ -70,8 +69,8 @@ const Cart = () => {
 
   useEffect(() => {
 
-    const unsub = onSnapshot(query(collection(db, "cart")), (doc) => {
-      getDocs(collection(db, "cart"))
+    const unsub = onSnapshot(query(collection(db, "buy")), (doc) => {
+      getDocs(collection(db, "buy"))
         .then((querySnapshot) => {
           const newData = querySnapshot.docs
             .map((doc) => ({ ...doc.data(), id: doc.id }));
@@ -81,7 +80,7 @@ const Cart = () => {
           newData.forEach(element => {
             if (element.createdBy.email == localStorage.getItem('user')) {
               newData2.push(element)
-              total += element.product.price * element.productCount * element.pick
+              // total += element.product.price * element.productCount * element.pick
             }
           });
           setTotalPrice(total)
@@ -103,8 +102,8 @@ const Cart = () => {
     return m.substring(0, m.length - 3)
   }
 
-  const deleteCart = (cartId) => {
-    deleteDoc(doc(db, 'cart', cartId))
+  const deletePurchase = (purchaseId) => {
+    deleteDoc(doc(db, 'buy', purchaseId))
   }
 
   const updateCart = (cartId, num) => {
@@ -149,7 +148,7 @@ const Cart = () => {
                     <span>
                       <span><HashLink to={'/#home'}> <Trans>Home</Trans></HashLink></span>
                       <span>/</span>
-                      <span><HashLink to={'/cart'}><Trans>Cart</Trans></HashLink></span>
+                      <span><HashLink to={'/cart'}><Trans>Purchase</Trans></HashLink></span>
                     </span>
                   </div>
                   {localStorage.getItem('user') == undefined ? "Vui long dat hang qua facebook hoac sdt hoac dang nhap de dat hang online " :
@@ -204,21 +203,24 @@ const Cart = () => {
                                 
                                 <div class="col-md-2 col-lg-2 col-xl-2">
                                  <div className='d-flex'>
-                                 <input style={{accentColor: 'rgb(189, 189, 255)'}} type="checkbox" checked={product.pick} onClick={() => { updateCartPick(product.id, product.pick) }} />                                 <img
-                                    src={product.product.imgUrl[0]}
+                                 {/* <input style={{accentColor: 'rgb(189, 189, 255)'}} type="checkbox" checked={product.pick} onClick={() => { updateCartPick(product.id, product.pick) }} />                                 < */}
+                                 <img
+                               
+                                    src={product.imgUrl}
                                     class="img-fluid rounded-3" alt="Cotton T-shirt" />
                                  </div>
                                   
                                 </div>
                                 <div class="col-md-3 col-lg-3 col-xl-3">
-                                  <p class="lead fw-normal mb-2"><Trans>{product.product.name}</Trans></p>
-                                  {/* <p><span class="text-muted">Size: </span>M <span class="text-muted">Color: </span>Grey</p>
-                                   */}
-                                  <p style={{ fontSize: 15, color: 'GrayText' }}><span><Trans>Price per product</Trans> : {changeMoney(product.product.price)}₫</span></p>
+                                  <p class="lead fw-normal mb-2"><Trans>Don hang</Trans></p>
+                                  {/* <p><span class="text-muted">Size: </span>M <span class="text-muted">Color: </span>Grey</p> */}
+                                  <p style={{ fontSize: 15, color: 'GrayText' }}><span><Trans>Trang thai</Trans> : {product.totalMoney.isDeliver ? 'Da giao' : 'Dang giao'}</span></p>
+
+                                  <p style={{ fontSize: 15, color: 'GrayText' }}><span><Trans>Total</Trans> : {changeMoney(product.totalMoney)}₫</span></p>
                                 </div>
                                 <div class="col-md-3 col-lg-3 col-xl-2 d-flex mmt__productInCart-count">
-                                  <button
-                                    // fontSize={30}
+                                  {/* <button
+                                    fontSize={30}
                                     className='prdt-btn'
                                     onClick={() => updateCart(product.id, product.productCount - 1)}
                                     disabled={product.productCount == 0}
@@ -229,11 +231,11 @@ const Cart = () => {
                                     className='prdt-btn'
                                     onClick={() => updateCart(product.id, product.productCount + 1)}
 
-                                  >+</button>
+                                  >+</button> */}
                                 </div>
                                 <div class="d-flex justify-content-between align-items-center col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                                  <h5 class="mb-0">{changeMoney(product.product.price * product.productCount)}₫ </h5>
-                                  <button className='prdt-btn' onClick={() => deleteCart(product.id)}>Delete</button>
+                                  {/* <h5 class="mb-0">{changeMoney(product.product.price * product.productCount)}₫ </h5> */}
+                                  <button className='prdt-btn' onClick={() => deletePurchase(product.id)}>Cancel</button>
                                 </div>
 
                                 <div class="col-md-1 col-lg-1 col-xl-1 text-end">
@@ -262,9 +264,9 @@ const Cart = () => {
 
                 <div className='cart-control'>
 
-                  <button className='info'> <Trans>Total</Trans> : {changeMoney(totalPrice)}₫</button>
+                  {/* <button className='info'> <Trans>Total</Trans> : {changeMoney(totalPrice)}₫</button>
                   <button onClick={() => { addBuy(foundUser.name, changeMoney(totalPrice)) }}
-                  > <Trans>Buy</Trans></button>
+                  > <Trans>Buy</Trans></button> */}
                   {/* <Modal
                     closeIcon
                     open2={open2}
@@ -295,12 +297,7 @@ const Cart = () => {
             </div>
           </div>
           {isOpenPopupSuccessCart1 ? <PopupSuccessCart1 
-          setIsOpenPopupSuccessCart1={setIsOpenPopupSuccessCart1}
-          fu={foundUser}
-            imgUrl={Store1_1}
-           totalMoney={totalPrice} /> : ""
-           
-           }
+          setIsOpenPopupSuccessCart1={setIsOpenPopupSuccessCart1} /> : ""}
           {isOpenPopupSuccessCart2 ? <PopupSuccessCart2 setIsOpenPopupSuccessCart2={setIsOpenPopupSuccessCart2} /> : ""}
           {isOpenPopupFailCart1 ? <PopupFailCart1 setIsOpenPopupFailCart1={setIsOpenPopupFailCart1} /> : ""}
         </div>
@@ -310,4 +307,4 @@ const Cart = () => {
     </div>
   )
 }
-export default Cart
+export default Purchase

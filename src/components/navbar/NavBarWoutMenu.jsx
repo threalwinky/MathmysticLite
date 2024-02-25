@@ -318,7 +318,7 @@ const NavBar = () => {
             <Trans>Cart</Trans>
           </p>
         </a>
-        <a href='#introduction'>
+        <a href='/purchase'>
           <svg
             viewBox="0 0 24 24"
             fill="currentColor"
@@ -425,7 +425,7 @@ const NavBar = () => {
             <Trans>Cart</Trans>
           </p>
         </a>
-        <a href='#introduction'>
+        <a href='/purchase'>
           <svg
             viewBox="0 0 24 24"
             fill="currentColor"

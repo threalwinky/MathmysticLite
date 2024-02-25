@@ -6,7 +6,8 @@ import { NavBar } from './components';
 import { Home, SignIn, SignUp, Product, UpdateProduct, Cart } from './routes'
 import './App.css'
 import Test from './routes/test/Test';
-import { Modal } from './containers';
+import { Modal, NotFound } from './containers';
+import Purchase from './routes/purchase/Purchase';
 function App() {
 
   return (
@@ -21,6 +22,8 @@ function App() {
           <Route path="product/:id" element={<Product />} />
           <Route path="up" element={<UpdateProduct />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="*" element={<NotFound />} />
+          <Route path="/purchase" element={<Purchase />} />
         </Routes>
         
       </BrowserRouter>

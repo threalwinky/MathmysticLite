@@ -1,13 +1,13 @@
 import { AiOutlineCloseSquare } from "react-icons/ai";
 
 import './Popup.css'
-const PopupFailStore1 = ({ setIsOpenPopupFailStore1 }) => {
+const PopupSuccessCart2 = ({ setIsOpenPopupSuccessCart2, setIsOpenPopupSuccessCart1 }) => {
   return (
     <div
-      onClick={setIsOpenPopupFailStore1.bind(this, false)}
+      onClick={() => setIsOpenPopupSuccessCart2(false)}
       style={{
         position: "fixed",
-        background: "rgba(0,0,0,0.6)",
+        background: "rgba(0,0,0,0)",
         top: 0,
         left: 0,
         right: 0,
@@ -25,7 +25,7 @@ const PopupFailStore1 = ({ setIsOpenPopupFailStore1 }) => {
           position: "relative",
           background: "white",
           borderRadius: "8px",
-          width: "250px",
+          width: "max-content",
           padding: "20px 10px",
           animation: "dropTop 0.1s linear"
         }}
@@ -48,7 +48,7 @@ const PopupFailStore1 = ({ setIsOpenPopupFailStore1 }) => {
           </div>
         </div> */}
         {/* Body */}
-        {/* <svg
+        <svg
           class="checkmark"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 52 52">
@@ -60,8 +60,8 @@ const PopupFailStore1 = ({ setIsOpenPopupFailStore1 }) => {
             fill="none"
             d="M14.1 27.2l7.1 7.2 16.7-16.8"
           />
-        </svg> */}
-        <svg
+        </svg>
+        {/* <svg
           class="checkmark2"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 52 52">
@@ -78,26 +78,26 @@ const PopupFailStore1 = ({ setIsOpenPopupFailStore1 }) => {
             fill="none"
             d="M15 37 37 15"
           />
-        </svg>
-        <div className="popup-fail-container">
+        </svg> */}
+        <div className="popup-success-container">
 
           <div className="popup-headline">
             <p>
-              Adding Failed
+              Buying successfully
             </p>
 
           </div>
           <div className="popup-text">
-            <p>Please sign in to add product to cart</p>
-
+            <p>You have been successfully bought our products </p>
+            {/* <br /> */}
+            <p> </p>
           </div>
           <div className="popup-button">
-            <button onClick={setIsOpenPopupFailStore1.bind(this, false)}>
-              Ok
+            <button onClick={() => {setIsOpenPopupSuccessCart1(false); setIsOpenPopupSuccessCart2(false)}}>
+              Continue
             </button>
-            
           </div>
-          <a href="/signin" style={{fontSize: 10, textDecoration: 'underline'}}>Go to the sign in page</a>
+          <a href="/purchase" style={{fontSize: 15, textDecoration: 'underline'}}>Or go to the purchase page</a>
         </div>
 
         <div>
@@ -112,8 +112,7 @@ const PopupFailStore1 = ({ setIsOpenPopupFailStore1 }) => {
           Footer here
         </footer> */}
       </div>
-      
     </div>
   );
 };
-export default PopupFailStore1;
+export default PopupSuccessCart2;

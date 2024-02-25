@@ -1,10 +1,11 @@
 import { AiOutlineCloseSquare } from "react-icons/ai";
 
 import './Popup.css'
-const PopupFailStore1 = ({ setIsOpenPopupFailStore1 }) => {
+
+const PopupFailCart1 = ({ setIsOpenPopupFailCart1 }) => {
   return (
     <div
-      onClick={setIsOpenPopupFailStore1.bind(this, false)}
+      onClick={setIsOpenPopupFailCart1.bind(this, false)}
       style={{
         position: "fixed",
         background: "rgba(0,0,0,0.6)",
@@ -88,11 +89,11 @@ const PopupFailStore1 = ({ setIsOpenPopupFailStore1 }) => {
 
           </div>
           <div className="popup-text">
-            <p>Please sign in to add product to cart</p>
+            <p>Please sign in to add buy products</p>
 
           </div>
           <div className="popup-button">
-            <button onClick={setIsOpenPopupFailStore1.bind(this, false)}>
+            <button onClick={setIsOpenPopupFailCart1.bind(this, false)}>
               Ok
             </button>
             
@@ -112,8 +113,7 @@ const PopupFailStore1 = ({ setIsOpenPopupFailStore1 }) => {
           Footer here
         </footer> */}
       </div>
-      
     </div>
   );
 };
-export default PopupFailStore1;
+export default PopupFailCart1;
