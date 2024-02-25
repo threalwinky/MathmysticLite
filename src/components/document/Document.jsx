@@ -49,7 +49,8 @@ const Document = () => {
   const isDesktopOrLaptop = useMediaQuery({
     query: '(min-width: 800px)'
   })
-  const [docContent, setDocContent] = useState(1)
+  const [docContent, setDocContent] = useState('1')
+  // const [value, setValue] = useState('1')
   const projects = [
     { imgUrl: DocVn1 },
     { imgUrl: DocVn2 },
@@ -188,16 +189,16 @@ const Document = () => {
 
   const DocElement = [DocElement1]
   const Choose = () => {
-    if (docContent == 1) return (
+    if (docContent == '1') return (
       <DocElement1></DocElement1>
     )
-    if (docContent == 2) return (
+    if (docContent == '2') return (
       <DocElement2></DocElement2>
     )
-    if (docContent == 3) return (
+    if (docContent == '3') return (
       <DocElement3></DocElement3>
     )
-    if (docContent == 4) return (
+    if (docContent == '4') return (
       <DocElement4></DocElement4>
     )
   }
@@ -209,9 +210,15 @@ const Document = () => {
           {!isDesktopOrLaptop ?
 
             <div>
-              <select aria-label="Default select example" className='nav-pills-phone'>
+              <select 
+              value={docContent} 
+              // onChange={this.handleChange} 
+              aria-label="Default select example" 
+              className='nav-pills-phone'
+              onChange={e => setDocContent(e.target.value)}
+              >
                 {/* <option value="">123</option> */}
-                <option onClick={() => setDocContent(1)}>
+                <option value='1' onClick={() => setDocContent(1)}>
                   
                   <Nav.Item>
                     <Nav.Link eventKey="first" ><Trans>
@@ -221,13 +228,13 @@ const Document = () => {
                       </Nav.Link>
                   </Nav.Item>
                 </option >
-                <option value="1" onClick={() => setDocContent(2)}>
+                <option value='2' onClick={() => setDocContent(2)}>
                   <Nav.Item>
                     <Nav.Link eventKey="second" ><Trans>Handbook(English)</Trans></Nav.Link>
                   </Nav.Item>
                 </option >
-                <option value="2" onClick={() => setDocContent(3)}><Trans>Manual</Trans></option>
-                <option value="3" onClick={() => setDocContent(4)}><Trans>Instructional video</Trans></option>
+                <option value='3' onClick={() => setDocContent(3)}><Trans>Manual</Trans></option>
+                <option value="4" onClick={() => setDocContent(4)}><Trans>Instructional video</Trans></option>
                 
               </select>
               
@@ -236,16 +243,16 @@ const Document = () => {
             : <div>
               <Nav variant="pills" className="nav-pills mb-5 justify-content-center align-items-center" id="pills-tab">
                 <Nav.Item>
-                  <Nav.Link eventKey={"first"} onClick={() => setDocContent(1)} ><Trans>Handbook(Vietnamese)</Trans></Nav.Link>
+                  <Nav.Link eventKey={"first"} onClick={() => setDocContent('1')} ><Trans>Handbook(Vietnamese)</Trans></Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                  <Nav.Link eventKey={"second"} onClick={() => setDocContent(2)} ><Trans>Handbook(English)</Trans></Nav.Link>
+                  <Nav.Link eventKey={"second"} onClick={() => setDocContent('2')} ><Trans>Handbook(English)</Trans></Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                  <Nav.Link eventKey={"third"} onClick={() => setDocContent(3)} ><Trans>Manual</Trans></Nav.Link>
+                  <Nav.Link eventKey={"third"} onClick={() => setDocContent('3')} ><Trans>Manual</Trans></Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                  <Nav.Link eventKey={"fourth"} onClick={() => setDocContent(4)} ><Trans>Instructional video</Trans></Nav.Link>
+                  <Nav.Link eventKey={"fourth"} onClick={() => setDocContent('4')} ><Trans>Instructional video</Trans></Nav.Link>
                 </Nav.Item>
               </Nav>
 

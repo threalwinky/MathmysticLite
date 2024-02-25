@@ -27,6 +27,7 @@ const NavBar = () => {
   const [modalRight, setModalRight] = useState(0)
   const [scrolled, setScrolled] = useState(false);
   const [isOpenPopupSuccessSignOut1, setIsOpenPopupSuccessSignOut1] = useState(0)
+  const [fe, setFe] = useState('')
   const isDesktopOrLaptop = useMediaQuery({
     query: '(min-width: 1200px)'
   })
@@ -45,7 +46,7 @@ const NavBar = () => {
 
   const cl = () => {
     const l = localStorage.getItem('lang')
-    console.log(localStorage.getItem('i18lng'))
+    // console.log(localStorage.getItem('i18lng'))
     if (l == 'en') {
       localStorage.setItem('lang', 'vn')
       changeLanguage('vn')
@@ -68,17 +69,23 @@ const NavBar = () => {
         const newData = querySnapshot.docs
           .map((doc) => ({ ...doc.data(), id: doc.id }));
         const foundUser2 = (newData.find(x => x.email == localStorage.getItem('user')))
-        if (foundUser2 == undefined){
+        if (foundUser2 == undefined) {
           setFoundUser(
             {
-              'name' : 'Guest',
-              'email' : 'Please sign in to use our service',
-              'avatar' : 'https://as2.ftcdn.net/v2/jpg/03/31/69/91/1000_F_331699188_lRpvqxO5QRtwOM05gR50ImaaJgBx68vi.jpg'
+              'name': 'Guest',
+              'email': 'Please sign in to use our service',
+              'avatar': 'https://as2.ftcdn.net/v2/jpg/03/31/69/91/1000_F_331699188_lRpvqxO5QRtwOM05gR50ImaaJgBx68vi.jpg'
             }
           )
+          setFe('Please sign in to use our service')
         }
-        else setFoundUser(foundUser2)
-        console.log(foundUser2)
+        else {
+          setFoundUser(foundUser2)
+          // console.log((foundUser2.email).includes('0'))
+          // if (localStorage.getItem('user') == undefined) setFe()
+          setFe(String(foundUser2.email.endsWith('2')) ? String(foundUser2.email.substr(0, foundUser2.email.length - 1)) : String(foundUser2.email))
+        }
+        // console.log(foundUser2)
         // setLoading(1)
       })
 
@@ -100,7 +107,7 @@ const NavBar = () => {
     window.addEventListener("scroll", onScroll);
 
     return () => window.removeEventListener("scroll", onScroll);
-    
+
   }, [])
   const [choose, setChoose] = useState('home')
   const HomeMenu = () => {
@@ -297,7 +304,7 @@ const NavBar = () => {
             <Trans>Sign In</Trans>
           </p>
         </a>
-        <a href='#home'>
+        <a href='/cart'>
           <svg
             viewBox="0 0 1024 1024"
             fill="currentColor"
@@ -404,7 +411,7 @@ const NavBar = () => {
             <Trans>Profile</Trans>
           </p>
         </a>
-        <a href='#home'>
+        <a href='/cart'>
           <svg
             viewBox="0 0 1024 1024"
             fill="currentColor"
@@ -562,10 +569,10 @@ const NavBar = () => {
           >
             <div className='modal-right-content-header'>
               <div className='modal-right-content-header-info'>
-                <img width={45} height={45} src={foundUser.avatar} alt="" style={{borderRadius: '50%'}} />
+                <img width={45} height={45} src={foundUser.avatar} alt="" style={{ borderRadius: '50%' }} />
                 <div className='modal-right-content-header-info-text'>
                   <h1>{foundUser.name}</h1>
-                  <p>{foundUser.email}</p>
+                  <p>{fe}</p>
                 </div>
               </div>
 
@@ -665,17 +672,20 @@ const NavBar = () => {
             <img onClick={() => cl()} className='flag-icon' src={language ? EnglishLanguage : VietnamLanguage} alt="" width={35} />
           </p>
 
+          <a href="/cart">
+            <svg
 
-          <svg
-            viewBox="0 0 1024 1024"
-            fill="currentColor"
-            height="1em"
-            width="1em"
-            className='icons'
-            fontSize={40}
-          >
-            <path d="M922.9 701.9H327.4l29.9-60.9 496.8-.9c16.8 0 31.2-12 34.2-28.6l68.8-385.1c1.8-10.1-.9-20.5-7.5-28.4a34.99 34.99 0 00-26.6-12.5l-632-2.1-5.4-25.4c-3.4-16.2-18-28-34.6-28H96.5a35.3 35.3 0 100 70.6h125.9L246 312.8l58.1 281.3-74.8 122.1a34.96 34.96 0 00-3 36.8c6 11.9 18.1 19.4 31.5 19.4h62.8a102.43 102.43 0 00-20.6 61.7c0 56.6 46 102.6 102.6 102.6s102.6-46 102.6-102.6c0-22.3-7.4-44-20.6-61.7h161.1a102.43 102.43 0 00-20.6 61.7c0 56.6 46 102.6 102.6 102.6s102.6-46 102.6-102.6c0-22.3-7.4-44-20.6-61.7H923c19.4 0 35.3-15.8 35.3-35.3a35.42 35.42 0 00-35.4-35.2zM305.7 253l575.8 1.9-56.4 315.8-452.3.8L305.7 253zm96.9 612.7c-17.4 0-31.6-14.2-31.6-31.6 0-17.4 14.2-31.6 31.6-31.6s31.6 14.2 31.6 31.6a31.6 31.6 0 01-31.6 31.6zm325.1 0c-17.4 0-31.6-14.2-31.6-31.6 0-17.4 14.2-31.6 31.6-31.6s31.6 14.2 31.6 31.6a31.6 31.6 0 01-31.6 31.6z" />
-          </svg>
+              viewBox="0 0 1024 1024"
+              fill="currentColor"
+              height="1em"
+              width="1em"
+              className='icons'
+              fontSize={40}
+            >
+              <path d="M922.9 701.9H327.4l29.9-60.9 496.8-.9c16.8 0 31.2-12 34.2-28.6l68.8-385.1c1.8-10.1-.9-20.5-7.5-28.4a34.99 34.99 0 00-26.6-12.5l-632-2.1-5.4-25.4c-3.4-16.2-18-28-34.6-28H96.5a35.3 35.3 0 100 70.6h125.9L246 312.8l58.1 281.3-74.8 122.1a34.96 34.96 0 00-3 36.8c6 11.9 18.1 19.4 31.5 19.4h62.8a102.43 102.43 0 00-20.6 61.7c0 56.6 46 102.6 102.6 102.6s102.6-46 102.6-102.6c0-22.3-7.4-44-20.6-61.7h161.1a102.43 102.43 0 00-20.6 61.7c0 56.6 46 102.6 102.6 102.6s102.6-46 102.6-102.6c0-22.3-7.4-44-20.6-61.7H923c19.4 0 35.3-15.8 35.3-35.3a35.42 35.42 0 00-35.4-35.2zM305.7 253l575.8 1.9-56.4 315.8-452.3.8L305.7 253zm96.9 612.7c-17.4 0-31.6-14.2-31.6-31.6 0-17.4 14.2-31.6 31.6-31.6s31.6 14.2 31.6 31.6a31.6 31.6 0 01-31.6 31.6zm325.1 0c-17.4 0-31.6-14.2-31.6-31.6 0-17.4 14.2-31.6 31.6-31.6s31.6 14.2 31.6 31.6a31.6 31.6 0 01-31.6 31.6z" />
+            </svg>
+          </a>
+
 
 
 

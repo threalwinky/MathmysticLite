@@ -2,12 +2,20 @@ import React, { useEffect, useState } from 'react'
 import { useMediaQuery } from 'react-responsive'
 import { Trans } from 'react-i18next';
 
+import db from '../../firebase'
+import { getDocs, collection } from 'firebase/firestore';
+
 import i18n from '../../i18n'
 import VietnamLanguage from '../../assets/img/VietnamLanguage3.jpeg'
 import EnglishLanguage from '../../assets/img/EnglishLanguage3.png'
 import MathmysticLogo from '../../assets/img/MathmysticLogo.png'
 import './NavBar.css'
+import PopupSuccessSignOut1 from '../../containers/modal/PopupSuccessSignOut1';
+import PopupSuccessSignUp1 from '../../containers/modal/PopupSuccessSignUp1';
+
+
 const NavBar = () => {
+
   const l = localStorage.getItem('lang') == 'en'
   const changeLanguage = (lng) => {
     i18n.changeLanguage(lng);
@@ -18,15 +26,27 @@ const NavBar = () => {
   const [modalLeft, setModalLeft] = useState(0)
   const [modalRight, setModalRight] = useState(0)
   const [scrolled, setScrolled] = useState(false);
+  const [isOpenPopupSuccessSignOut1, setIsOpenPopupSuccessSignOut1] = useState(0)
+  const [fe, setFe] = useState('')
   const isDesktopOrLaptop = useMediaQuery({
     query: '(min-width: 1200px)'
   })
   const isDesktop = useMediaQuery({
     query: '(min-width: 1200px)'
   })
+
+  var LogOut = () => {
+    localStorage.removeItem('user')
+    localStorage.removeItem('userAvatar')
+    localStorage.removeItem('userName')
+    // window.location.href = '/'
+    localStorage.setItem('loggedin', '3')
+    setIsOpenPopupSuccessSignOut1(1)
+  }
+
   const cl = () => {
     const l = localStorage.getItem('lang')
-    console.log(localStorage.getItem('i18lng'))
+    // console.log(localStorage.getItem('i18lng'))
     if (l == 'en') {
       localStorage.setItem('lang', 'vn')
       changeLanguage('vn')
@@ -39,9 +59,42 @@ const NavBar = () => {
     }
   }
   if (localStorage.getItem('lang') === null) localStorage.setItem('lang', 'vn')
+
+  const [foundUser, setFoundUser] = useState('')
+
+  const fetchUser = async () => {
+
+    await getDocs(collection(db, "account"))
+      .then((querySnapshot) => {
+        const newData = querySnapshot.docs
+          .map((doc) => ({ ...doc.data(), id: doc.id }));
+        const foundUser2 = (newData.find(x => x.email == localStorage.getItem('user')))
+        if (foundUser2 == undefined) {
+          setFoundUser(
+            {
+              'name': 'Guest',
+              'email': 'Please sign in to use our service',
+              'avatar': 'https://as2.ftcdn.net/v2/jpg/03/31/69/91/1000_F_331699188_lRpvqxO5QRtwOM05gR50ImaaJgBx68vi.jpg'
+            }
+          )
+          setFe('Please sign in to use our service')
+        }
+        else {
+          setFoundUser(foundUser2)
+          // console.log((foundUser2.email).includes('0'))
+          // if (localStorage.getItem('user') == undefined) setFe()
+          setFe(String(foundUser2.email.endsWith('2')) ? String(foundUser2.email.substr(0, foundUser2.email.length - 1)) : String(foundUser2.email))
+        }
+        // console.log(foundUser2)
+        // setLoading(1)
+      })
+
+
+  }
+
   useEffect(() => {
     if (localStorage.getItem('lang') === 'en') changeLanguage('en')
-
+    fetchUser()
     const onScroll = () => {
       if (window.scrollY > 50) {
         setScrolled(true);
@@ -50,9 +103,11 @@ const NavBar = () => {
       }
     }
 
+
     window.addEventListener("scroll", onScroll);
 
     return () => window.removeEventListener("scroll", onScroll);
+
   }, [])
   const [choose, setChoose] = useState('home')
   const HomeMenu = () => {
@@ -232,6 +287,112 @@ const NavBar = () => {
     )
   }
 
+  const UserMenuSignIn = () => {
+    return (
+      <>
+        <a href='/signin' className=''>
+          <svg
+            viewBox="0 0 900 1000"
+            fill="currentColor"
+            height="1em"
+            width="1em"
+            fontSize={30}
+          >
+            <path d="M800 50c28 0 51.667 9.667 71 29s29 43 29 71v700c0 26.667-9.667 50-29 70s-43 30-71 30H350c-26.667 0-49.667-10-69-30s-29-43.333-29-70V750h98v100h450V150H350v150h-98V150c0-28 9.667-51.667 29-71s42.333-29 69-29h450M450 720V600H0V450h450V330l200 194-200 196" />
+          </svg>
+          <p>
+            <Trans>Sign In</Trans>
+          </p>
+        </a>
+        <a href='/cart'>
+          <svg
+            viewBox="0 0 1024 1024"
+            fill="currentColor"
+            height="1em"
+            width="1em"
+            fontSize={30}
+          >
+            <path d="M922.9 701.9H327.4l29.9-60.9 496.8-.9c16.8 0 31.2-12 34.2-28.6l68.8-385.1c1.8-10.1-.9-20.5-7.5-28.4a34.99 34.99 0 00-26.6-12.5l-632-2.1-5.4-25.4c-3.4-16.2-18-28-34.6-28H96.5a35.3 35.3 0 100 70.6h125.9L246 312.8l58.1 281.3-74.8 122.1a34.96 34.96 0 00-3 36.8c6 11.9 18.1 19.4 31.5 19.4h62.8a102.43 102.43 0 00-20.6 61.7c0 56.6 46 102.6 102.6 102.6s102.6-46 102.6-102.6c0-22.3-7.4-44-20.6-61.7h161.1a102.43 102.43 0 00-20.6 61.7c0 56.6 46 102.6 102.6 102.6s102.6-46 102.6-102.6c0-22.3-7.4-44-20.6-61.7H923c19.4 0 35.3-15.8 35.3-35.3a35.42 35.42 0 00-35.4-35.2zM305.7 253l575.8 1.9-56.4 315.8-452.3.8L305.7 253zm96.9 612.7c-17.4 0-31.6-14.2-31.6-31.6 0-17.4 14.2-31.6 31.6-31.6s31.6 14.2 31.6 31.6a31.6 31.6 0 01-31.6 31.6zm325.1 0c-17.4 0-31.6-14.2-31.6-31.6 0-17.4 14.2-31.6 31.6-31.6s31.6 14.2 31.6 31.6a31.6 31.6 0 01-31.6 31.6z" />
+          </svg>
+          <p>
+            <Trans>Cart</Trans>
+          </p>
+        </a>
+        <a href='#introduction'>
+          <svg
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            height="1em"
+            width="1em"
+            fontSize={30}
+          >
+            <path fill="none" d="M0 0h24v24H0z" />
+            <path d="M20 22H4a1 1 0 01-1-1V3a1 1 0 011-1h16a1 1 0 011 1v18a1 1 0 01-1 1zm-1-2V4H5v16h14zM8 9h8v2H8V9zm0 4h8v2H8v-2z" />
+          </svg>
+          <p>
+            <Trans>Purchase</Trans>
+          </p>
+        </a>
+        <a href='#introduction'>
+          <svg
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            height="1em"
+            width="1em"
+            fontSize={30}
+          >
+            <path d="M15 4v7H5.17L4 12.17V4h11m1-2H3a1 1 0 00-1 1v14l4-4h10a1 1 0 001-1V3a1 1 0 00-1-1m5 4h-2v9H6v2a1 1 0 001 1h11l4 4V7a1 1 0 00-1-1z" />
+          </svg>
+          <p>
+            <Trans>Chat</Trans>
+          </p>
+        </a>
+        <a href='#store'>
+          <svg
+            viewBox="0 0 512 512"
+            fill="currentColor"
+            height="1em"
+            width="1em"
+            fontSize={30}
+          >
+            <path
+              fill="none"
+              stroke="currentColor"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={32}
+              d="M262.29 192.31a64 64 0 1057.4 57.4 64.13 64.13 0 00-57.4-57.4zM416.39 256a154.34 154.34 0 01-1.53 20.79l45.21 35.46a10.81 10.81 0 012.45 13.75l-42.77 74a10.81 10.81 0 01-13.14 4.59l-44.9-18.08a16.11 16.11 0 00-15.17 1.75A164.48 164.48 0 01325 400.8a15.94 15.94 0 00-8.82 12.14l-6.73 47.89a11.08 11.08 0 01-10.68 9.17h-85.54a11.11 11.11 0 01-10.69-8.87l-6.72-47.82a16.07 16.07 0 00-9-12.22 155.3 155.3 0 01-21.46-12.57 16 16 0 00-15.11-1.71l-44.89 18.07a10.81 10.81 0 01-13.14-4.58l-42.77-74a10.8 10.8 0 012.45-13.75l38.21-30a16.05 16.05 0 006-14.08c-.36-4.17-.58-8.33-.58-12.5s.21-8.27.58-12.35a16 16 0 00-6.07-13.94l-38.19-30A10.81 10.81 0 0149.48 186l42.77-74a10.81 10.81 0 0113.14-4.59l44.9 18.08a16.11 16.11 0 0015.17-1.75A164.48 164.48 0 01187 111.2a15.94 15.94 0 008.82-12.14l6.73-47.89A11.08 11.08 0 01213.23 42h85.54a11.11 11.11 0 0110.69 8.87l6.72 47.82a16.07 16.07 0 009 12.22 155.3 155.3 0 0121.46 12.57 16 16 0 0015.11 1.71l44.89-18.07a10.81 10.81 0 0113.14 4.58l42.77 74a10.8 10.8 0 01-2.45 13.75l-38.21 30a16.05 16.05 0 00-6.05 14.08c.33 4.14.55 8.3.55 12.47z"
+            />
+          </svg>
+          <p >
+            <Trans>Setting</Trans>
+          </p>
+        </a>
+        <a onClick={LogOut}>
+          <svg
+            viewBox="0 0 21 21"
+            fill="currentColor"
+            height="1em"
+            width="1em"
+            fontSize={30}
+          >
+            <g
+              fill="none"
+              fillRule="evenodd"
+              stroke="currentColor"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M14.595 13.5l2.905-3-2.905-3M17.5 10.5h-9M14.5 3.5l-8 .002c-1.104.001-2 .896-2 2v9.995a2 2 0 002 2h8.095" />
+            </g>
+          </svg>
+          <p ><Trans>Sign out</Trans>
+          </p>
+        </a>
+      </>
+    )
+  }
+
   const UserMenu = () => {
     return (
       <>
@@ -250,7 +411,7 @@ const NavBar = () => {
             <Trans>Profile</Trans>
           </p>
         </a>
-        <a href='#home'>
+        <a href='/cart'>
           <svg
             viewBox="0 0 1024 1024"
             fill="currentColor"
@@ -314,7 +475,7 @@ const NavBar = () => {
             <Trans>Setting</Trans>
           </p>
         </a>
-        <a href='#contact'>
+        <a onClick={LogOut}>
           <svg
             viewBox="0 0 21 21"
             fill="currentColor"
@@ -408,10 +569,10 @@ const NavBar = () => {
           >
             <div className='modal-right-content-header'>
               <div className='modal-right-content-header-info'>
-                <img width={45} height={45} src={MathmysticLogo} alt="" />
+                <img width={45} height={45} src={foundUser.avatar} alt="" style={{ borderRadius: '50%' }} />
                 <div className='modal-right-content-header-info-text'>
-                  <h1>Vũ</h1>
-                  <p>voquangvu09112006@gmail.com</p>
+                  <h1>{foundUser.name}</h1>
+                  <p>{fe}</p>
                 </div>
               </div>
 
@@ -430,7 +591,8 @@ const NavBar = () => {
 
             </div>
             <div className='modal-right-content-topic'>
-              <UserMenu />
+              {localStorage.getItem('user') == undefined ? <UserMenuSignIn /> : <UserMenu />}
+
             </div>
             <div className='modal-right-content-footer'>
 
@@ -510,17 +672,20 @@ const NavBar = () => {
             <img onClick={() => cl()} className='flag-icon' src={language ? EnglishLanguage : VietnamLanguage} alt="" width={35} />
           </p>
 
+          <a href="/cart">
+            <svg
 
-          <svg
-            viewBox="0 0 1024 1024"
-            fill="currentColor"
-            height="1em"
-            width="1em"
-            className='icons'
-            fontSize={40}
-          >
-            <path d="M922.9 701.9H327.4l29.9-60.9 496.8-.9c16.8 0 31.2-12 34.2-28.6l68.8-385.1c1.8-10.1-.9-20.5-7.5-28.4a34.99 34.99 0 00-26.6-12.5l-632-2.1-5.4-25.4c-3.4-16.2-18-28-34.6-28H96.5a35.3 35.3 0 100 70.6h125.9L246 312.8l58.1 281.3-74.8 122.1a34.96 34.96 0 00-3 36.8c6 11.9 18.1 19.4 31.5 19.4h62.8a102.43 102.43 0 00-20.6 61.7c0 56.6 46 102.6 102.6 102.6s102.6-46 102.6-102.6c0-22.3-7.4-44-20.6-61.7h161.1a102.43 102.43 0 00-20.6 61.7c0 56.6 46 102.6 102.6 102.6s102.6-46 102.6-102.6c0-22.3-7.4-44-20.6-61.7H923c19.4 0 35.3-15.8 35.3-35.3a35.42 35.42 0 00-35.4-35.2zM305.7 253l575.8 1.9-56.4 315.8-452.3.8L305.7 253zm96.9 612.7c-17.4 0-31.6-14.2-31.6-31.6 0-17.4 14.2-31.6 31.6-31.6s31.6 14.2 31.6 31.6a31.6 31.6 0 01-31.6 31.6zm325.1 0c-17.4 0-31.6-14.2-31.6-31.6 0-17.4 14.2-31.6 31.6-31.6s31.6 14.2 31.6 31.6a31.6 31.6 0 01-31.6 31.6z" />
-          </svg>
+              viewBox="0 0 1024 1024"
+              fill="currentColor"
+              height="1em"
+              width="1em"
+              className='icons'
+              fontSize={40}
+            >
+              <path d="M922.9 701.9H327.4l29.9-60.9 496.8-.9c16.8 0 31.2-12 34.2-28.6l68.8-385.1c1.8-10.1-.9-20.5-7.5-28.4a34.99 34.99 0 00-26.6-12.5l-632-2.1-5.4-25.4c-3.4-16.2-18-28-34.6-28H96.5a35.3 35.3 0 100 70.6h125.9L246 312.8l58.1 281.3-74.8 122.1a34.96 34.96 0 00-3 36.8c6 11.9 18.1 19.4 31.5 19.4h62.8a102.43 102.43 0 00-20.6 61.7c0 56.6 46 102.6 102.6 102.6s102.6-46 102.6-102.6c0-22.3-7.4-44-20.6-61.7h161.1a102.43 102.43 0 00-20.6 61.7c0 56.6 46 102.6 102.6 102.6s102.6-46 102.6-102.6c0-22.3-7.4-44-20.6-61.7H923c19.4 0 35.3-15.8 35.3-35.3a35.42 35.42 0 00-35.4-35.2zM305.7 253l575.8 1.9-56.4 315.8-452.3.8L305.7 253zm96.9 612.7c-17.4 0-31.6-14.2-31.6-31.6 0-17.4 14.2-31.6 31.6-31.6s31.6 14.2 31.6 31.6a31.6 31.6 0 01-31.6 31.6zm325.1 0c-17.4 0-31.6-14.2-31.6-31.6 0-17.4 14.2-31.6 31.6-31.6s31.6 14.2 31.6 31.6a31.6 31.6 0 01-31.6 31.6z" />
+            </svg>
+          </a>
+
 
 
 
@@ -555,6 +720,7 @@ const NavBar = () => {
         </div>
 
       </div>
+      {isOpenPopupSuccessSignOut1 ? <PopupSuccessSignUp1 setIsOpenPopupSuccessSignUp1={setIsOpenPopupSuccessSignOut1} /> : ""}
     </div>
 
   )
