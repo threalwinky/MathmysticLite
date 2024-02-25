@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { Loading, NotFound } from '../../containers'
 import { Link, useParams } from "react-router-dom";
 import './Chat.css'
-import { Footer, NavBarWoutMenu } from "../../components";
+import { Footer, NavBarWoutMenuLogo } from "../../components";
 import { TbTriangleFilled, TbTriangleInvertedFilled } from "react-icons/tb";
 import { IoEyeSharp } from "react-icons/io5";
 import { FaComment } from "react-icons/fa";
@@ -179,8 +179,12 @@ const Chat = ({ chatId }) => {
 
                 <div>
                     {!loading ? <Loading /> :
+                    <div>
+                        <NavBarWoutMenuLogo />
+                    
+                    
                         <div className="mmt__chat-body">
-                            <NavBarWoutMenu />
+                            
 
                             <div className="mmt__chat-container">
                                 {/* {messages.length}
@@ -297,6 +301,7 @@ const Chat = ({ chatId }) => {
 
                             </div>
 
+                        </div>
                         </div>
                     }
                 </div>
