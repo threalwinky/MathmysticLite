@@ -55,7 +55,7 @@ const NavBar = () => {
   const UserMenu = () => {
     return (
       <>
-        <a href='#document'><p><Trans>Profile</Trans></p></a>
+        <a href='/profile'><p><Trans>Profile</Trans></p></a>
         <a href='#home'><p><Trans>Cart</Trans></p></a>
         <a href='#introduction'><p><Trans>Bill</Trans></p></a>
         <a href='#introduction'><p><Trans>Chat</Trans></p></a>
