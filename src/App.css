@@ -18,6 +18,10 @@ a {
     text-decoration: none;
 }
 
+a:hover{
+    color: black;
+}
+
 .gradient__bg {
     /* global 92%+ browsers support */
     background: radial-gradient(circle at 10% 12%, rgba(62, 197, 254, 1) 0%, rgba(193, 227, 246, 1) 100%);

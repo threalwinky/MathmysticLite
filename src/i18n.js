@@ -25,6 +25,7 @@ i18n
           "Sign In" : "Đăng nhập",
           " Password" : " Mật khẩu",
           "Show Password" : "Hiện mật khẩu",
+          "Forum" : "Diễn đàn",
 
           "Welcome to Mathmystic": "Chào mừng đến với Mathmystic",
           "Let’s Connect": "Cùng đi nào!",

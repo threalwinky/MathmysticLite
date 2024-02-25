@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { translate, Trans, withTranslation } from 'react-i18next';
 
 import { NavBar } from './components';
-import { Home, SignIn, SignUp, Product, UpdateProduct, Cart } from './routes'
+import { Home, SignIn, SignUp, Product, UpdateProduct, Cart, Forum } from './routes'
 import './App.css'
 import Test from './routes/test/Test';
 import { Modal, NotFound } from './containers';
@@ -24,6 +24,8 @@ function App() {
           <Route path="/cart" element={<Cart />} />
           <Route path="*" element={<NotFound />} />
           <Route path="/purchase" element={<Purchase />} />
+          <Route path="/forum" element={<Forum />} />
+          <Route path="forum/:id" element={<Forum />} />
         </Routes>
         
       </BrowserRouter>
