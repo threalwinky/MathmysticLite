@@ -74,10 +74,14 @@ const Forum = () => {
     const addChat = () => {
         addDoc(collection(db, 'chat'), {
             name: chatName,
-            description: chatDescription,
+            description: chatDescription.replace(/\n/g, "<br/>"),
             content: 'hello',
             createdAt: Timestamp.now().seconds,
-            createdUser: foundUser
+            createdUser: foundUser,
+            vote : 0,
+            seen : 0,
+            comment : 0,
+            solved : 0
         })
     }
 
@@ -103,6 +107,9 @@ const Forum = () => {
     }
 
     function changeDate(dateStr){
+        if (dateStr == 0){
+            return 'Vua xong'
+        }
         const l = localStorage.getItem('lang')
         const day = 0
         const hour = 0
@@ -169,14 +176,14 @@ const Forum = () => {
                                                                 <div className="mmt__forum-list-list_box-box-left-triangle">
                                                                     <TbTriangleFilled size={10} style={{ marginRight: 5 }} /><TbTriangleInvertedFilled size={10} />
                                                                 </div>
-                                                                <p>{Math.floor(Math.random() * 10)}</p>
+                                                                <p>{chat.vote}</p>
                                                             </div>
                                                             <div className="mmt__forum-list-list_box-box-left_content">
-                                                                <IoEyeSharp /><p>{Math.floor(Math.random() * 10)}</p></div>
+                                                                <IoEyeSharp /><p>{chat.seen}</p></div>
                                                             <div className="mmt__forum-list-list_box-box-left_content">
-                                                                <FaComment /><p>{Math.floor(Math.random() * 10)}</p></div>
+                                                                <FaComment /><p>{chat.comment}</p></div>
                                                             <div className="mmt__forum-list-list_box-box-left_content">
-                                                                <TiTickOutline size={20} /><p>{Math.floor(Math.random() * 10)}</p></div>
+                                                                <TiTickOutline size={20} /><p>{chat.solved}</p></div>
 
                                                         </div>
                                                         <div className="mmt__forum-list-list_box-box-right">
@@ -188,7 +195,7 @@ const Forum = () => {
                                                             <Link to={chat.id}>
                                                                 <div className="mmt__forum-list-list_box-box-right-content">
                                                                     <h1>{chat.name}</h1>
-                                                                    <h3>{chat.description}</h3>
+                                                                    <h3><div dangerouslySetInnerHTML={{__html : chat.description}}/></h3>
                                                                     <h5>{changeDate(Timestamp.now().seconds - chat.createdAt)}</h5>
                                                                 </div>
                                                             </Link>

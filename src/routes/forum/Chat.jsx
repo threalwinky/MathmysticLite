@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import db from '../../firebase'
-import { onSnapshot, collection, deleteDoc, doc, getDocs, addDoc, Timestamp, query } from 'firebase/firestore'
+import { onSnapshot, collection, deleteDoc, doc, getDocs, addDoc, Timestamp, query, updateDoc } from 'firebase/firestore'
 import { useState } from 'react';
 import { Loading, NotFound } from '../../containers'
 import { Link, useParams } from "react-router-dom";
@@ -41,6 +41,13 @@ const Chat = ({ chatId }) => {
 
 
     }
+
+    const upseen = async () => [
+        await updateDoc(doc(db, 'chat', foundChat.id), {
+            seen: foundChat.seen + 1
+        })
+    ]
+
     useEffect(() => {
 
         const unsub = onSnapshot(query(collection(db, "message")), (doc) => {
@@ -54,7 +61,21 @@ const Chat = ({ chatId }) => {
                     });
                     setMessages(newData2.sort(function (a, b) { return b.createdAt - a.createdAt }))
                     // console.log(newData.sort(function (b, a) { return b.createdAt - a.createdAt }))
+                    // setLoading(1)
+                })
+        });
+
+        const unsub2 = onSnapshot(query(collection(db, "chat")), (doc) => {
+            getDocs(collection(db, "chat"))
+                .then((querySnapshot) => {
+                    const newData = querySnapshot.docs
+                        .map((doc) => ({ ...doc.data(), id: doc.id }));
+                    setChats(newData);
                     setLoading(1)
+                    const foundChat2 = (newData.find(x => x.id == chatId))
+                    setFoundChat(foundChat2)
+                    // console.log(foundChat)
+
                 })
         });
 
@@ -77,53 +98,79 @@ const Chat = ({ chatId }) => {
                 const foundChat2 = (newData.find(x => x.id == chatId))
                 setFoundChat(foundChat2)
                 // console.log(foundChat)
+                updateDoc(doc(db, 'chat', foundChat2.id), {
+                    seen: foundChat2.seen + 1
+                })
             })
 
-        fetchPost();
+        fetchPost()
+
+
 
     }, [])
 
     const addMessage = () => {
         if (localStorage.getItem('user') == undefined) {
             // PopUp('Vui long dang nhap de gui cau tra loi')
+
         }
-        else{
+        else {
+            setMessageContent('')
             addDoc(collection(db, 'message'), {
-                content: messageContent.replace(/\n/g, "<br>"),
+                content: messageContent.replace(/\n/g, "<br/>"),
                 createdAt: Timestamp.now().seconds,
                 createdBy: foundUser,
                 chatInclude: chatId
             })
+            updateDoc(doc(db, 'chat', foundChat.id), {
+                comment: foundChat.comment + 1
+            })
         }
 
-        
+
     }
 
     const deleteMessage = (idDeleteMessage) => {
         deleteDoc(doc(db, 'message', idDeleteMessage))
+        updateDoc(doc(db, 'chat', foundChat.id), {
+            comment: foundChat.comment - 1
+        })
     }
 
-    const deleteChat = async(idDeleteMessage) => {
-        
+    const deleteChat = async (idDeleteMessage) => {
+
         await deleteDoc(doc(db, 'chat', idDeleteMessage)).then(() => {
             window.location.href = '/forum'
         })
-        
+
     }
 
-    function changeDate(dateStr){
+    const upvote = () => {
+        updateDoc(doc(db, 'chat', foundChat.id), {
+            vote: foundChat.vote + 1
+        })
+    }
+
+    const downvote = () => {
+        updateDoc(doc(db, 'chat', foundChat.id), {
+            vote: foundChat.vote - 1
+        })
+    }
+
+    function changeDate(dateStr) {
+        if (dateStr == 0) return 'Vua xong'
         const l = localStorage.getItem('lang')
         const day = 0
         const hour = 0
         const minute = 0
-        var t = dateStr/(24*60*60)
-        if (t > 1) return (l == 'en') ?  `Posted ${parseInt(t)} days ago` : `Đã đăng ${parseInt(t)} ngày trước`
-        t = dateStr/(60*60)
-        if (t > 1) return (l == 'en') ?  `Posted ${parseInt(t)} hours ago` : `Đã đăng ${parseInt(t)} giờ trước`
-        t = dateStr/(60)
-        if (t > 1) return (l == 'en') ?  `Posted ${parseInt(t)} minutes ago` : `Đã đăng ${parseInt(t)} phút trước`
+        var t = dateStr / (24 * 60 * 60)
+        if (t > 1) return (l == 'en') ? `Posted ${parseInt(t)} days ago` : `Đã đăng ${parseInt(t)} ngày trước`
+        t = dateStr / (60 * 60)
+        if (t > 1) return (l == 'en') ? `Posted ${parseInt(t)} hours ago` : `Đã đăng ${parseInt(t)} giờ trước`
+        t = dateStr / (60)
+        if (t > 1) return (l == 'en') ? `Posted ${parseInt(t)} minutes ago` : `Đã đăng ${parseInt(t)} phút trước`
         t = dateStr
-        if (t > 1) return (l == 'en') ?  `Posted ${parseInt(t)} seconds ago` : `Đã đăng ${parseInt(t)} giây trước`
+        if (t > 1) return (l == 'en') ? `Posted ${parseInt(t)} seconds ago` : `Đã đăng ${parseInt(t)} giây trước`
     }
 
     return (
@@ -133,8 +180,8 @@ const Chat = ({ chatId }) => {
                 <div>
                     {!loading ? <Loading /> :
                         <div className="mmt__chat-body">
-                            <NavBarWoutMenu/>
-                            
+                            <NavBarWoutMenu />
+
                             <div className="mmt__chat-container">
                                 {/* {messages.length}
                                 {foundChat.description}
@@ -143,32 +190,38 @@ const Chat = ({ chatId }) => {
                                 {foundChat.createdUser.name} */}
                                 <div className="mmt__chat-info">
                                     <div className="mmt__chat-info_content">
-                                        <IoEyeSharp className="mmt__chat-info_content-icon" /><p>{Math.floor(Math.random() * 10)}</p></div>
+                                        <IoEyeSharp className="mmt__chat-info_content-icon" /><p>{foundChat.seen}</p></div>
                                     <div className="mmt__chat-info_content">
-                                        <FaComment className="mmt__chat-info_content-icon" /><p>{Math.floor(Math.random() * 10)}</p></div>
+                                        <FaComment className="mmt__chat-info_content-icon" /><p>{foundChat.comment}</p></div>
                                     <div className="mmt__chat-info_content">
-                                        <TiTickOutline className="mmt__chat-info_content-icon2" size={20} /><p>{Math.floor(Math.random() * 10)}</p></div>
+                                        <TiTickOutline className="mmt__chat-info_content-icon2" size={20} /><p>{foundChat.solved}</p></div>
                                 </div>
                                 <div className="mmt__chat-box">
                                     <div className="mmt__chat-vote">
-                                        <TbTriangleFilled size={10} />
-                                        {Math.floor(Math.random() * 10)}
-                                        <TbTriangleInvertedFilled size={10} />
+                                        <TbTriangleFilled size={10} style={{ cursor: "pointer" }} onClick={upvote} />
+                                        {foundChat.vote}
+                                        <TbTriangleInvertedFilled size={10} style={{ cursor: "pointer" }} onClick={downvote} />
 
                                     </div>
-                                    <div className="mmt__chat-ask">
-                                        <div className="mmt__chat-ask_info">
-                                            <img src={foundChat.createdUser.avatar} />
-                                            <p>{foundChat.createdUser.name}</p>
+                                    <div className="mmt__chat-ask_all">
+                                        <div className="mmt__chat-ask">
+                                            <div className="mmt__chat-ask_info">
+                                                <img src={foundChat.createdUser.avatar} />
+                                                <p>{foundChat.createdUser.name}</p>
+
+                                            </div>
+                                            <h6>{changeDate(Timestamp.now().seconds - foundChat.createdAt)}</h6>
+                                            <div className="mmt__chat-ask_content">
+                                                <h1>{foundChat.name}</h1>
+                                                <h5>{foundChat.description}</h5>
+                                            </div>
+
                                         </div>
-                                        <div className="mmt__chat-ask_content">
-                                            <h1>{foundChat.name}</h1>
-                                            <h5>{foundChat.description}</h5>
-                                            
-                                        </div>
-                                        
+                                        {/* <button style={{ position: "absolute", right: 50, top: 100 }} className="abc" onClick={() => deleteChat(chatId)}> <Trans>Delete</Trans></button> */}
+                                        <button className="abc" onClick={() => deleteChat(chatId)}> <Trans>Delete</Trans></button>
+
                                     </div>
-                                    <button style={{position: "absolute", right: 50, top: 100}} className="abc" onClick={() => deleteChat(chatId)}> <Trans>Delete</Trans></button>
+
                                 </div>
 
                                 <div />
@@ -191,13 +244,20 @@ const Chat = ({ chatId }) => {
                                                             <div className='mmt__chat-ask_info'>
                                                                 <img src={message.createdBy.avatar} />
                                                                 <p>{message.createdBy.name}</p>
+                                                                
                                                             </div>
-                                                            <h5>{changeDate(Timestamp.now().seconds - message.createdAt)}</h5>
+                                                            <h6>{changeDate(Timestamp.now().seconds - message.createdAt)}</h6>
                                                         </div>
 
                                                         <div className="mmt__chat-ask_content2">
                                                             {/* <h1>{foundChat.name}</h1> */}
-                                                            <h5>{message.content.replace(/<br>/g, <br/>)}</h5>
+                                                            <h5>
+
+                                                                <div dangerouslySetInnerHTML={{ __html: message.content }}>
+
+                                                                </div>
+
+                                                            </h5>
                                                             {/* <h5>11111111111111111111111111111111111111111</h5> */}
                                                         </div>
                                                         {/* 111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111 */}
@@ -208,9 +268,9 @@ const Chat = ({ chatId }) => {
                                                             onClick={() => { deleteMessage(message.id) }}
                                                             className="mmt__chat-ask_menu-button"
                                                         >Delete</button> */}
-                                                        
+
                                                         <Popup
-                                                            content={  <button className="abc" onClick={() => deleteMessage(message.id)}> <Trans>Delete</Trans></button>}
+                                                            content={<button className="abc" onClick={() => deleteMessage(message.id)}> <Trans>Delete</Trans></button>}
                                                             on='click'
                                                             pinned
                                                             position="top right"
@@ -230,8 +290,8 @@ const Chat = ({ chatId }) => {
                                     }
                                 </div>
                                 <div className="mmt__forum-list-new_post_box-bottom2">
-                                    <textarea placeholder={t("Message")} type="text" onChange={evt => { setMessageContent(evt.target.value); }} />
-                                    <button style={{borderStyle:"solid", borderColor: '#c5c7c5'}} onClick={addMessage}> <Trans>Send</Trans> </button>
+                                    <textarea value={messageContent} placeholder={t("Message")} type="text" onChange={evt => { setMessageContent(evt.target.value); }} />
+                                    <button style={{ borderStyle: "solid", borderColor: '#c5c7c5' }} onClick={addMessage}> <Trans>Send</Trans> </button>
                                 </div>
 
 
