@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
-import './Chatbot.css'
+import './Test.css'
 import MathmysticLogo from '../../assets/img/MathmysticLogo.png'
 
 const choose = (a, b, c) => (a ? b : c);
 
-const Chatbot = () => {
+const Test = () => {
 
     const [toggle, setToggle] = useState(1)
 
@@ -80,12 +80,7 @@ const Chatbot = () => {
                             messages?.map((msg, index) => (
                                 <div key={index}>
                                     <div className={msg[0]}>
-                                        <img style={{borderRadius: '50%'}} src={msg[0] == 'bot-message' ?MathmysticLogo :
-                                        
-                                        (localStorage.getItem('userAvatar') == undefined ? "https://as2.ftcdn.net/v2/jpg/03/31/69/91/1000_F_331699188_lRpvqxO5QRtwOM05gR50ImaaJgBx68vi.jpg" : localStorage.getItem('userAvatar'))
-                                        
-                                        } 
-                                         />
+                                        <img src={MathmysticLogo} alt="" />
                                         <p>{msg[1]}</p>
                                     </div>
                                 </div>
@@ -119,4 +114,4 @@ const Chatbot = () => {
     )
 }
 
-export default Chatbot
+export default Test

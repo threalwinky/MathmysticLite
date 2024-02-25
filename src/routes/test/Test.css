@@ -1,12 +1,19 @@
-.test2 {
+.buy{
+    /* background-color: rgb(255, 255, 255); */
+    width: fit-content;
     display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-}
-
-.test2-box{
-    background-color: bisque;
-    height: 300px;
-    width: 300px;
-    margin: auto;
+    flex-direction: row-reverse;
+    /* background-color: aqua; */
+    > .count{
+        
+        position: absolute;
+        /* margin-left: 40px; */
+        
+        background-color: red;
+        padding: 0 6px;
+        border-radius: 50%;
+        color: white;
+        /* width: 100%; */
+        /* aspect-ratio: 1/1; */
+    }
 }
