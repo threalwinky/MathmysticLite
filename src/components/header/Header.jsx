@@ -1,7 +1,5 @@
 import React from 'react'
 import { useState, useEffect } from "react";
-import { Container, Row, Col } from "react-bootstrap";
-import { ArrowRightCircle } from 'react-bootstrap-icons';
 import 'animate.css';
 import TrackVisibility from 'react-on-screen';
 import { Trans, withTranslation } from 'react-i18next';
@@ -84,7 +82,8 @@ const Header = () => {
               </Trans>
             </li>
           </p>
-          <a href="#introduction" style={{ textDecoration: "none" }} ><button ><Trans>Let’s Connect</Trans> <ArrowRightCircle size={25} /></button>
+          <a href="#introduction" style={{ textDecoration: "none" }} ><button >
+            <Trans>Let’s Connect</Trans></button>
           </a>
         </div>
         <div className='header-content_right'>

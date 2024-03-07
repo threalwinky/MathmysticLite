@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react'
+import { getDocs, collection } from 'firebase/firestore';
+
 import { useMediaQuery } from 'react-responsive'
 import { Trans } from 'react-i18next';
 
+
 import db from '../../../firebase'
-import { getDocs, collection } from 'firebase/firestore';
 
 import i18n from '../../../i18n'
 import VietnamLanguage from '../../assets/img/VietnamLanguage3.jpeg'
@@ -518,6 +520,14 @@ const NavBar = () => {
     <div>
 
       <>
+
+        <div className={"modal-left-fade" + ((modalLeft) ? ' ' : ' modal-left-fade-show')}
+
+          onClick={() => { setModalLeft(!modalLeft) }}
+        >
+
+        </div>
+
         <div className={'modal-left' + ((modalLeft) ? ' slide-right' : ' slide-left')} onClick={() => { setModalLeft(!modalLeft) }}>
           <div
             onClick={(e) => e.stopPropagation()}
@@ -573,6 +583,13 @@ const NavBar = () => {
           } >
 
           </div> */}
+        </div>
+
+        <div className={"modal-right-fade" + ((modalRight) ? ' ' : ' modal-right-fade-show')}
+
+          onClick={() => { setModalRight(!modalRight) }}
+        >
+
         </div>
 
         <div className={'modal-right' + ((modalRight) ? ' slide-left' : ' slide-right')}
@@ -683,7 +700,7 @@ const NavBar = () => {
         <div className='navbar-right'>
 
           <p>
-            <img  onClick={() => cl()} className='flag-icon' src={language ? EnglishLanguage : VietnamLanguage} alt="" width={35} height={35} />
+            <img onClick={() => cl()} className='flag-icon' src={language ? EnglishLanguage : VietnamLanguage} alt="" width={35} height={35} />
           </p>
 
           <a href="/cart">
