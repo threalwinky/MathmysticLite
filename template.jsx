@@ -2,7 +2,7 @@
 import { useState, useEffect, React } from 'react'
 import { Trans, withTranslation, useTranslation } from 'react-i18next';
 import { addDoc, collection, deleteDoc, doc, getDocs, onSnapshot, query, updateDoc } from 'firebase/firestore'
-
+import { useMediaQuery } from 'react-responsive'
 
 
 import db from '../../../firebase'

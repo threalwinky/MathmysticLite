@@ -9,6 +9,7 @@ import db from '../firebase'
 import './App.css'
 /*Local Modules */
 import { Home } from './routes';
+import { NotFound } from './containers';
 /*Images */
 import MathmysticPet from './assets/img/MathmysticPet.png';
 import MathmysticLogo from './assets/img/MathmysticLogo.png'
@@ -22,7 +23,7 @@ const App = () => {
             <BrowserRouter>
                 <Routes>
                     <Route path="/" element={<Home />} />
-
+                    <Route path="*" element={<NotFound />} />
                 </Routes>
 
             </BrowserRouter>

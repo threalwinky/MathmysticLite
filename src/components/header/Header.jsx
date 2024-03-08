@@ -100,7 +100,7 @@ const Header = () => {
                 width="2em"
                 style={{ fontSize: 10 }}
                 stroke='#890036'
-                stroke-width='0.8px'
+                strokeWidth='0.8px'
               >
                 <path
                   fillRule="evenodd"
