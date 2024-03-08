@@ -5,15 +5,19 @@ import { addDoc, collection, deleteDoc, doc, getDocs, onSnapshot, query, updateD
 
 
 
-import db from '../../firebase'
+import db from '../../../firebase'
 import './template.css'
-import MathmysticPet from './assets/img/MathmysticPet.png';
-import MathmysticLogo from './assets/img/MathmysticLogo.png'
+import MathmysticPet from '../../assets/img/MathmysticPet.png';
+import MathmysticLogo from '../../assets/img/MathmysticLogo.png'
 
 const template = () => {
     /* Necessary function */
     const [t, i18n] = useTranslation()
+    const isDesktopOrLaptop = useMediaQuery({
+        query: '(min-width: 1050px)'
+    })
 
+    
     return (
         <div>
 

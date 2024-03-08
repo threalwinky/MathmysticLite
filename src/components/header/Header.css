@@ -58,6 +58,8 @@
         padding: 1rem;
         cursor: pointer;
         font-family: mulish;
+        border-radius: 10px;
+        border: 1px solid #890036;
     }
 
     button:hover {
