@@ -9,7 +9,8 @@
     position: relative;
     text-align: center;
     height: fit-content;
-    
+    /* align-items: center; */
+    /* justify-content: center; */
     >h1 {
         margin: auto;
         font-size: 50px;
@@ -27,16 +28,24 @@
         margin-bottom: 50px;
     }
 
-    .document-choose {
+    .document-choose-container{
+        /* background-color: tomato; */
         width: 100%;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+    }
 
+    .document-choose {
+        width: 70%;
+        
         height: 20px;
         display: flex;
 
         align-items: center;
 
         .document-choose-box {
-            width: 33%;
+            width: 33.33%;
             background-color: rgb(199, 229, 255);
             align-items: center;
             padding: 10px 10px;
@@ -45,10 +54,8 @@
         }
 
         .document-choose-box-1 {
-
             border-top-left-radius: 20px;
             border-bottom-left-radius: 20px;
-
         }
 
         .document-choose-box-2 {}

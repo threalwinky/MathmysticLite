@@ -51,7 +51,7 @@ const Document = () => {
   })
 
   const [choose, setChoose] = useState(1)
-  
+
   const [docContent, setDocContent] = useState('1')
   // const [value, setValue] = useState('1')
   const projects = [
@@ -113,15 +113,15 @@ const Document = () => {
   const DocElement1 = () => {
     return (
       <>
-      <iframe
-      allowfullscreen="allowfullscreen"
-      scrolling="no" class="fp-iframe"
-      style={{ border: "1px solid lightgray", width: isDesktopOrLaptop ? "80%" : '90%', height: isDesktopOrLaptop ? "1000px" : "250px", padding: 20 }}
-      src="https://heyzine.com/flip-book/11dd3247df.html">
-    </iframe>
+        <iframe
+          allowfullscreen="allowfullscreen"
+          scrolling="no" class="fp-iframe"
+          style={{ border: "1px solid lightgray", width: isDesktopOrLaptop ? "80%" : '90%', height: isDesktopOrLaptop ? "1000px" : "250px", padding: 20 }}
+          src="public/demo.html">
+        </iframe>
       </>
     )
-    
+
   }
 
   const DocElement2 = () => {
@@ -203,7 +203,7 @@ const Document = () => {
       </>
     )
   }
-  
+
   const Choose = () => {
     if (docContent == '1') return (
       <DocElement1></DocElement1>
@@ -221,30 +221,33 @@ const Document = () => {
   return (
     <div className='document'>
       <h1><Trans>Document</Trans></h1>
-      <div className='document-choose'>
-        <div 
-        className={'document-choose-box document-choose-box-1' + (choose==1 ? ' choose' : '') }
-        onClick={() => {setChoose(1), setDocC}}
-        >
-          123
+      <div className='document-choose-container'>
+        <div className='document-choose'>
+          <div
+            className={'document-choose-box document-choose-box-1' + (choose == 1 ? ' choose' : '')}
+            onClick={() => { setChoose(1), setDocContent }}
+          >
+            So tay dien tu
+          </div>
+          <div
+            className={'document-choose-box document-choose-box-2' + (choose == 2 ? ' choose' : '')}
+            onClick={() => setChoose(2)}
+          >
+            Huong dan su dung
+          </div>
+          <div
+            className={'document-choose-box document-choose-box-3' + (choose == 3 ? ' choose' : '')}
+            onClick={() => setChoose(3)}
+          >
+            Video huong dan
+          </div>
+
         </div>
-        <div 
-        className={'document-choose-box document-choose-box-2' + (choose==2 ? ' choose' : '') }
-        onClick={() => setChoose(2)}
-        >
-          123
-        </div>
-        <div 
-        className={'document-choose-box document-choose-box-3' + (choose==3 ? ' choose' : '') }
-        onClick={() => setChoose(3)}
-        >
-          123
-        </div>
-        
       </div>
+
       <div className='document-content'>
-          <Choose></Choose>
-        </div>
+        <Choose></Choose>
+      </div>
     </div>
   )
 }

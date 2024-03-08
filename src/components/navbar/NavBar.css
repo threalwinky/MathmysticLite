@@ -433,7 +433,7 @@
 @media only screen and (min-width: 1024px) {
     .navbar-links-logo h1 {
         text-shadow: -1px 0 rgb(168, 127, 127), 0 1px rgb(157, 156, 156), 1px 0 rgb(255, 255, 255), 0 -1px rgb(255, 255, 255);
-        font-weight: 500;
+        font-weight: 400;
         font-size: x-large;
         user-select: none;
         padding: 0rem 0.2rem;
@@ -451,7 +451,7 @@
 @media only screen and (min-width: 1280px) {
     .navbar-links-logo h1 {
         text-shadow: -1px 0 rgb(168, 127, 127), 0 1px rgb(157, 156, 156), 1px 0 rgb(255, 255, 255), 0 -1px rgb(255, 255, 255);
-        font-weight: 500;
+        font-weight: 400;
         font-size: x-large;
         user-select: none;
         padding: 0rem 0.2rem;
