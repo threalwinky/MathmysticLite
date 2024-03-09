@@ -29,7 +29,7 @@ const Contact = () => {
   const [loading, setLoading] = useState(0)
   const form = useRef();
   const sendMessage = (e) => {
-    setLoading(1)
+    
     e.preventDefault()
     if (lastname == ''
       || firstname == ''
@@ -42,7 +42,7 @@ const Contact = () => {
     setEmail('')
     setMessage('')
     setPhoneNumber('')
-
+    setLoading(1)
 
 
     emailjs

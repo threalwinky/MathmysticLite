@@ -7,7 +7,7 @@
 
     h1 {
         margin: auto;
-        font-size: 50px;
+        font-size: clamp(30px, 4vw, 50px);
         font-weight: 700;
         text-align: center;
         color: black;
