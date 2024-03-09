@@ -6,23 +6,39 @@ import { useMediaQuery } from 'react-responsive'
 
 
 import db from '../../../firebase'
-import './Chatbot.css'
+import './LoadingSmall.css'
 import MathmysticPet from '../../assets/img/MathmysticPet.png';
 import MathmysticLogo from '../../assets/img/MathmysticLogo.png'
 
-const Chatbot = () => {
+const LoadingSmall = () => {
     /* Necessary function */
     const [t, i18n] = useTranslation()
     const isDesktopOrLaptop = useMediaQuery({
         query: '(min-width: 1050px)'
     })
 
-    
+
     return (
         <div>
+            <div className='loading-container-small'>
+                {/* 123 */}
+                <div className="lds-ring-small">
+                    <div>
 
+                    </div>
+                    <div>
+
+                    </div>
+                    <div>
+
+                    </div>
+                    <div>
+
+                    </div>
+                </div>
+            </div>
         </div>
     )
 }
 
-export default Chatbot
+export default LoadingSmall
