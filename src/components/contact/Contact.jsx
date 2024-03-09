@@ -36,7 +36,7 @@ const Contact = () => {
               <input type="text" />
               </div>
               <div className="contact-box-form-textarea">
-              <textarea type="text" />
+              <textarea type="text" rows={6}/>
               
               </div>
               <div className='contact-box-form-button'>
