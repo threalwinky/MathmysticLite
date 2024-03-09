@@ -4,6 +4,7 @@ import { Trans, withTranslation, useTranslation } from 'react-i18next';
 import { addDoc, collection, deleteDoc, doc, getDocs, onSnapshot, query, setDoc, updateDoc } from 'firebase/firestore'
 import { useMediaQuery } from 'react-responsive'
 
+import { Worker } from '@react-pdf-viewer/core';
 
 import db from '../../../firebase'
 import './Document.css'
@@ -89,7 +90,7 @@ const Document = () => {
   ];
 
   useEffect(() => {
-    console.log(docContent)
+    // console.log(docContent)
 
   }, [])
 
@@ -113,12 +114,17 @@ const Document = () => {
   const DocElement1 = () => {
     return (
       <>
-        <iframe
+        {/* <iframe
           allowfullscreen="allowfullscreen"
           scrolling="no" class="fp-iframe"
           style={{ border: "1px solid lightgray", width: isDesktopOrLaptop ? "80%" : '90%', height: isDesktopOrLaptop ? "1000px" : "250px", padding: 20 }}
-          src="public/demo.html">
-        </iframe>
+          src="demo.html">
+        </iframe> */}
+
+<Worker workerUrl="https://unpkg.com/pdfjs-dist@3.4.120/build/pdf.worker.min.js">
+   
+</Worker>
+
       </>
     )
 
@@ -219,7 +225,7 @@ const Document = () => {
     )
   }
   return (
-    <div className='document'>
+    <div className='document' id='document'>
       <h1><Trans>Document</Trans></h1>
       <div className='document-choose-container'>
         <div className='document-choose'>

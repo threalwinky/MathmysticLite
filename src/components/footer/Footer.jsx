@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container, Row, Col } from "react-bootstrap";
+// import { Container, Row, Col } from "react-bootstrap";
 import { CiLocationOn } from "react-icons/ci";
 import { MdOutlineEmail } from "react-icons/md";
 import { CiPhone } from "react-icons/ci";
@@ -8,16 +8,16 @@ import MathmysticLogo from "../../assets/img/MathmysticLogo.png";
 import LinkedinIcon from "../../assets/img/LinkedinIcon.svg";
 import FacebookIcon from "../../assets/img/FacebookIcon.svg";
 import InstagramIcon from "../../assets/img/InstagramIcon.svg";
-import Mail from '../mail/Mail'
+// import Mail from '../mail/Mail'
 import './Footer.css'
 import { Trans } from 'react-i18next';
 const Footer = () => {
   return (
     <div>
       <footer className="footer">
-        <Container>
+        {/* <Container>
           <Row className="align-items-center">
-            {/* <Mail /> */}
+            <Mail />
             <Col size={12} sm={6}>
               <div className='mmt__footer'>
                 <h4><Trans>Get In Touch</Trans></h4>
@@ -60,7 +60,11 @@ const Footer = () => {
               </p>
             </Col>
           </Row>
-        </Container>
+        </Container> */}
+
+            
+
+
       </footer>
     </div>
   )

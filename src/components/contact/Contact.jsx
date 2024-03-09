@@ -1,102 +1,51 @@
-import React, { useTransition } from 'react'
-import { useState } from "react";
-import { Container, Row, Col } from "react-bootstrap";
-import 'animate.css';
-import TrackVisibility from 'react-on-screen';
+/*Module before File after */
+import { useState, useEffect, React } from 'react'
+import { Trans, withTranslation, useTranslation } from 'react-i18next';
+import { addDoc, collection, deleteDoc, doc, getDocs, onSnapshot, query, updateDoc } from 'firebase/firestore'
+import { useMediaQuery } from 'react-responsive'
 
-import ContactImage from "../../assets/img/ContactImage.webp";
+
+import db from '../../../firebase'
 import './Contact.css'
-import { Trans, useTranslation } from 'react-i18next';
+import MathmysticPet from '../../assets/img/MathmysticPet.png';
+import MathmysticLogo from '../../assets/img/MathmysticLogo.png'
+import ContactImage from "../../assets/img/ContactImage.webp";
+
 const Contact = () => {
-  const [t, i18n]= useTranslation();
-  const formInitialDetails = {
-    firstName: '',
-    lastName: '',
-    email: '',
-    phone: '',
-    message: ''
-  }
-  const [formDetails, setFormDetails] = useState(formInitialDetails);
-  const [buttonText, setButtonText] = useState('Send');
-  const [status, setStatus] = useState({});
-
-  const onFormUpdate = (category, value) => {
-    setFormDetails({
-      ...formDetails,
-      [category]: value
+    /* Necessary function */
+    const [t, i18n] = useTranslation()
+    const isDesktopOrLaptop = useMediaQuery({
+        query: '(min-width: 1050px)'
     })
-  }
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setButtonText("Sending...");
-    let response = await fetch("http://localhost:3000/contact", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json;charset=utf-8",
-      },
-      body: JSON.stringify(formDetails),
-    });
-    setButtonText("Send");
-    let result = await response.json();
-    setFormDetails(formInitialDetails);
-    if (result.code == 200) {
-      setStatus({ success: true, message: 'Message sent successfully' });
-    } else {
-      setStatus({ success: false, message: 'Something went wrong, please try again later.' });
-    }
-  };
-
-  return (
-    <div className='mmt__contact' id='contact'>
-      <Container>
-        <Row className="align-items-center">
-          <Col size={12} md={6}>
-            <TrackVisibility>
-              {({ isVisible }) =>
-                <img src={ContactImage} alt="Contact Us" className='mmt__contact-image' />
-              }
-            </TrackVisibility>
-          </Col>
-          <Col size={12} md={6}>
-            <TrackVisibility>
-              {({ isVisible }) =>
-                <div>
-                  <h2><Trans>Contact</Trans></h2>
-                  <form onSubmit={handleSubmit}>
-                    <Row>
-                      <Col size={12} sm={6} className="px-1">
+    
+    return (
+        <div className='contact' id='contact'>
+          <div className="contact-box">
+            <div className="contact-box-img">
+            <img src={ContactImage} alt="Contact Us" className='contact-image' />
+            </div>
+            <div className="contact-box-form">
+              <h2><Trans>Contact</Trans></h2>
+              <div className="contact-box-form-row">
+              <input type="text" placeholder={t('Last Name')} />
+              <input type="text" />
+              </div>
+              <div className="contact-box-form-row">
+              <input type="text" />
+              <input type="text" />
+              </div>
+              <div className="contact-box-form-textarea">
+              <textarea type="text" />
               
-                        <input type="text" value={formDetails.firstName} placeholder={t('Last Name')}  onChange={(e) => onFormUpdate('firstName', e.target.value)} />
-                      </Col>
-                      <Col size={12} sm={6} className="px-1">
-                        <input type="text" value={formDetails.lasttName} placeholder={t('First Name')} onChange={(e) => onFormUpdate('lastName', e.target.value)} />
-                      </Col>
-                      <Col size={12} sm={6} className="px-1">
-                        <input type="email" value={formDetails.email} placeholder={t('Email address')} onChange={(e) => onFormUpdate('email', e.target.value)} />
-                      </Col>
-                      <Col size={12} sm={6} className="px-1">
-                        <input type="tel" value={formDetails.phone} placeholder={t('Phone number')}  onChange={(e) => onFormUpdate('phone', e.target.value)} />
-                      </Col>
-                      <Col size={12} className="px-1">
-                        <textarea rows="6" value={formDetails.message} placeholder={t('Message')} onChange={(e) => onFormUpdate('message', e.target.value)}></textarea>
-                        <button type="submit" disabled={true}><span><Trans>{buttonText}</Trans></span></button>
-                      </Col>
-                      {
-                        status.message &&
-                        <Col>
-                          <p className={status.success === false ? "danger" : "success"}>{status.message}</p>
-                        </Col>
-                      }
-                    </Row>
-                  </form>
-                </div>}
-            </TrackVisibility>
-          </Col>
-        </Row>
-      </Container>
-    </div>
-  )
+              </div>
+              <div className='contact-box-form-button'>
+               <button><Trans>Send</Trans></button>
+              </div>
+            </div>
+          </div>
+        </div>
+    )
 }
 
 export default Contact

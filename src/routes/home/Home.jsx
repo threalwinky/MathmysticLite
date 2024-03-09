@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Modal, Loading, Chatbot } from "../../containers";
 
 // import { NavBar, Header, Introduction, Store, About, Document, Footer, Contact } from "../../components";
-import { NavBar, Header, Introduction, Store, About, Document} from "../../components";
+import { NavBar, Header, Introduction, Store, About, Document, Contact, Footer } from "../../components";
 
 const Home = () => {
   const [loading, setLoading] = useState(0)
@@ -22,9 +22,9 @@ const Home = () => {
           <Store></Store>
           <About></About>
           <Document></Document>
-          {/*<Contact></Contact>
+          <Contact></Contact>
           <Footer></Footer>
-          <Chatbot></Chatbot> */}
+          <Chatbot></Chatbot>
 
         </div>
 

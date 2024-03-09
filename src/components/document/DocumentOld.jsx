@@ -43,7 +43,7 @@ import Ins3 from '../../assets/img/Doc/Ins/Ins3.png'
 import Ins4 from '../../assets/img/Doc/Ins/Ins4.png'
 import Ins5 from '../../assets/img/Doc/Ins/Ins5.png'
 
-const Document = () => {
+const Document2 = () => {
   const isDesktopOrLaptop = useMediaQuery({
     query: '(min-width: 800px)'
   })
