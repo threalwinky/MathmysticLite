@@ -1,38 +1,33 @@
-/*Module before File after */
-import { useState, useEffect, React } from 'react'
-import { Trans, withTranslation, useTranslation } from 'react-i18next';
-import { addDoc, collection, deleteDoc, doc, getDocs, onSnapshot, query, updateDoc } from 'firebase/firestore'
-import { useMediaQuery } from 'react-responsive'
+import React, { useEffect, useState } from 'react'
+
 import { Link } from 'react-router-dom'
+
+import { useMediaQuery } from 'react-responsive'
 import { FcGoogle } from "react-icons/fc";
+import Form from 'react-bootstrap/Form'
+import { Button } from 'react-bootstrap';
 
-
-import db from '../../../firebase'
-import './SignIn.css'
 import MathmysticPet from '../../assets/img/MathmysticPet.png';
-import MathmysticLogo from '../../assets/img/MathmysticLogo.png'
 import { NavBarWoutMenu } from '../../components';
 import './SignIn.css'
 import { Loading } from '../../containers';
+import db from '../../firebase'
+import { addDoc, onSnapshot, collection, doc, getDocs } from 'firebase/firestore'
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { toast } from 'react-toastify';
+import { Trans, useTranslation } from 'react-i18next';
 import PopupSuccess from '../../containers/modal/PopupSuccess';
 import PopupFailLogIn1 from '../../containers/modal/PopupFailLogIn1';
 import PopupFailLogIn2 from '../../containers/modal/PopupFailLogIn2';
+const provider = new GoogleAuthProvider();
+const auth = getAuth();
 const SignIn = () => {
-    /* Necessary function */
-    const [t, i18n] = useTranslation()
-    const isDesktopOrLaptop = useMediaQuery({
-        query: '(min-width: 1050px)'
-    })
-
-    const provider = new GoogleAuthProvider();
-    const auth = getAuth();
-
     const [loading, setLoading] = useState(0)
     // toast('123')
     const [isOpenPopupSuccess, setIsOpenPopupSuccess] = useState(0)
     const [isOpenPopupFail1, setIsOpenPopupFail1] = useState(0)
     const [isOpenPopupFail2, setIsOpenPopupFail2] = useState(0)
+    const [t, i18n]= useTranslation();
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     var GoogleAuthentication = () => {
@@ -71,8 +66,7 @@ const SignIn = () => {
                             localStorage.setItem('user', userEmail)
                             localStorage.setItem('userAvatar', user.photoURL)
                             localStorage.setItem('userName', user.displayName)
-                            // window.location.href = '/'
-                            setIsOpenPopupSuccess(1)
+                            window.location.href = '/'
                             localStorage.setItem('loggedin', '1')
                         }
 
@@ -144,16 +138,16 @@ const SignIn = () => {
                     {/* <div className='gradient__bg'> */}
                         <NavBarWoutMenu />
                     {/* </div> */}
-                    <form className='sign_in'>
+                    <Form className='sign_in'>
                         <div className='sign_in-container'>
                             <h1><Trans>Sign In</Trans></h1>
-                            <input
+                            <Form.Control
                                 type="text"
                                 placeholder=' Email'
                                 className='sign_in-input'
                                 onChange={e => setEmail(e.target.value)}
                             />
-                            <input
+                            <Form.Control
                                 type={showPassword ? "text" : "password"}
                                 placeholder={t(' Password')}
                                 className='sign_in-input' 
@@ -162,26 +156,25 @@ const SignIn = () => {
                                 
 
                             <div className='sign_in-show_password'>
-                                <input
+                                <Form.Check
                                     type="checkbox"
                                     onClick={() => { setShowPassword(!showPassword) }}
-                                    // ={t('Show Password')}
+                                    label={t('Show Password')}
 
                                 />
-                                <label htmlFor=""><Trans>Show Password</Trans></label>
                             </div>
-                            <button type='submit' className='sign_in-submit_button' onClick={checkUser}>Sign In</button>
+                            <Button type='submit' className='sign_in-submit_button' onClick={checkUser}>Sign In</Button>
                             <div className='sign_in-google_log_in'>
                                 <p>Or log in with </p>
                                 <FcGoogle size={25} className='sign_in-google_log_in-icon' onClick={GoogleAuthentication} />
                             </div>
-                            <div className='sign_in_ps'>
+                            <div>
                                 <span>Dont have an account?</span>
-                                <Link to={'/signup'} style={{ textDecoration: 'underline' }}> Sign Up here</Link>
+                                <Link to={'/signup'} style={{ textDecoration: 'underline' }}> Sign Up</Link>
                             </div>
                         </div>
 
-                    </form>
+                    </Form>
                     {/* <button onClick={() => setIsOpenPopupSuccess(true)}>Open Popup</button> */}
                     {isOpenPopupSuccess ? <PopupSuccess setIsOpenPopupSuccess={setIsOpenPopupSuccess} /> : ""}
                     {isOpenPopupFail1 ? <PopupFailLogIn1 setIsOpenPopupFail1={setIsOpenPopupFail1} /> : ""}
@@ -190,6 +183,8 @@ const SignIn = () => {
                 
             </div>}
         </div>
+
+
     )
 }
 

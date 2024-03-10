@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import { getDocs, collection } from 'firebase/firestore';
-
 import { useMediaQuery } from 'react-responsive'
 import { Trans } from 'react-i18next';
 
+import db from '../../firebase'
+import { getDocs, collection } from 'firebase/firestore';
 
-import db from '../../../firebase'
-import i18n from '../../../i18n'
+import i18n from '../../i18n'
 import VietnamLanguage from '../../assets/img/VietnamLanguage3.jpeg'
 import EnglishLanguage from '../../assets/img/EnglishLanguage3.png'
 import MathmysticLogo from '../../assets/img/MathmysticLogo.png'
@@ -37,7 +36,6 @@ const NavBar = () => {
   })
 
   var LogOut = () => {
-    if (localStorage.getItem('user') == undefined) return
     localStorage.removeItem('user')
     localStorage.removeItem('userAvatar')
     localStorage.removeItem('userName')
@@ -370,7 +368,7 @@ const NavBar = () => {
             <Trans>Setting</Trans>
           </p>
         </a>
-        <a onClick={LogOut} style={{cursor: 'pointer'}}>
+        <a onClick={LogOut}>
           <svg
             viewBox="0 0 21 21"
             fill="currentColor"
@@ -520,14 +518,6 @@ const NavBar = () => {
     <div>
 
       <>
-
-        <div className={"modal-left-fade" + ((modalLeft) ? ' ' : ' modal-left-fade-show')}
-
-          onClick={() => { setModalLeft(!modalLeft) }}
-        >
-
-        </div>
-
         <div className={'modal-left' + ((modalLeft) ? ' slide-right' : ' slide-left')} onClick={() => { setModalLeft(!modalLeft) }}>
           <div
             onClick={(e) => e.stopPropagation()}
@@ -585,13 +575,6 @@ const NavBar = () => {
           </div> */}
         </div>
 
-        <div className={"modal-right-fade" + ((modalRight) ? ' ' : ' modal-right-fade-show')}
-
-          onClick={() => { setModalRight(!modalRight) }}
-        >
-
-        </div>
-
         <div className={'modal-right' + ((modalRight) ? ' slide-left' : ' slide-right')}
           onClick={() => { setModalRight(!modalRight) }}
         >
@@ -602,8 +585,8 @@ const NavBar = () => {
               <div className='modal-right-content-header-info'>
                 <img width={45} height={45} src={foundUser.avatar} alt="" style={{ borderRadius: '50%' }} />
                 <div className='modal-right-content-header-info-text'>
-                  <h1><Trans>{foundUser.name}</Trans></h1>
-                  <p><Trans>{fe}</Trans></p>
+                  <h1>{foundUser.name}</h1>
+                  <p>{fe}</p>
                 </div>
               </div>
 
@@ -656,7 +639,7 @@ const NavBar = () => {
       <div className={`navbar ${scrolled ? "scrolled" : ""}`} >
 
         <div className='navbar-left'>
-          {!isDesktopOrLaptop ?
+          {!0 ?
             <a>
 
               <svg
@@ -688,7 +671,7 @@ const NavBar = () => {
             </a>
             {!isDesktop ? "" :
               <div className='navbar-container-links'>
-                <HomeMenu />
+                {/* <HomeMenu /> */}
               </div>
             }
 
@@ -719,7 +702,6 @@ const NavBar = () => {
 
 
 
-
           <a href="/forum">
             <svg
               fill="currentColor"
@@ -733,6 +715,9 @@ const NavBar = () => {
               <path d="M2.165 15.803l.02-.004c1.83-.363 2.948-.842 3.468-1.105A9.06 9.06 0 008 15c4.418 0 8-3.134 8-7s-3.582-7-8-7-8 3.134-8 7c0 1.76.743 3.37 1.97 4.6a10.437 10.437 0 01-.524 2.318l-.003.011a10.722 10.722 0 01-.244.637c-.079.186.074.394.273.362a21.673 21.673 0 00.693-.125zm.8-3.108a1 1 0 00-.287-.801C1.618 10.83 1 9.468 1 8c0-3.192 3.004-6 7-6s7 2.808 7 6c0 3.193-3.004 6-7 6a8.06 8.06 0 01-2.088-.272 1 1 0 00-.711.074c-.387.196-1.24.57-2.634.893a10.97 10.97 0 00.398-2z" />
             </svg>
           </a>
+
+
+
 
 
           <svg

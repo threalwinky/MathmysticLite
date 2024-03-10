@@ -8,7 +8,7 @@ import { BrowserRouter, Routes, Route  } from 'react-router-dom';
 import db from '../firebase'
 import './App.css'
 /*Local Modules */
-import { Home } from './routes';
+import { Home, SignIn } from './routes';
 import { NotFound } from './containers';
 /*Images */
 import MathmysticPet from './assets/img/MathmysticPet.png';
@@ -24,6 +24,7 @@ const App = () => {
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="*" element={<NotFound />} />
+                    <Route path="signin" element={<SignIn />} />
                 </Routes>
 
             </BrowserRouter>

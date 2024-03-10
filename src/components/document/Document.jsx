@@ -3,8 +3,10 @@ import { useState, useEffect, React } from 'react'
 import { Trans, withTranslation, useTranslation } from 'react-i18next';
 import { addDoc, collection, deleteDoc, doc, getDocs, onSnapshot, query, setDoc, updateDoc } from 'firebase/firestore'
 import { useMediaQuery } from 'react-responsive'
-
+import { Fade, Slide } from 'react-slideshow-image';
 import { Worker } from '@react-pdf-viewer/core';
+import ReactPlayer from 'react-player/file'
+import 'react-slideshow-image/dist/styles.css'
 
 import db from '../../../firebase'
 import './Document.css'
@@ -114,17 +116,18 @@ const Document = () => {
   const DocElement1 = () => {
     return (
       <>
-        {/* <iframe
+      <div className="slide-container document-slide">
+        <iframe
           allowfullscreen="allowfullscreen"
           scrolling="no" class="fp-iframe"
           style={{ border: "1px solid lightgray", width: isDesktopOrLaptop ? "80%" : '90%', height: isDesktopOrLaptop ? "1000px" : "250px", padding: 20 }}
-          src="demo.html">
-        </iframe> */}
-
-<Worker workerUrl="https://unpkg.com/pdfjs-dist@3.4.120/build/pdf.worker.min.js">
-   
-</Worker>
-
+          src="https://heyzine.com/flip-book/2ac410fc4e.html">
+        </iframe>
+        {/* <iframe allowfullscreen="allowfullscreen" scrolling="no" class="fp-iframe" style="border: 1px solid lightgray; width: 100%; height: 400px;" src="https://heyzine.com/flip-book/2ac410fc4e.html"></iframe> */}
+          {/* <div>
+            213
+          </div> */}
+</div>
       </>
     )
 
@@ -133,16 +136,22 @@ const Document = () => {
   const DocElement2 = () => {
     return (
       <>
-        <div className="slide-container document-slide">
+        {/* <div className="slide-container document-slide">
           <Slide {...{ duration: 100, autoplay: false, indicators: true }}>
             {projects2.map((fadeImage, index) => (
               <div key={index}>
                 <img style={{ width: '100%', borderRadius: 30 }} src={fadeImage.imgUrl} />
-                {/* <h2>{fadeImage.caption}</h2> */}
               </div>
             ))}
           </Slide>
-        </div>
+        </div> */}
+        <iframe
+          allowfullscreen="allowfullscreen"
+          scrolling="no" class="fp-iframe"
+          style={{ border: "1px solid lightgray", width: isDesktopOrLaptop ? "80%" : '90%', height: isDesktopOrLaptop ? "1000px" : "250px", padding: 20 }}
+          src="https://heyzine.com/flip-book/9f0a65b367.html">
+        </iframe>
+        {/* <iframe allowfullscreen="allowfullscreen" scrolling="no" class="fp-iframe" style="border: 1px solid lightgray; width: 100%; height: 400px;" src=""></iframe> */}
       </>
     )
   }
@@ -151,14 +160,19 @@ const Document = () => {
     return (
       <>
         <div className="slide-container document-slide">
-          <Slide {...{ duration: 100, autoplay: false, indicators: true }}>
+          {/* <Slide {...{ duration: 100, autoplay: false, indicators: true }}>
             {projects3.map((fadeImage, index) => (
               <div key={index}>
                 <img style={{ width: '50%', borderRadius: 30 }} src={fadeImage.imgUrl} />
-                {/* <h2>{fadeImage.caption}</h2> */}
               </div>
             ))}
-          </Slide>
+          </Slide> */}
+          <iframe
+          allowfullscreen="allowfullscreen"
+          scrolling="no" class="fp-iframe"
+          style={{ border: "1px solid lightgray", width: isDesktopOrLaptop ? "80%" : '90%', height: isDesktopOrLaptop ? "1000px" : "250px", padding: 20 }}
+          src="https://heyzine.com/flip-book/9f0a65b367.html">
+        </iframe>
         </div>
       </>
     )
@@ -231,19 +245,19 @@ const Document = () => {
         <div className='document-choose'>
           <div
             className={'document-choose-box document-choose-box-1' + (choose == 1 ? ' choose' : '')}
-            onClick={() => { setChoose(1), setDocContent }}
+            onClick={() => { setChoose(1), setDocContent(1) }}
           >
             So tay dien tu
           </div>
           <div
             className={'document-choose-box document-choose-box-2' + (choose == 2 ? ' choose' : '')}
-            onClick={() => setChoose(2)}
+            onClick={() => {setChoose(2), setDocContent(3)}}
           >
             Huong dan su dung
           </div>
           <div
             className={'document-choose-box document-choose-box-3' + (choose == 3 ? ' choose' : '')}
-            onClick={() => setChoose(3)}
+            onClick={() => {setChoose(3), setDocContent(4)}}
           >
             Video huong dan
           </div>
