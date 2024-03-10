@@ -12,7 +12,7 @@ const Home = () => {
   }, [])
 
   return (
-    <div>
+    <div id='abc'>
       {!loading ? <Loading /> :
 
         <div>

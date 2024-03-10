@@ -1,27 +1,45 @@
-import React from 'react'
+/*Module before File after */
+import { useState, useEffect, React } from 'react'
+import { Trans, withTranslation, useTranslation } from 'react-i18next';
+import { addDoc, collection, deleteDoc, doc, getDocs, onSnapshot, query, updateDoc } from 'firebase/firestore'
+import { useMediaQuery } from 'react-responsive'
+import NavBarWoutMenu from '../../components/navbar/NavBarWoutMenu'
+
+
+import db from '../../../firebase'
+import './Study.css'
+import MathmysticPet from '../../assets/img/MathmysticPet.png';
+import MathmysticLogo from '../../assets/img/MathmysticLogo.png'
+import { Loading } from '../../containers';
+import Footer from '../../components/footer/Footer';
 
 const Study = () => {
-  return (
-    <div>
-      <iframe 
-      allowfullscreen="allowfullscreen" 
-      scrolling="no" class="fp-iframe" 
-      style={{border: "1px solid lightgray", width: "40%", height: "400px", padding: 20}}
-      src="https://heyzine.com/flip-book/11dd3247df.html">
-      </iframe>
+    /* Necessary function */
+    const [t, i18n] = useTranslation()
+    const isDesktopOrLaptop = useMediaQuery({
+        query: '(min-width: 1050px)'
+    })
+    const [loading, setLoading] = useState(0)
+    useEffect(() => {
+      setLoading(1)
 
-      {/* <iframe allowfullscreen="allowfullscreen"
-       scrolling="no" class="fp-iframe" 
-       style="border: 0px; width: 100%; height: 400px;"
-        src="https://heyzine.com/flip-book/11dd3247df.html"></iframe> */}
-
-      {/* <a href="https://heyzine.com/flip-book/11dd3247df.html"
-       target="_BLANK" class="heyzine-link fp-link">
-        <img src="https://cdnc.heyzine.com/flip-book/cover/11dd3247df.jpg" 
-        class="fp-thumb"
-         style="border: 1px solid lightgray; box-shadow: lightgray 0px 0px 4px 1px; width: 250px;"></a> */}
-    </div>
-  )
+    }, [])
+    return (
+        <div>
+          {!loading ? <Loading/> : 
+          
+          <div>
+            <NavBarWoutMenu/>
+            <div className='study'>
+              <input type="text" />
+              <button></button>
+            </div>
+            <Footer></Footer>    
+          </div>
+          
+          }
+        </div>
+    )
 }
 
 export default Study
