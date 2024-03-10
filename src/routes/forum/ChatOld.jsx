@@ -1,34 +1,25 @@
-/*Module before File after */
-import { useState, useEffect, React } from 'react'
-import { Trans, withTranslation, useTranslation } from 'react-i18next';
-import { Timestamp, addDoc, collection, deleteDoc, doc, getDocs, onSnapshot, query, updateDoc } from 'firebase/firestore'
-import { useMediaQuery } from 'react-responsive'
+import React, { useEffect } from "react";
+import db from '../../firebase'
+import { onSnapshot, collection, deleteDoc, doc, getDocs, addDoc, Timestamp, query, updateDoc } from 'firebase/firestore'
+import { useState } from 'react';
 import { Loading, NotFound } from '../../containers'
 import { Link, useParams } from "react-router-dom";
 import './Chat.css'
-import { Footer, NavBarWoutMenu } from "../../components";
+import { Footer, NavBarWoutMenuLogo } from "../../components";
 import { TbTriangleFilled, TbTriangleInvertedFilled } from "react-icons/tb";
 import { IoEyeSharp } from "react-icons/io5";
 import { FaComment } from "react-icons/fa";
 import { TiTickOutline } from "react-icons/ti";
 import { BsThreeDotsVertical } from "react-icons/bs";
+import 'semantic-ui-css/semantic.min.css'
+import { Button, Popup } from "semantic-ui-react";
 import { MdOutlineArrowCircleLeft } from "react-icons/md";
+import { Cursor } from "react-bootstrap-icons";
+import { Trans, useTranslation } from "react-i18next";
 import PopupFailChat1 from "../../containers/modal/PopupFailChat1";
 
-
-import db from '../../../firebase'
-import './Chat.css'
-import MathmysticPet from '../../assets/img/MathmysticPet.png';
-import MathmysticLogo from '../../assets/img/MathmysticLogo.png'
-
 const Chat = ({ chatId }) => {
-    /* Necessary function */
     const [t, i18n] = useTranslation()
-    const isDesktopOrLaptop = useMediaQuery({
-        query: '(min-width: 1050px)'
-    })
-
-    
     const [loading, setLoading] = useState(0)
     const [messages, setMessages] = useState([])
     const [chats, setChats] = useState([])
@@ -192,7 +183,7 @@ const Chat = ({ chatId }) => {
                 <div>
                     {!loading ? <Loading /> :
                     <div>
-                        <NavBarWoutMenu />
+                        <NavBarWoutMenuLogo />
                     
                     
                         <div className="mmt__chat-body">
@@ -285,13 +276,13 @@ const Chat = ({ chatId }) => {
                                                             className="mmt__chat-ask_menu-button"
                                                         >Delete</button> */}
 
-                                                        {/* <Popup
+                                                        <Popup
                                                             content={<button className="abc" onClick={() => deleteMessage(message.id)}> <Trans>Delete</Trans></button>}
                                                             on='click'
                                                             pinned
                                                             position="top right"
                                                             trigger={<BsThreeDotsVertical size={20} />}>
-                                                        </Popup> */}
+                                                        </Popup>
                                                     </div>
 
 

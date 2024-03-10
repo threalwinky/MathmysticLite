@@ -1,12 +1,12 @@
-/*Module before File after */
-import { useState, useEffect, React } from 'react'
-import { Trans, withTranslation, useTranslation } from 'react-i18next';
-import { Timestamp, addDoc, collection, deleteDoc, doc, getDocs, onSnapshot, query, updateDoc } from 'firebase/firestore'
-import { useMediaQuery } from 'react-responsive'
+import React, { useEffect } from "react";
+import db from '../../firebase'
+import { onSnapshot, collection, deleteDoc, doc, getDocs, Timestamp, addDoc, query } from 'firebase/firestore'
 import './Forum.css'
+import { useState } from 'react';
 import { Chatbot, Loading } from '../../containers'
 import { Link, useParams } from "react-router-dom";
 import Chat from './Chat'
+import { Form } from "react-bootstrap";
 import { IoSearch } from "react-icons/io5";
 import { CiMenuKebab } from "react-icons/ci";
 import { BsThreeDotsVertical } from "react-icons/bs";
@@ -15,20 +15,12 @@ import { FaComment } from "react-icons/fa";
 import { TiTickOutline } from "react-icons/ti";
 import { TbTriangleFilled } from "react-icons/tb";
 import { TbTriangleInvertedFilled } from "react-icons/tb";
-import { IoEyeSharp } from "react-icons/io5";
 
-import db from '../../../firebase'
-import './Forum.css'
-import MathmysticPet from '../../assets/img/MathmysticPet.png';
-import MathmysticLogo from '../../assets/img/MathmysticLogo.png'
+import { IoEyeSharp } from "react-icons/io5";
+import { Trans, useTranslation } from "react-i18next";
 
 const Forum = () => {
-    /* Necessary function */
-    const [t, i18n] = useTranslation()
-    const isDesktopOrLaptop = useMediaQuery({
-        query: '(min-width: 1050px)'
-    })
-    
+    const [t, i18n]= useTranslation();
     const [chats, setChats] = useState([])
     const [loading, setLoading] = useState(0)
     const [chatName, setChatName] = useState('')

@@ -387,7 +387,7 @@
             /* background-color: black; */
         }
         .cart-elm-right{
-            background-color: red;
+            /* background-color: red; */
             display: flex;
             justify-content: end;
             h5{

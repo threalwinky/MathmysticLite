@@ -187,7 +187,7 @@ const MainProduct = ({ productInfo }) => {
             .map((doc) => ({ ...doc.data(), id: doc.id }));
           const foundUser2 = (newData.find(x => x.email == localStorage.getItem('user')))
           setFoundUser(foundUser2)
-          console.log(foundUser2)
+          // console.log(foundUser2)
           setLoading(1)
         })
   
@@ -221,9 +221,10 @@ const MainProduct = ({ productInfo }) => {
     }
   
     const addPcomment = () => {
-      console.log(pcommentInput)
+      // console.log(pcommentInput)
+      if (pcommentInput == '') return
       addDoc(collection(db, 'pcomment'), {
-        content: pcommentInput.replace(/\n/g, "<br>"),
+        content: pcommentInput.replace(/\n/g, "<br/>"),
         createdAt: Timestamp.now().seconds,
         createdBy: foundUser,
         createdIn: productInfo.id,
@@ -270,13 +271,13 @@ const MainProduct = ({ productInfo }) => {
                 <span>{productInfo.description}</span>
                 <h1><Trans>{productInfo.name}</Trans></h1>
               </div>
-              <p className='intro'>
+              <div className='intro'>
                 {productInfo.about.map((img, index) => (
                   <div key={index}>
                     <li><Trans>{img}</Trans></li>
                   </div>
                 ))}
-              </p>
+              </div>
               <h6 className='price'>{changeMoney(productInfo.price)}₫</h6>
               <div className='sub'>
                 <div className='content'>
@@ -310,7 +311,7 @@ const MainProduct = ({ productInfo }) => {
                             <Stars starscnt={cmt.stars} />
                             {/* {typeof cmt.stars} */}
                             <h6>{cmt.createdAt}</h6>
-                            <h5>{cmt.content}</h5>
+                            <h4>{cmt.content}</h4>
                     
                           </div>
                           <div>
@@ -335,7 +336,13 @@ const MainProduct = ({ productInfo }) => {
 
               <div className='product-comment-input'>
                 <Stars2 />
-                <textarea placeholder={t('Push a comment')} value={pcommentInput} onChange={evt => setPcommentInput(evt.target.value)} type="text" />
+                <textarea 
+                placeholder={t('Push a comment')} 
+                value={pcommentInput} 
+                onChange={evt => setPcommentInput(evt.target.value)} 
+                type="text"
+                rows={5}
+                 />
                 <button onClick={addPcomment}><Trans>Send</Trans></button>
               </div>
             </div>

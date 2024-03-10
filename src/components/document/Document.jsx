@@ -118,8 +118,8 @@ const Document = () => {
       <>
       <div className="slide-container document-slide">
         <iframe
-          allowfullscreen="allowfullscreen"
-          scrolling="no" class="fp-iframe"
+          allowFullScreen="allowfullscreen"
+          scrolling="no" className="fp-iframe"
           style={{ border: "1px solid lightgray", width: isDesktopOrLaptop ? "80%" : '90%', height: isDesktopOrLaptop ? "1000px" : "250px", padding: 20 }}
           src="https://heyzine.com/flip-book/2ac410fc4e.html">
         </iframe>
@@ -147,7 +147,7 @@ const Document = () => {
         </div> */}
         <iframe
           allowfullscreen="allowfullscreen"
-          scrolling="no" class="fp-iframe"
+          scrolling="no" className="fp-iframe"
           style={{ border: "1px solid lightgray", width: isDesktopOrLaptop ? "80%" : '90%', height: isDesktopOrLaptop ? "1000px" : "250px", padding: 20 }}
           src="https://heyzine.com/flip-book/9f0a65b367.html">
         </iframe>
@@ -169,7 +169,7 @@ const Document = () => {
           </Slide> */}
           <iframe
           allowfullscreen="allowfullscreen"
-          scrolling="no" class="fp-iframe"
+          scrolling="no" clasName="fp-iframe"
           style={{ border: "1px solid lightgray", width: isDesktopOrLaptop ? "80%" : '90%', height: isDesktopOrLaptop ? "1000px" : "250px", padding: 20 }}
           src="https://heyzine.com/flip-book/9f0a65b367.html">
         </iframe>
