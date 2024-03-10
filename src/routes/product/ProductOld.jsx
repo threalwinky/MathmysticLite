@@ -1,28 +1,17 @@
-/*Module before File after */
-import { useState, useEffect, React } from 'react'
-import { Trans, withTranslation, useTranslation } from 'react-i18next';
-import { addDoc, collection, deleteDoc, doc, getDocs, onSnapshot, query, updateDoc } from 'firebase/firestore'
-import { useMediaQuery } from 'react-responsive'
+import React, { Component, useEffect, useState } from 'react'
 import { useParams } from "react-router-dom";
 import { Footer, NavBarWoutMenu } from '../../components';
 import { Loading, NotFound, Chatbot } from '../../containers'
 import MainProduct from './MainProduct'
-
-import db from '../../../firebase'
-import './Product.css'
-import MathmysticPet from '../../assets/img/MathmysticPet.png';
-import MathmysticLogo from '../../assets/img/MathmysticLogo.png'
 import Store1_1 from '../../assets/img/Store/Store1/Store1_1.webp'
 import Store1_2 from '../../assets/img/Store/Store1/Store1_2.webp'
 import Store1_3 from '../../assets/img/Store/Store1/Store1_3.png'
 import Store2_1 from '../../assets/img/Store/Store2/Store2_1.webp'
 import Store2_2 from '../../assets/img/Store/Store2/Store2_2.webp'
+import { collection, getDoc, getDocs } from 'firebase/firestore';
+import db from '../../firebase'
 const Product = () => {
-    /* Necessary function */
-    const [t, i18n] = useTranslation()
-    const isDesktopOrLaptop = useMediaQuery({
-        query: '(min-width: 1050px)'
-    })
+
 
     const params = useParams();
     const productList = [
@@ -135,6 +124,7 @@ const Product = () => {
 
         </div>
     )
+
 }
 
 export default Product

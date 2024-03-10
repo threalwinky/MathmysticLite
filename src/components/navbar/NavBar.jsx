@@ -85,7 +85,8 @@ const NavBar = () => {
           setFoundUser(foundUser2)
           // console.log((foundUser2.email).includes('0'))
           // if (localStorage.getItem('user') == undefined) setFe()
-          setFe(String(foundUser2.email.endsWith('2')) ? String(foundUser2.email.substr(0, foundUser2.email.length - 1)) : String(foundUser2.email))
+          setFe((foundUser2.email.endsWith('2')) ? String(foundUser2.email.substr(0, foundUser2.email.length - 1)) : String(foundUser2.email))
+          // console.log(String(foundUser2.email.endsWith('2')))
         }
         // console.log(foundUser2)
         // setLoading(1)

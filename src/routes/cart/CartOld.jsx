@@ -1,15 +1,23 @@
-/*Module before File after */
-import { useState, useEffect, React } from 'react'
-import { Trans, withTranslation, useTranslation } from 'react-i18next';
-import { addDoc, collection, deleteDoc, doc, getDocs, onSnapshot, query, updateDoc } from 'firebase/firestore'
-import { useMediaQuery } from 'react-responsive'
+import React, { useEffect, useState } from 'react'
 import { HashLink } from 'react-router-hash-link'
+import { addDoc, collection, deleteDoc, doc, getDocs, onSnapshot, query, updateDoc } from 'firebase/firestore'
+import {
+  ModalHeader,
+  ModalDescription,
+  ModalContent,
+  ModalActions,
+  // Button,
+  Header,
+  Image,
+  Modal,
+  Icon,
+} from 'semantic-ui-react'
+import Button from 'react-bootstrap/Button';
+import { Trans } from 'react-i18next'
 
-import db from '../../../firebase'
 import './Cart.css'
-import MathmysticPet from '../../assets/img/MathmysticPet.png';
-import MathmysticLogo from '../../assets/img/MathmysticLogo.png'
 import NavBarWoutMenu from '../../components/navbar/NavBarWoutMenu'
+import db from '../../firebase'
 import { Loading } from '../../containers'
 import PopupSuccessCart1 from '../../containers/modal/PopupSuccessCart1'
 import PopupSuccessCart2 from '../../containers/modal/PopupSuccessCart2'
@@ -17,14 +25,7 @@ import PopupFailCart1 from '../../containers/modal/PopupFailCart1';
 import Store1_1 from '../../assets/img/Store/Store1/Store1_1.jpeg'
 
 const Cart = () => {
-  /* Necessary function */
-  const [t, i18n] = useTranslation()
-  const isDesktopOrLaptop = useMediaQuery({
-    query: '(min-width: 1050px)'
-  })
-
-
-  const [open2, setOpen2] = useState(false)
+  const [open2, setOpen2] = React.useState(false)
 
   const [foundUser, setFoundUser] = useState([])
   const [foundProduct, setFoundProduct] = useState([])
@@ -161,7 +162,7 @@ const Cart = () => {
                       <br></br>
                       Số điện thoại : 0794746779
                       <br></br>
-                      hoac <a href="/signin" style={{ textDecoration: "underline" }}>dang nhap</a> de dat hang online
+                      hoac <a href="/signin" style={{textDecoration: "underline"}}>dang nhap</a> de dat hang online
                     </div>
 
                     :
@@ -210,14 +211,13 @@ const Cart = () => {
 
                       {foundProduct?.map((product, index) => (
                         <p key={index}>
-                          {/* <div class="card rounded-3 mb-4">
+                          <div class="card rounded-3 mb-4">
                             <div class="card-body p-4">
                               <div class="row d-flex justify-content-between align-items-center">
 
                                 <div class="col-md-2 col-lg-2 col-xl-2">
                                   <div className='d-flex'>
-                                    <input style={{ accentColor: 'rgb(189, 189, 255)' }} type="checkbox" checked={product.pick} onClick={() => { updateCartPick(product.id, product.pick) }} />                        
-                                    <img
+                                    <input style={{ accentColor: 'rgb(189, 189, 255)' }} type="checkbox" checked={product.pick} onClick={() => { updateCartPick(product.id, product.pick) }} />                                 <img
                                       src={product.product.imgUrl[0]}
                                       class="img-fluid rounded-3" alt="Cotton T-shirt" />
                                   </div>
@@ -225,7 +225,8 @@ const Cart = () => {
                                 </div>
                                 <div class="col-md-3 col-lg-3 col-xl-3">
                                   <p class="lead fw-normal mb-2"><Trans>{product.product.name}</Trans></p>
-                                  
+                                  {/* <p><span class="text-muted">Size: </span>M <span class="text-muted">Color: </span>Grey</p>
+                                   */}
                                   <p style={{ fontSize: 15, color: 'GrayText' }}><span><Trans>Price per product</Trans> : {changeMoney(product.product.price)}₫</span></p>
                                 </div>
                                 <div class="col-md-3 col-lg-3 col-xl-2 d-flex mmt__productInCart-count">
@@ -253,64 +254,7 @@ const Cart = () => {
                                 </div>
                               </div>
                             </div>
-                          </div> */}
-
-
-                          {/* <p>{ product.productCount }</p> */}
-
-                          <div className='cart-elm'>
-                            <div className='cart-elm-content'>
-                              <div className='cart-elm-left'>
-                                <div className='cart-elm-left-1'>
-                                  <input
-                                    style={{ accentColor: 'rgb(189, 189, 255)' }}
-                                    type="checkbox" checked={product.pick}
-                                    onClick={() => { updateCartPick(product.id, product.pick) }} />
-                                  <img
-                                    src={product.product.imgUrl[0]}
-                                    class="img-fluid rounded-3" alt="Cotton T-shirt" />
-                                </div>
-                                <div className='cart-elm-left-2'>
-                                  <p class="lead fw-normal mb-2"><Trans>{product.product.name}</Trans></p>
-
-                                  <p style={{ fontSize: 15, color: 'GrayText' }}>
-                                    <span>
-                                      <Trans>Price per product</Trans> :
-                                      {changeMoney(product.product.price)}₫
-                                    </span>
-                                  </p>
-                                </div>
-                              </div>
-                              <div className='cart-elm-2'>
-                                <div className='cart-elm-center'>
-                                  <div class="col-md-3 col-lg-3 col-xl-2 d-flex mmt__productInCart-count">
-                                    <button
-                                      // fontSize={30}
-                                      className='prdt-btn'
-                                      onClick={() => updateCart(product.id, product.productCount - 1)}
-                                      disabled={product.productCount == 0}
-                                    >-</button>
-                                    <p>{product.productCount}</p>
-
-                                    <button
-                                      className='prdt-btn'
-                                      onClick={() => updateCart(product.id, product.productCount + 1)}
-
-                                    >+</button>
-                                  </div>
-                                </div>
-                                <div className='cart-elm-right'>
-                                  <h5 class="mb-0">{changeMoney(product.product.price * product.productCount)}₫ </h5>
-                                  <button className='prdt-btn' onClick={() => deleteCart(product.id)}>Delete</button>
-                                </div>
-                              </div>
-
-                            </div>
                           </div>
-
-
-
-
                           {/* <div className='pic-container'>
                             <div className='pic-img'>
                             <img src={product.product.imgUrl[0]} alt="" />
@@ -379,5 +323,4 @@ const Cart = () => {
     </div>
   )
 }
-
 export default Cart
