@@ -37,7 +37,7 @@ const NavBar = () => {
   })
 
   var LogOut = () => {
-    if (localStorage.getItem('user') == undefined) return
+    if (localStorage.getItem('user') == 'Guest') return
     localStorage.removeItem('user')
     localStorage.removeItem('userAvatar')
     localStorage.removeItem('userName')
@@ -623,7 +623,7 @@ const NavBar = () => {
 
             </div>
             <div className='modal-right-content-topic'>
-              {localStorage.getItem('user') == undefined ? <UserMenuSignIn /> : <UserMenu />}
+              {localStorage.getItem('user') == 'Guest' ? <UserMenuSignIn /> : <UserMenu />}
 
             </div>
             <div className='modal-right-content-footer'>

@@ -17,7 +17,10 @@ import MathmysticLogo from './assets/img/MathmysticLogo.png'
 const App = () => {
     /* Necessary function */
     const [t, i18n] = useTranslation()
-
+    // console.log(localStorage.getItem('user'))
+    if (localStorage.getItem('user') == null){
+        localStorage.setItem('user', 'Guest')
+    }
     return (
         <div>
             <BrowserRouter>

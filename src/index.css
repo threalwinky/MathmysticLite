@@ -43,3 +43,8 @@ code {
     --shadow-conc: 2px 4px 8px 0 rgba(46, 61, 73, 0.2);
     --transition: all 0.2s ease-in-out;
 }
+.popup-content{
+    width: fit-content !important;
+    height: fit-content !important;
+    position: relative;
+}

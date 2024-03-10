@@ -59,12 +59,13 @@ const Purchase = () => {
                         newData2.push(element)
                         // total += element.product.price * element.productCount
                     }
+                    setTotalPrice(total)
+                    // console.log(newData2)
+                    setFoundProduct(newData2.sort(function (a, b) { return b.createdAt - a.createdAt }));
+                    setLoading(1)
                 });
                 // console.log(newData)
-                setTotalPrice(total)
-                // console.log(newData2)
-                setFoundProduct(newData2.sort(function (a, b) { return b.createdAt - a.createdAt }));
-                setLoading(1)
+
             })
     }
 
@@ -83,11 +84,12 @@ const Purchase = () => {
                             newData2.push(element)
                             // total += element.product.price * element.productCount * element.pick
                         }
+                        setTotalPrice(total)
+                        // console.log(newData2)
+                        setFoundProduct(newData2.sort(function (a, b) { return b.createdAt - a.createdAt }));
+                        setLoading(1)
                     });
-                    setTotalPrice(total)
-                    // console.log(newData2)
-                    setFoundProduct(newData2.sort(function (a, b) { return b.createdAt - a.createdAt }));
-                    setLoading(1)
+
                 })
         });
 

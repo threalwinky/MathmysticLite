@@ -55,15 +55,20 @@ const Cart = () => {
         const newData2 = []
         var total = 0
         newData.forEach(element => {
+          // console.log(element.createdBy.email, localStorage.getItem('user'))
           if (element.createdBy.email == localStorage.getItem('user')) {
+            // console.log(element)
             newData2.push(element)
             total += element.product.price * element.productCount
           }
+          // console.log(total)
+          // console.log(newData2)
+          setTotalPrice(total)
+          // console.log(newData2)
+          setFoundProduct(newData2.sort(function (a, b) { return b.createdAt - a.createdAt }));
+          setLoading(1)
         });
-        setTotalPrice(total)
-        // console.log(newData2)
-        setFoundProduct(newData2.sort(function (a, b) { return b.createdAt - a.createdAt }));
-        setLoading(1)
+
       })
   }
 
@@ -82,11 +87,12 @@ const Cart = () => {
               newData2.push(element)
               total += element.product.price * element.productCount * element.pick
             }
-          });
-          setTotalPrice(total)
+            setTotalPrice(total)
           // console.log(newData2)
           setFoundProduct(newData2.sort(function (a, b) { return b.createdAt - a.createdAt }));
           setLoading(1)
+          });
+          
         })
     });
 
@@ -168,7 +174,7 @@ const Cart = () => {
 
                     <div className='cart-list2'>
 
-                      <section className="h-100" style={{ 'background-color': '#eee' }}>
+                      <section className="h-100" style={{ 'backgroundColor': '#eee' }}>
                         <div className="container h-100">
                           <div className="row d-flex justify-content-center align-items-center h-100">
                             <div className="col-10">
@@ -209,7 +215,8 @@ const Cart = () => {
                       {/* {foundUser.name} */}
 
                       {foundProduct?.map((product, index) => (
-                        <p key={index}>
+                        <div key={index}>
+                          {/* <p>1123</p> */}
                           {/* <div class="card rounded-3 mb-4">
                             <div class="card-body p-4">
                               <div class="row d-flex justify-content-between align-items-center">
@@ -321,7 +328,7 @@ const Cart = () => {
                             
                             
                           </div> */}
-                        </p>
+                        </div>
                       ))}
 
                     </div>

@@ -80,6 +80,7 @@ const Forum = () => {
     const paramCheck = !(params.id == undefined)
 
     const addChat = () => {
+        if (chatName == '' || chatDescription == '') return
         addDoc(collection(db, 'chat'), {
             name: chatName,
             description: chatDescription.replace(/\n/g, "<br/>"),
@@ -143,20 +144,21 @@ const Forum = () => {
 
                             <div className="mmt__forum-list">
                                 <div className="mmt__forum-list-seach_box">
-                                    <span>
-                                        <IoSearch size={25} className="mmt__forum-list-seach_box-icon" title="search" />
+                                    
+                                        <IoSearch size={20} className="mmt__forum-list-seach_box-icon" title="search" />
                                         <input
                                             className="mmt__forum-list-seach_box-input"
                                             onChange={evt => { updateChat(evt.target.value) }}
                                             type="text"
                                             placeholder={t('Search a post')}
                                         />
-                                    </span>
+                                    
                                     <button onClick={() => { setShowNewPost(!showNewPost) }} className="mmt__forum-list-seach_box-new_post_button"><Trans>New Post</Trans></button>
                                 </div>
                                 {!showNewPost ? "" :
                                     <div className="mmt__forum-list-new_post_box">
                                         <textarea
+                                        rows={6}
                                             onChange={evt => { setChatDescription(evt.target.value); }}
                                             placeholder={t('Post description')}
                                             className="mmt__forum-list-new_post_box-top"
