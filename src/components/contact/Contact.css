@@ -466,8 +466,7 @@
     
                     textarea:focus::placeholder{
                         color: black;
-                    }
-                }
+                    }                }
     
                 .contact-box-form-button {
                     button {

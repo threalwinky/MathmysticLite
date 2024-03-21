@@ -10,7 +10,7 @@ import './Purchase.css'
 import MathmysticPet from '../../assets/img/MathmysticPet.png';
 import MathmysticLogo from '../../assets/img/MathmysticLogo.png'
 import NavBarWoutMenu from '../../components/navbar/NavBarWoutMenu'
-import { Loading } from '../../containers'
+import { Headpage, Loading } from '../../containers'
 import PopupSuccessCart1 from '../../containers/modal/PopupSuccessCart1'
 import PopupSuccessCart2 from '../../containers/modal/PopupSuccessCart2'
 import PopupFailCart1 from '../../containers/modal/PopupFailCart1';
@@ -137,7 +137,7 @@ const Purchase = () => {
 
     return (
         <div>
-            {!loading ? <Loading /> :
+            {!loading ? <Headpage /> :
 
                 <div>
                     <div>

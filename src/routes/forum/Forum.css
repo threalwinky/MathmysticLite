@@ -47,7 +47,7 @@
     /* padding-left: ; */
     margin: 0 10px;
     padding: 10px;
-    font-size: clamp(5px, 4vw, 10px);
+    font-size: var(--font-small-chat);
     background-color: rgb(255, 255, 255);
     height: 25px;
     border-radius: 10px;
@@ -58,7 +58,7 @@
     background-color: azure;
     border-radius: 30px;
     padding: 5px 10px;
-    font-size: clamp(5px, 4vw, 10px);
+    font-size: var(--font-small-chat);
 }
 
 .mmt__forum-list-seach_box-new_post_button:hover{
@@ -87,7 +87,7 @@
     border: none;   
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
-    font-size: clamp(5px, 4vw, 12px);
+    font-size: var(--font-small-chat);
 }
 
 .mmt__forum-list-new_post_box-bottom{
@@ -100,7 +100,7 @@
     width: 50%;
     height: 100%;
     padding: 10px;
-    font-size: clamp(5px, 4vw, 12px);
+    font-size: var(--font-small-chat);
     border: solid;
     border-width: 0px;
     border-top-width: 1px;
@@ -121,7 +121,7 @@
     /* border-color: rgb(243, 243, 243); */
     margin: 0;
     /* padding: auto; */
-    font-size: clamp(5px, 4vw, 10px);
+    font-size: var(--font-small-chat);
 }
 
 .mmt__forum-list-new_post_box-bottom button:hover{
@@ -189,7 +189,7 @@
 }
 
 .mmt__forum-list-list_box-box-left h5{
-    font-size: 15px;
+    font-size: var(--font-small-chat);
     margin: auto;
     display: flex;
 }
@@ -207,16 +207,16 @@
 }
 
 .mmt__forum-list-list_box-box-right-content h1{
-    background-color: rgb(255, 255, 255);
-    font-size: 20px;
+    background-color: azure;
+    font-size: var(--font-small-chat);
     margin: 0;
     padding: 0;
 }
 
 .mmt__forum-list-list_box-box-right-content h3{
-    background-color: rgb(255, 255, 255);
+    background-color: azure;
     margin: 0;
-    font-size: 15px;
+    font-size: var(--font-small-chat);
     font-weight: 400;
     text-wrap: wrap;
     width: 80%;
@@ -229,7 +229,7 @@
 }
 
 .mmt__forum-list-list_box-box-right-content h5{
-    font-size: 12px;
+    font-size: var(--font-small-chat);
     font-weight: 400;
     text-wrap: wrap;
     width: 80%;
@@ -267,5 +267,5 @@
  }
  .mmt__forum-list-list_box-box-left_content p{
     margin: 0 5px;
-    font-size: 15px;
+    font-size: var(--font-small-chat);
  }

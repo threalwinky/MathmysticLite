@@ -45,7 +45,11 @@ code {
     --font-large: clamp(3rem, 4vw, 20rem);
     --font-normal: clamp(2rem, 3vw, 5rem);
     --font-medium: clamp(1.5rem, 2vw, 3rem);
-    --font-small: clamp(1rem, 2vw, 1.5rem);
+    --font-small: clamp(1rem, 2vw, 1rem);
+    --font-small-chat : clamp(1rem, 2vw, 1.5rem);
+    --font-tiny: clamp(0.6rem, 2vw, 1rem);
+    --font-tiny-chatbot: clamp(0.8rem, 1vw, 1rem);
+    --font-tiny-chat: clamp(0.3rem, 2vw, 1rem);
 }
 .popup-content{
     width: fit-content !important;

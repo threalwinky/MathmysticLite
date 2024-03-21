@@ -3,7 +3,7 @@ import { useState, useEffect, React } from 'react'
 import { Trans, withTranslation, useTranslation } from 'react-i18next';
 import { Timestamp, addDoc, collection, deleteDoc, doc, getDocs, onSnapshot, query, updateDoc } from 'firebase/firestore'
 import { useMediaQuery } from 'react-responsive'
-import { Loading, NotFound } from '../../containers'
+import { Headpage, Loading, NotFound } from '../../containers'
 import { Link, useParams } from "react-router-dom";
 import './Chat.css'
 import { Footer, NavBarWoutMenuLogo } from "../../components";
@@ -84,7 +84,8 @@ const Chat = ({ chatId }) => {
                     const newData = querySnapshot.docs
                         .map((doc) => ({ ...doc.data(), id: doc.id }));
                     setChats(newData);
-                    setLoading(1)
+                    setTimeout(() => {setLoading(1)}, 200)
+                    
                     const foundChat2 = (newData.find(x => x.id == chatId))
                     setFoundChat(foundChat2)
                     // console.log(foundChat)
@@ -107,7 +108,7 @@ const Chat = ({ chatId }) => {
                 const newData = querySnapshot.docs
                     .map((doc) => ({ ...doc.data(), id: doc.id }));
                 setChats(newData);
-                setLoading(1)
+                setTimeout(() => {setLoading(1)}, 200)
                 const foundChat2 = (newData.find(x => x.id == chatId))
                 setFoundChat(foundChat2)
                 // console.log(foundChat)
@@ -191,7 +192,7 @@ const Chat = ({ chatId }) => {
             {foundChat == undefined ? <NotFound /> :
 
                 <div>
-                    {!loading ? <Loading /> :
+                    {!loading ? <Headpage /> :
                         <div>
                             <NavBarWoutMenuLogo />
 

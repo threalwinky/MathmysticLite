@@ -4,7 +4,7 @@ import { Trans, withTranslation, useTranslation } from 'react-i18next';
 import { Timestamp, addDoc, collection, deleteDoc, doc, getDocs, onSnapshot, query, updateDoc } from 'firebase/firestore'
 import { useMediaQuery } from 'react-responsive'
 import './Forum.css'
-import { Chatbot, Loading } from '../../containers'
+import { Chatbot, Headpage, Loading } from '../../containers'
 import { Link, useParams } from "react-router-dom";
 import Chat from './Chat'
 import { IoSearch } from "react-icons/io5";
@@ -137,7 +137,7 @@ const Forum = () => {
         <div className='App App-header'>
             {paramCheck < 1 ?
                 <div>
-                    {!loading ? <Loading /> :
+                    {!loading ? <Headpage /> :
 
                         <div className="mmt__forum">
                             <NavBarWoutMenu />

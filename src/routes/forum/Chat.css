@@ -28,7 +28,7 @@
     height: 100%;
 
     p {
-        font-size: clamp(5px, 4vw, 10px);
+        font-size: var(--font-small-chat);
 
     }
 }
@@ -64,7 +64,7 @@
     border-bottom: 1px solid #000;
     line-height: 2em;
     margin: 40px 0 40px 0px;
-    font-size: 15px;
+    font-size: var(--font-small-chat);
     /* margin: 20px; */
     text-align: center;
     height: 1em;
@@ -109,7 +109,8 @@
 .chat-ask {
     h6 {
         margin-left: 5px;
-        font-size: 10px;
+        font-size: var(--font-tiny-chat);
+        font-weight: 400;
     }
 }
 
@@ -141,7 +142,7 @@
 
     /* background-color: red; */
     h5 {
-        font-size: 15px;
+        font-size: var(--font-small-chat);
         font-weight: 400;
         word-break: break-all;
     }
@@ -160,7 +161,7 @@
         margin: 0;
         height: auto;
         width: auto;
-        font-size: 15px;
+        font-size: var(--font-small-chat);
     }
 
     h5 {
@@ -172,7 +173,7 @@
         height: auto;
         width: auto;
         font-weight: 400;
-        font-size: 15px;
+        font-size: var(--font-small-chat);
     }
 
 }
@@ -204,12 +205,13 @@
 
     h6 {
         margin-left: 0px;
-        font-size: 10px;
+        font-size: var(--font-tiny-chat);
+        font-weight: 400;
     }
 }
 
 .chat-ans_info h5 {
-    font-size: 12px;
+    font-size: var(--font-small-chat);
 }
 
 .chat-ask_menu {
@@ -254,7 +256,7 @@
     margin: auto;
 
     textarea {
-        font-size: clamp(5px, 4vw, 15px);
+        font-size: var(--font-small-chat);
         border: none;
         margin: 30px 0;
         padding: 20px;
@@ -265,7 +267,7 @@
     button {
         background-color: var(--color-green);
         border: 1px solid rgb(189, 189, 189) !important;
-
+        font-size: var(--font-small-chat);
     }
 
     button:hover {

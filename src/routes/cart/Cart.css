@@ -42,7 +42,7 @@
         width: 100px;
         border-radius: 30px;
         background-color: rgb(189, 189, 255);
-        font-size: clamp(10px, 3vw, 15px);
+        font-size: var(--font-small);
     }
 
     .buy-button:hover {
@@ -51,7 +51,7 @@
 
     .info {
         width: 100%;
-        font-size: clamp(10px, 3vw, 15px);
+        font-size: var(--font-small);
         /* font-family: lora; */
         text-align: center;
         justify-self: center;
@@ -92,7 +92,7 @@
     background-color: rgb(255, 255, 255);
 
     p {
-        font-size: clamp(10px, 3vw, 15px);
+        font-size: var(--font-small);
         line-height: 0;
         margin: 0;
         padding: 0;
@@ -116,7 +116,7 @@
 .prdt-btn {
     /* line-height: none; */
     /* font-family: lora; */
-    font-size: clamp(10px, 3vw, 15px);
+    font-size: var(--font-small);
     margin: 10px;
     padding: 2px 10px;
     /* border: none; */
@@ -129,7 +129,7 @@
 .prdt-btn:hover {
     /* line-height: none; */
     /* font-family: lora; */
-    font-size: clamp(10px, 3vw, 15px);
+    font-size: var(--font-small);
     margin: 10px;
     padding: 2px 10px;
     /* border: none; */
@@ -232,7 +232,7 @@
             width: 100px;
             border-radius: 30px;
             background-color: rgb(189, 189, 255);
-            font-size: clamp(15px, 3vw, 25px);
+            font-size: var(--font-small);
         }
     
         .buy-button:hover {
@@ -241,7 +241,7 @@
     
         .info {
             width: 100%;
-            font-size: clamp(10px, 3vw, 15px);
+            font-size: var(--font-small);
             /* font-family: lora; */
             text-align: center;
             justify-self: center;
@@ -282,7 +282,7 @@
         background-color: rgb(255, 255, 255);
     
         p {
-            font-size: clamp(10px, 3vw, 15px);
+            font-size: var(--font-small);
             line-height: 0;
             margin: 0;
             padding: 0;
@@ -306,7 +306,7 @@
     .prdt-btn {
         /* line-height: none; */
         /* font-family: lora; */
-        font-size: clamp(10px, 3vw, 15px);
+        font-size: var(--font-small);
         margin: 10px;
         padding: 2px 10px;
         /* border: none; */
@@ -319,7 +319,7 @@
     .prdt-btn:hover {
         /* line-height: none; */
         /* font-family: lora; */
-        font-size: clamp(10px, 3vw, 15px);
+        font-size: var(--font-small);
         margin: 10px;
         padding: 2px 10px;
         /* border: none; */
@@ -369,6 +369,7 @@
                 width: 50%;
                 /* width: clamp(100px, 4vw, 200px); */
                 width: 30vw;
+
             }
         }
 
@@ -392,8 +393,17 @@
             justify-content: end;
             h5{
                 /* margin-left: 20px; */
+                font-size: var(--font-small);
             }
             /* width: 10rem; */
         }
     }
+}
+
+.text1{
+    font-size: var(--font-small);
+}
+
+.text2{
+    font-size: var(--font-tiny);
 }

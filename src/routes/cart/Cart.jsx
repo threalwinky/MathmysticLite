@@ -10,7 +10,7 @@ import './Cart.css'
 import MathmysticPet from '../../assets/img/MathmysticPet.png';
 import MathmysticLogo from '../../assets/img/MathmysticLogo.png'
 import NavBarWoutMenu from '../../components/navbar/NavBarWoutMenu'
-import { Loading } from '../../containers'
+import { Headpage, Loading } from '../../containers'
 import PopupSuccessCart1 from '../../containers/modal/PopupSuccessCart1'
 import PopupSuccessCart2 from '../../containers/modal/PopupSuccessCart2'
 import PopupFailCart1 from '../../containers/modal/PopupFailCart1';
@@ -140,7 +140,7 @@ const Cart = () => {
 
   return (
     <div>
-      {!loading ? <Loading /> :
+      {!loading ? <Headpage /> :
 
         <div>
           <div>
@@ -278,9 +278,9 @@ const Cart = () => {
                                     className="img-fluid rounded-3" alt="Cotton T-shirt" />
                                 </div>
                                 <div className='cart-elm-left-2'>
-                                  <p className="lead fw-normal mb-2"><Trans>{product.product.name}</Trans></p>
+                                  <p className="lead fw-normal mb-2 text1"><Trans>{product.product.name}</Trans></p>
 
-                                  <p style={{ fontSize: 15, color: 'GrayText' }}>
+                                  <p style={{  color: 'GrayText' }} className='text2'>
                                     <span>
                                       <Trans>Price per product</Trans> :
                                       {changeMoney(product.product.price)}₫
