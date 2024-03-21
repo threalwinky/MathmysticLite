@@ -5,7 +5,7 @@
     text-align: center;
     h1 {
         margin: auto;
-        font-size: clamp(30px, 4vw, 50px);
+        font-size: var(--font-super-large);
         font-weight: 700;
         text-align: center;
         color: black;
@@ -20,7 +20,7 @@
 
     p {
         color: #613131;
-        font-size: 25px;
+        font-size: var(--font-large);
         letter-spacing: 0.8px;
         line-height: 1.5em;
         margin: 14px auto 30px auto;
@@ -89,7 +89,7 @@
     padding: 6rem 3rem;
 
     h2 {
-        font-size: 30px;
+        font-size: var(--font-large);
         /* font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; */
         font-weight: 700;
         text-align: center;

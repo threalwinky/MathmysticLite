@@ -601,7 +601,7 @@ const NavBar = () => {
           >
             <div className='modal-right-content-header'>
               <div className='modal-right-content-header-info'>
-                <img width={45} height={45} src={foundUser.avatar} alt="" style={{ borderRadius: '50%' }} />
+                <img referrerPolicy="no-referrer" width={45} height={45} src={foundUser.avatar} alt="" style={{ borderRadius: '50%' }} />
                 <div className='modal-right-content-header-info-text'>
                   <h1><Trans>{foundUser.name}</Trans></h1>
                   <p><Trans>{fe}</Trans></p>

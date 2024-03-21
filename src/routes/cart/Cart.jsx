@@ -373,7 +373,7 @@ const Cart = () => {
           {isOpenPopupSuccessCart1 ? <PopupSuccessCart1
             setIsOpenPopupSuccessCart1={setIsOpenPopupSuccessCart1}
             fu={foundUser}
-            imgUrl={Store1_1}
+            imgUrl={"https://firebasestorage.googleapis.com/v0/b/mathmystic-81270.appspot.com/o/store%2FStore2_1.png?alt=media&token=0b045f15-cd8e-4315-bb4d-fb409e05bf16"}
             totalMoney={totalPrice} /> : ""
 
           }

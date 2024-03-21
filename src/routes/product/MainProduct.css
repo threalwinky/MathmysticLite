@@ -9,11 +9,7 @@
 .product-direct-link{
     display: flex;
     top: 0;
-    Link{
-        color: #000000;
-        cursor: pointer;
-        padding: 5px;
-    }
+  
     span{
         color: #000000;
         cursor: pointer;

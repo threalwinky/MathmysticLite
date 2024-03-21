@@ -17,7 +17,7 @@ const Header = () => {
   const [loopNum, setLoopNum] = useState(0);
   const [isDeleting, setIsDeleting] = useState(0);
   const [text, setText] = useState('');
-  const [delta, setDelta] = useState(200);
+  const [delta, setDelta] = useState(100);
   const [index, setIndex] = useState(1);
   const toRotate = ["WINGS OF THOUGHT", "CONNECTING KNOWLEDGE", "LIGHT FOR EVERY HEART"];
   const toRotate2 = ["CHẮP CÁNH TƯ DUY", "KẾT NỐI TRI THỨC", "ÁNH SÁNG CHO MỌI TRÁI TIM"];
@@ -52,7 +52,7 @@ const Header = () => {
       setIsDeleting(false);
       setLoopNum(loopNum + 1);
       setIndex(1);
-      setDelta(400);
+      setDelta(100);
     } else {
       setIndex(prevIndex => prevIndex + 1);
     }

@@ -12,34 +12,112 @@ import MathmysticPet from '../../assets/img/MathmysticPet.png';
 import MathmysticLogo from '../../assets/img/MathmysticLogo.png'
 import { Loading } from '../../containers';
 import Footer from '../../components/footer/Footer';
+import StudyFree from './StudyFree';
+import StudyPro from './StudyPro';
 
 const Study = () => {
-    /* Necessary function */
-    const [t, i18n] = useTranslation()
-    const isDesktopOrLaptop = useMediaQuery({
-        query: '(min-width: 1050px)'
-    })
-    const [loading, setLoading] = useState(0)
-    useEffect(() => {
-      setLoading(1)
+  /* Necessary function */
+  const [t, i18n] = useTranslation()
+  const isDesktopOrLaptop = useMediaQuery({
+    query: '(min-width: 1050px)'
+  })
+  const [loading, setLoading] = useState(0)
+  const [mode, setMode] = useState('no')
+  useEffect(() => {
+    setLoading(1)
 
-    }, [])
-    return (
+  }, [])
+  return (
+    <div>
+      {!loading ? <Loading /> :
+
         <div>
-          {!loading ? <Loading/> : 
+          <NavBarWoutMenu />
           
-          <div>
-            <NavBarWoutMenu/>
+            {(mode=='no') ? 
             <div className='study'>
-              <input type="text" />
-              <button></button>
+            <div className='study-container'>
+              <div className='study-confirm'>
+                <div className='study-confirm-top'>
+                  <h1>Free</h1>
+                  <h2>0$/month</h2>
+                  <div>
+                    <div></div>
+                    <h3>
+                      duoc su dung cac cong cu hoc tap mien phi
+                    </h3>
+                  </div>
+                  <div>
+                    <div></div>
+                    <h3>
+                      xem cac video bai giang va tai lieu co ban
+                    </h3>
+                  </div>
+                  {/* <div>
+                    <div></div>
+                    <h3>
+
+                      duoc su dung cac cong cu hoc tap mien phi
+                    </h3>
+                  </div> */}
+                  {/* <input type="text" placeholder='Type the code' /> */}
+                </div>
+
+                <button onClick={() => { setMode('free') }}>Let's go</button>
+              </div>
+              <div className='study-confirm'>
+
+                <div className='study-confirm-top'>
+                  <h1>Pro</h1>
+                  <h2>15$/month</h2>
+                  <div>
+                    <div></div>
+                    <h3>
+                      duoc su dung cac cong cu hoc tap mien phi
+                    </h3>
+                  </div>
+                  <div>
+                    <div></div>
+                    <h3>
+                      xem tat ca cac video bai giang va tai lieu                    </h3>
+                  </div>
+                  <div>
+                    <div></div>
+                    <h3>
+                      duoc hoi bai va tra loi boi gia su
+                    </h3>
+                  </div>
+                </div>
+                <div>
+                </div>
+                <div>
+                  <input type="text" placeholder='Type the code' />
+                  <button onClick={() => { setMode('pro') }}>Confirm</button>
+                </div>
+
+              </div>
             </div>
-            <Footer></Footer>    
-          </div>
+
+            </div>
+         
+            
+            : (
+
+              (mode=='free') ? 
+              
+                <StudyFree/>
+              
+              : <StudyPro/>
+
+            )}
+            
+          <Footer></Footer>
           
-          }
         </div>
-    )
+
+      }
+    </div>
+  )
 }
 
 export default Study

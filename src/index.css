@@ -42,6 +42,8 @@ code {
     --shadow-dilute: 5px 5px 25px 0 rgba(46, 61, 73, 0.2);
     --shadow-conc: 2px 4px 8px 0 rgba(46, 61, 73, 0.2);
     --transition: all 0.2s ease-in-out;
+    --font-super-large: clamp(2rem, 4vw, 10rem);
+    --font-large: clamp(1.5rem, 4vw, 2rem);
 }
 .popup-content{
     width: fit-content !important;
