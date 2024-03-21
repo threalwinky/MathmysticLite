@@ -190,8 +190,13 @@ const StudyFree = () => {
 
                 </div>
 
-
+                
             </div>
+            <iframe src="https://www.geogebra.org/classic/nf6e6pad?embed" width="800" height="600" 
+                allowFullScreen style={{border: "1px solid #e4e4e4", borderRadius: 4}}
+                 frameBorder="0">
+
+                </iframe>
         </div>
     )
 }

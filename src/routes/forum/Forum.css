@@ -189,7 +189,7 @@
 }
 
 .mmt__forum-list-list_box-box-left h5{
-    font-size: var(--font-small-chat);
+    font-size: var(--font-tiny-chat);
     margin: auto;
     display: flex;
 }
@@ -229,7 +229,7 @@
 }
 
 .mmt__forum-list-list_box-box-right-content h5{
-    font-size: var(--font-small-chat);
+    font-size: var(--font-tiny-chat);
     font-weight: 400;
     text-wrap: wrap;
     width: 80%;
