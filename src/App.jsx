@@ -38,7 +38,7 @@ const App = () => {
                 </Routes>
 
             </BrowserRouter>
-            <Chatbot/>
+            {/* <Chatbot/> */}
         </div>
     )
 }

@@ -19,7 +19,7 @@ import MathmysticPet from '../../assets/img/MathmysticPet.png';
 import MathmysticLogo from '../../assets/img/MathmysticLogo.png'
 import './MainProduct.css'
 import { Timestamp } from 'firebase/firestore';
-import { Loading } from '../../containers';
+import { Headpage, Loading } from '../../containers';
 import PopupSuccessStore1 from '../../containers/modal/PopupSuccessStore1';
 import PopupFailStore1 from '../../containers/modal/PopupFailStore1';
 const MainProduct = ({ productInfo }) => {
@@ -240,7 +240,7 @@ const MainProduct = ({ productInfo }) => {
     
     return (
       <div>
-      {!loading ? <Loading /> :
+      {!loading ? <Headpage /> :
 
         <div className='product-container'>
 

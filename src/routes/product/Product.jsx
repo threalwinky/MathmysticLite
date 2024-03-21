@@ -5,7 +5,7 @@ import { addDoc, collection, deleteDoc, doc, getDocs, onSnapshot, query, updateD
 import { useMediaQuery } from 'react-responsive'
 import { useParams } from "react-router-dom";
 import { Footer, NavBarWoutMenu } from '../../components';
-import { Loading, NotFound, Chatbot } from '../../containers'
+import { Loading, NotFound, Chatbot, Headpage } from '../../containers'
 import MainProduct from './MainProduct'
 
 import db from '../../../firebase'
@@ -116,7 +116,7 @@ const Product = () => {
 
     return (
         <div>
-            {!loading ? <Loading /> :
+            {!loading ? <Headpage /> :
                 <div>
                     {productCheck ?
                         <div className='App'>

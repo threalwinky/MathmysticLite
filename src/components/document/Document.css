@@ -13,7 +13,7 @@
     /* justify-content: center; */
     >h1 {
         margin: auto;
-        font-size: clamp(30px, 4vw, 50px);
+        font-size: var(--font-normal);
         font-weight: 700;
         text-align: center;
         color: black;
@@ -38,7 +38,7 @@
     }
 
     .document-choose {
-        width: 70%;
+        width: 80%;
         
         height: 20px;
         display: flex;

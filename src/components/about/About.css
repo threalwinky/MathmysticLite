@@ -7,7 +7,7 @@
 
   h1 {
     margin: auto;
-    font-size: clamp(30px, 4vw, 50px);
+    font-size: var(--font-normal);
     font-weight: 700;
     text-align: center;
     color: black;
@@ -24,7 +24,7 @@
 
   p {
     color: #682e2e;
-    font-size: 25px;
+    font-size: var(--font-small);
     letter-spacing: 0.8px;
     line-height: 1.5em;
     margin: 14px auto 30px auto;
@@ -45,7 +45,7 @@
   padding: 3rem 3rem;
 
   h2 {
-    font-size: 30px;
+    font-size: var(--font-medium);
     font-weight: 700;
     text-align: center;
     color: black;
@@ -56,7 +56,7 @@
   p {
     width: 100%;
     text-align: start;
-    font-size: 18px;
+    font-size: var(--font-small);
     color: black;
     /* font-family: lora, sans-serif; */
   }
@@ -82,7 +82,7 @@
 
 .skill-slider .item h5 {
   width: 100%;
-  font-size: 20px;
+  font-size: var(--font-small);
   font-weight: 400;
   color: rgb(255, 255, 255);
   /* font-family: lora, sans-serif; */

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Modal, Loading, Chatbot } from "../../containers";
+import { Modal, Loading, Chatbot, Headpage } from "../../containers";
 
 // import { NavBar, Header, Introduction, Store, About, Document, Footer, Contact } from "../../components";
 import { NavBar, Header, Introduction, Store, About, Document, Contact, Footer } from "../../components";
@@ -8,12 +8,13 @@ const Home = () => {
   const [loading, setLoading] = useState(0)
 
   useEffect(() => {
-    setLoading(1)
+    setTimeout(() => {setLoading(1)}, 1000)
+    
   }, [])
 
   return (
     <div id='abc'>
-      {!loading ? <Loading /> :
+      {!loading ? <Headpage /> :
 
         <div>
           <NavBar></NavBar>
