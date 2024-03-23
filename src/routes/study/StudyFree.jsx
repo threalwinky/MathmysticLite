@@ -197,6 +197,8 @@ const StudyFree = () => {
                  frameBorder="0">
 
                 </iframe>
+            
+            
         </div>
     )
 }

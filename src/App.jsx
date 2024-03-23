@@ -8,7 +8,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import db from '../firebase'
 import './App.css'
 /*Local Modules */
-import { Cart, Forum, Home, Product, Purchase, SignIn, SignUp, Study } from './routes';
+import { Cart, Forum, Home, Product, Purchase, Setting, SignIn, SignUp, Study } from './routes';
 import { Chatbot, NotFound } from './containers';
 /*Images */
 import MathmysticPet from './assets/img/MathmysticPet.png';
@@ -35,6 +35,7 @@ const App = () => {
                     <Route path="/forum" element={<Forum />} />
                     <Route path="forum/:id" element={<Forum />} />
                     <Route path="study" element={<Study/>}></Route>
+                    <Route path="setting" element={<Setting/>}></Route>
                 </Routes>
 
             </BrowserRouter>

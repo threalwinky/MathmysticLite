@@ -1,6 +1,7 @@
 .headpage{
     /* background: linear-gradient(90deg, rgba(30, 165, 255, 0.825) 10%, rgba(158, 229, 255, 0.881) 100%); */
-    background: rgba(124, 214, 255, 0.825);
+    /* background: rgba(124, 214, 255, 0.825); */
+    background: rgba(30, 165, 255, 0.825);
     height: 100vh;
     display: flex;
     justify-content: center;

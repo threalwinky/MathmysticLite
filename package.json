@@ -31,7 +31,8 @@
     "react-router-dom": "^6.22.3",
     "react-router-hash-link": "^2.4.3",
     "react-slideshow-image": "^4.3.1",
-    "reactjs-popup": "^2.0.6"
+    "reactjs-popup": "^2.0.6",
+    "use-sound": "^4.0.1"
   },
   "devDependencies": {
     "@types/react": "^18.2.56",

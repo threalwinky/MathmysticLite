@@ -23,6 +23,7 @@ const Study = () => {
   })
   const [loading, setLoading] = useState(0)
   const [mode, setMode] = useState('no')
+  const [choose, setChoose] = useState(1)
   useEffect(() => {
     setLoading(1)
 
@@ -33,86 +34,37 @@ const Study = () => {
 
         <div>
           <NavBarWoutMenu />
-          
-            {(mode=='no') ? 
-            <div className='study'>
-            <div className='study-container'>
-              <div className='study-confirm'>
-                <div className='study-confirm-top'>
-                  <h1>Free</h1>
-                  <h2>0$/month</h2>
-                  <div>
-                    <div></div>
-                    <h3>
-                      duoc su dung cac cong cu hoc tap mien phi
-                    </h3>
-                  </div>
-                  <div>
-                    <div></div>
-                    <h3>
-                      xem cac video bai giang va tai lieu co ban
-                    </h3>
-                  </div>
-                  {/* <div>
-                    <div></div>
-                    <h3>
 
-                      duoc su dung cac cong cu hoc tap mien phi
-                    </h3>
-                  </div> */}
-                  {/* <input type="text" placeholder='Type the code' /> */}
-                </div>
+          <div className='study'>
+123
+          </div>
 
-                <button onClick={() => { setMode('free') }}>Let's go</button>
-              </div>
-              <div className='study-confirm'>
-
-                <div className='study-confirm-top'>
-                  <h1>Pro</h1>
-                  <h2>15$/month</h2>
-                  <div>
-                    <div></div>
-                    <h3>
-                      duoc su dung cac cong cu hoc tap mien phi
-                    </h3>
-                  </div>
-                  <div>
-                    <div></div>
-                    <h3>
-                      xem tat ca cac video bai giang va tai lieu                    </h3>
-                  </div>
-                  <div>
-                    <div></div>
-                    <h3>
-                      duoc hoi bai va tra loi boi gia su
-                    </h3>
-                  </div>
-                </div>
-                <div>
-                </div>
-                <div>
-                  <input type="text" placeholder='Type the code' />
-                  <button onClick={() => { setMode('pro') }}>Confirm</button>
-                </div>
-
-              </div>
-            </div>
-
-            </div>
-         
-            
-            : (
-
-              (mode=='free') ? 
+          <div className='study-toolbar'>
+            <div 
+            className={'elm ' + (choose == 1 ? "choose" : " ")}
+            onClick={() => {setChoose(1)}} >
               
-                <StudyFree/>
+              <p>Mo hinh</p>
+            </div>
+            <div className={'elm ' + (choose == 2 ? "choose" : " ")}
+            onClick={() => {setChoose(2)}} >
+              <p>Am thanh</p>
+            </div>
+            <div className={'elm ' + (choose == 3 ? "choose" : " ")}
+            onClick={() => {setChoose(3)}}>
+              Tai lieu
+            </div>
+            <div className={'elm ' + (choose == 4 ? "choose" : " ")}
+            onClick={() => {setChoose(4)}}>
               
-              : <StudyPro/>
+              3D AR
+            </div>
+          </div>
 
-            )}
-            
-          <Footer></Footer>
-          
+          <Footer>
+
+          </Footer>
+
         </div>
 
       }

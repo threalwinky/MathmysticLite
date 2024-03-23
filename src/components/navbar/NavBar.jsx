@@ -350,7 +350,7 @@ const NavBar = () => {
             <Trans>Forum</Trans>
           </p>
         </a>
-        <a href='#store'>
+        <a href='/setting'>
           <svg
             viewBox="0 0 512 512"
             fill="currentColor"
@@ -471,7 +471,7 @@ const NavBar = () => {
             <Trans>Forum</Trans>
           </p>
         </a>
-        <a href='#store'>
+        <a href='/setting'>
           <svg
             viewBox="0 0 512 512"
             fill="currentColor"
